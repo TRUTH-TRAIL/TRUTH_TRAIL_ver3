@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -71,7 +70,6 @@ namespace TT
 
         private void UpdateClueUI()
         {
-            // Update upper group UI elements
             for (int i = 0; i < clues.Count; i++)
             {
                 Clue clue = clues[i];
@@ -90,7 +88,6 @@ namespace TT
                 clueUI.GetComponentInChildren<TextMeshProUGUI>().text = clue.GetDescription();
                 clueUI.GetComponentInChildren<Image>().sprite = clue.GetImage();
 
-                // Set position
                 RectTransform rectTransform = clueUI.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(UpperOffset.x,
                     UpperOffset.y - (i * (rectTransform.sizeDelta.y + UpperSpacing)));
@@ -98,13 +95,11 @@ namespace TT
                 clueUI.gameObject.SetActive(true);
             }
 
-            // Hide excess upper UI elements
             for (int i = clues.Count; i < UpperGroupParent.childCount; i++)
             {
                 UpperGroupParent.GetChild(i).gameObject.SetActive(false);
             }
 
-            // Update lower group UI elements (Curse)
             if (currentCurse != null)
             {
                 Transform curseUI;
@@ -121,14 +116,12 @@ namespace TT
                 curseUI.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
                 curseUI.GetComponentInChildren<Image>().sprite = currentCurse.GetImage();
 
-                // Set position
                 RectTransform rectTransform = curseUI.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(LowerOffset.x, LowerOffset.y);
 
                 curseUI.gameObject.SetActive(true);
             }
 
-            // Hide excess lower UI elements
             for (int i = (currentCurse != null ? 1 : 0); i < LowerGroupParent.childCount; i++)
             {
                 LowerGroupParent.GetChild(i).gameObject.SetActive(false);
