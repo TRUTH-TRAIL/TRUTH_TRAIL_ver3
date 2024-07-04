@@ -423,7 +423,25 @@ MonoBehaviour:
   - Assets/Zectorlab/CruelDoll/Art/Meshes/SM_CruelDoll_Scissor.fbx
   - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Hit_Front.fbx
   - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Run.fbx
-  uvOverlapAssetList: 00000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidRunTurn.fbx
+  - Assets/ECM2/Shared Assets/Models/Models/Cylinder.obj
+  - Assets/ECM2/Shared Assets/Models/Rocks03.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidMidAir.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidJumpAndFall.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidWalk.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidRunTurnSharp.fbx
+  - Assets/ECM2/Shared Assets/Models/Plane/Plane.obj
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Models/DefaultMale.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidCrouch.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidWalkTurnSharp.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidWalkTurn.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidRun.fbx
+  - Assets/ECM2/Shared Assets/Models/Rocks01.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidIdleJumpUp.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidStandTurn.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidIdle.fbx
+  - Assets/ECM2/Shared Assets/Models/Rocks.fbx
+  uvOverlapAssetList: 00000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101000001010000000000000000000000000000000000000000000000000000000000000000000000000000000000000101000000000000000000000000000001010000
   xatlasWarningShown: 0
   foundCompatibleSetup: 0
   gpuName: 
