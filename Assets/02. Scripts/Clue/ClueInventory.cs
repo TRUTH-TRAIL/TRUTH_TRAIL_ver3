@@ -21,11 +21,6 @@ namespace TT
         public Vector2 LowerOffset;
         public float UpperSpacing;
 
-        public GameObject SpecialPaper;
-        public bool IsOn { get; set; }
-
-        [Header("KeyCode")] public KeyCode OpenSpecialPaperKey = KeyCode.R;
-
         private List<Clue> clues = new List<Clue>();
         private Clue currentCurse;
 
@@ -125,15 +120,6 @@ namespace TT
             for (int i = (currentCurse != null ? 1 : 0); i < LowerGroupParent.childCount; i++)
             {
                 LowerGroupParent.GetChild(i).gameObject.SetActive(false);
-            }
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(OpenSpecialPaperKey))
-            {
-                IsOn = !IsOn;
-                SpecialPaper.SetActive(IsOn);
             }
         }
     }
