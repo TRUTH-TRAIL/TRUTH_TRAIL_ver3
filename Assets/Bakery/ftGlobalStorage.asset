@@ -441,7 +441,32 @@ MonoBehaviour:
   - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidStandTurn.fbx
   - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidIdle.fbx
   - Assets/ECM2/Shared Assets/Models/Rocks.fbx
-  uvOverlapAssetList: 00000000ffffffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101000001010000000000000000000000000000000000000000000000000000000000000000000000000000000000000101000000000000000000000000000001010000
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Models/Cylinder.obj
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Rocks03.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote3.obj
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Meshes/Structure/Model/TR_Counter_01.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote1.obj
+  - Assets/999. ThirdPartys/foldednote/foldednote2.obj
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Plane/Plane.obj
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Controllers/ThirdPersonController/Character/Models/Armature.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote4.obj
+  - Assets/999. ThirdPartys/paper/paper.obj
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/ProbeDebugPyramid.fbx
+  - Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/Mesh/UnityMaterialBall.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/ProbeDebugSphere.fbx
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Meshes/Structure/Model/TR_CurveWall_01.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Disc.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote.obj
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Rocks01.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Cylinder.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/HumanEyeModel.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Quad.fbx
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Meshes/Props/Furniture/Models/GlassCase_01.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Sphere.fbx
+  - Packages/com.unity.render-pipelines.core/Editor/Resources/DebugProbe.fbx
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Rocks.fbx
+  uvOverlapAssetList: 00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010100000101000000000000000000000000000000000000000000000000000000000000000000000000000000000000010100000000000000000000000000000101000001010000010100000000000001010000000000000000000000000000000000000000000000000000ffffffff0000000000000000ffffffff01010000000000000101000001010000ffffffff010100000000000001010000000000000000000001010000
   xatlasWarningShown: 0
   foundCompatibleSetup: 0
   gpuName: 
