@@ -3,88 +3,164 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    bool trig, open;
-    public float smooth = 2.0f;
-    public float DoorOpenAngle = 90.0f;
-    private Vector3 defaulRot;
+    private bool trig, open;
+    [SerializeField] private float smooth = 2.0f;
+    [SerializeField] private float doorOpenAngle = 90.0f;
+    private Vector3 defaultRot;
     private Vector3 openRot;
-    public TextMeshProUGUI txt;
+
+    [SerializeField] private TextMeshProUGUI txt;
+    [SerializeField] private string openText = "Press E to Open";
+    [SerializeField] private string closeText = "Press E to Close";
+    [SerializeField] private TMP_FontAsset font;
+    [SerializeField] private RectTransform txtTransform;
+    [SerializeField] private Color textColor;
+    [SerializeField] private int fontSize;
+    [SerializeField] private TextAlignmentOptions alignment = TextAlignmentOptions.Center;
+
+    public TextMeshProUGUI TXT
+    {
+        get => txt;
+        set => txt = value;
+    }
+
+    public RectTransform RectTransform
+    {
+        get => txtTransform;
+        set => txtTransform = value;
+    }
     
+    public string OpenText
+    {
+        get => openText;
+        set => openText = value;
+    }
+
+    public string CloseText
+    {
+        get { return closeText; }
+        set { closeText = value; }
+    }
+
+    public Vector3 TextPosition
+    {
+        get { return txt != null ? txtTransform.localPosition : Vector3.zero; }
+        set
+        {
+            if (txt != null) txtTransform.localPosition = value; txt.transform.localPosition = value; 
+        }
+    }
+
+    public Color TextColor
+    {
+        get { return txt != null ? textColor : Color.white; }
+        set { if (txt != null) textColor = value; txt.color = value; }
+    }
+
+    public int TextSize
+    {
+        get { return txt != null ? fontSize : 14; }
+        set { if (txt != null) fontSize = value;
+            txt.fontSize = value;
+        }
+    }
+
+    public TMP_FontAsset Font
+    {
+        get { return font; }
+        set
+        {
+            font = value;
+            if (txt != null) txt.font = font;
+        }
+    }
+
+    public TextAlignmentOptions Alignment
+    {
+        get { return alignment; }
+        set
+        {
+            alignment = value;
+            if (txt != null) txt.alignment = alignment;
+        }
+    }
+
     private void Start()
     {
         if (txt == null)
         {
             txt = GetComponentInChildren<TextMeshProUGUI>();
         }
+
+        ApplyTextProperties();
         txt.text = "";
-        defaulRot = transform.eulerAngles;
-        openRot = new Vector3(defaulRot.x, defaulRot.y + DoorOpenAngle, defaulRot.z);
+        defaultRot = transform.eulerAngles;
+        openRot = new Vector3(defaultRot.x, defaultRot.y + doorOpenAngle, defaultRot.z);
     }
 
     private void Update()
     {
-        if (open)
-        {
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
-        }
-        else
-        {
-            transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaulRot, Time.deltaTime * smooth);
-        }
+        RotateDoor();
+        HandleInput();
+        UpdateText();
+    }
+
+    private void RotateDoor()
+    {
+        transform.eulerAngles = open 
+            ? Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth) 
+            : Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
+    }
+
+    private void HandleInput()
+    {
         if (Input.GetKeyDown(KeyCode.E) && trig)
         {
             open = !open;
         }
+    }
+
+    private void UpdateText()
+    {
         if (trig)
         {
-            if (open)
-            {
-                if (txt != null)
-                {
-                    txt.text = "Close E";
-                }
-                
-            }
-            else
-            {
-                if (txt != null)
-                {
-                    txt.text = "Open E";
-                }
-            }
+            txt.text = open ? closeText : openText;
         }
     }
+
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.CompareTag("Player"))
         {
-            if (!open)
-            {
-                if (txt != null)
-                {
-                    txt.text = "Close E ";
-                }
-            }
-            else
-            {
-                if (txt != null)
-                {
-                    txt.text = "Open E";
-                }
-            }
+            txt.text = open ? openText : closeText;
             trig = true;
         }
     }
+
     private void OnTriggerExit(Collider coll)
     {
         if (coll.CompareTag("Player"))
         {
-            if (txt != null)
-            {
-                txt.text = " ";
-            }
-
+            txt.text = "";
             trig = false;
         }
+    }
+
+    private void ApplyTextProperties()
+    {
+        if (txt != null)
+        {
+            txt.font = font;
+            txt.alignment = alignment;
+            txt.transform.localPosition = TextPosition;
+            txt.color = textColor;
+            txt.fontSize = fontSize;
+        }
+    }
+
+
+    private void OnValidate()
+    {
+        ApplyTextProperties();
     }
 }
