@@ -12,6 +12,10 @@ public class Door : MonoBehaviour
     
     private void Start()
     {
+        if (txt == null)
+        {
+            txt = GetComponentInChildren<TextMeshProUGUI>();
+        }
         txt.text = "";
         defaulRot = transform.eulerAngles;
         openRot = new Vector3(defaulRot.x, defaulRot.y + DoorOpenAngle, defaulRot.z);
