@@ -1,7 +1,9 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
+using TT;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : InteractableObject
 {
     private bool trig, open;
     [SerializeField] private float smooth = 2.0f;
@@ -85,23 +87,32 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         if (txt == null)
         {
             txt = GetComponentInChildren<TextMeshProUGUI>();
         }
+        
+        OnInteractionEvent.AddListener(Trigger);
+    }
 
+    private void Start()
+    {
         ApplyTextProperties();
         txt.text = "";
         defaultRot = transform.eulerAngles;
         openRot = new Vector3(defaultRot.x, defaultRot.y + doorOpenAngle, defaultRot.z);
     }
 
+    private void OnDestroy()
+    {
+        OnInteractionEvent.RemoveListener(Trigger);
+    }
+
     private void Update()
     {
         RotateDoor();
-        HandleInput();
         UpdateText();
     }
 
@@ -112,13 +123,6 @@ public class Door : MonoBehaviour
             : Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
     }
 
-    private void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && trig)
-        {
-            open = !open;
-        }
-    }
 
     private void UpdateText()
     {
@@ -158,9 +162,19 @@ public class Door : MonoBehaviour
         }
     }
 
-
+#if UNITY_EDITOR
     private void OnValidate()
     {
         ApplyTextProperties();
+    }
+#endif
+    
+
+    private void Trigger()
+    {
+        if (trig)
+        {
+            open = !open;
+        }
     }
 }

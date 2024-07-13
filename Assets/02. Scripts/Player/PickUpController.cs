@@ -20,14 +20,13 @@ namespace TT
             CheckForPickupable();
         }
 
+        
         private void CheckForPickupable()
         {
-            Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, PickupRange))
+            Collider collider = RaycastUtil.TryGetPickupableCollider(cam, PickupRange);
+            if (collider != null)
             {
-                IPickupable pickupable = hit.collider.GetComponent<IPickupable>();
+                IPickupable pickupable = collider.GetComponent<IPickupable>();
                 if (pickupable != null)
                 {
                     ShowPickupText(pickupable);
@@ -49,7 +48,6 @@ namespace TT
 
         private void ShowPickupText(IPickupable pickupable)
         {
-            //PickupText.text = $"줍기"; // {pickupable.GetDescription()}
             PickupText.SetActive(true);
         }
 
