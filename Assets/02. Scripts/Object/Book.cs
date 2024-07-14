@@ -14,7 +14,7 @@ namespace TT
         }
 
         [Tooltip("밀리는 거리")] 
-        public float SlideDistance = 1.0f;
+        public float SlideDistance = 0.5f;
 
         [Tooltip("밀리는 방향")] 
         public SlideDirection Direction = SlideDirection.Right;

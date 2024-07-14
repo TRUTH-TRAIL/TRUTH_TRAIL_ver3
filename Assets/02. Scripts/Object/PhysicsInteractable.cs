@@ -6,7 +6,7 @@ namespace TT
     public class PhysicsInteractable : InteractableObject
     {
         [Tooltip("힘의 세기")]
-        public float forceStrength = 10f;
+        public float forceStrength = 7f;
 
         [Tooltip("회전력의 세기")]
         public float torqueStrength = 5f;
