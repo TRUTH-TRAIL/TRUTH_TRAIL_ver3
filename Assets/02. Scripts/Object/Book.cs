@@ -24,7 +24,7 @@ namespace TT
 
         private Vector3 originalPosition;
         private bool hasInteracted = false;
-
+        
         private void Start()
         {
             originalPosition = transform.localPosition;

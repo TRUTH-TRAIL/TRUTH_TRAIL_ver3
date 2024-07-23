@@ -87,8 +87,10 @@ public class Door : InteractableObject
         }
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         if (txt == null)
         {
             txt = GetComponentInChildren<TextMeshProUGUI>();

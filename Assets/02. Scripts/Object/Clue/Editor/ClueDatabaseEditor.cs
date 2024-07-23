@@ -25,17 +25,17 @@ namespace TT
 
             if (GUILayout.Button("Add New Clue"))
             {
-                Clue newClue = CreateInstance<Clue>();
-                newClue.name = "New Clue";
-                AssetDatabase.AddObjectToAsset(newClue, clueDatabase);
-                clueDatabase.Clues.Add(newClue);
+                Item newItem = CreateInstance<Item>();
+                newItem.name = "New Clue";
+                AssetDatabase.AddObjectToAsset(newItem, clueDatabase);
+                clueDatabase.Clues.Add(newItem);
                 EditorUtility.SetDirty(clueDatabase);
                 AssetDatabase.SaveAssets();
             }
 
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
-            foreach (Clue clue in clueDatabase.Clues)
+            foreach (Item clue in clueDatabase.Clues)
             {
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField(clue.name, GUILayout.Width(200));

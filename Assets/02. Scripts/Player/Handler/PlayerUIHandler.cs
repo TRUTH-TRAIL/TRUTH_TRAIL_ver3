@@ -5,12 +5,10 @@ namespace TT
     public class PlayerUIHandler : MonoBehaviour
     {
         [Header("UI Elements")]
-        public GameObject SpecialPaper;
         public GameObject InventoryUI;
         public GameObject PausePanelUI;
 
         [Header("KeyCodes")]
-        public KeyCode OpenSpecialPaperKey = KeyCode.R;
         public KeyCode ToggleInventoryKey = KeyCode.Tab;
         public KeyCode TogglePausePanelKey = KeyCode.Escape;
 
@@ -20,7 +18,6 @@ namespace TT
 
         private void Update()
         {
-            HandleUI(OpenSpecialPaperKey, ref isSpecialPaperOn, SpecialPaper);
             HandleUI(ToggleInventoryKey, ref isInventoryActive, InventoryUI);
             HandleUI(TogglePausePanelKey, ref isPaused, PausePanelUI);
         }

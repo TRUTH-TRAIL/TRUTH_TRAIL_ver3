@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TT
 {
@@ -6,8 +7,12 @@ namespace TT
     {
         public float PickupRange = 2.0f;
         public GameObject PickupText;
-        public ClueInventory ClueInventory;
-
+        
+        [FormerlySerializedAs("ClueInventory")] 
+        public SpecialPaperController specialPaperController;
+        public InventoryController inventoryController;
+        public LayerMask PickupLayerMask;
+        
         private Camera cam;
 
         private void Awake()
@@ -20,49 +25,60 @@ namespace TT
             CheckForPickupable();
         }
 
-        
         private void CheckForPickupable()
         {
-            Collider collider = RaycastUtil.TryGetPickupableCollider(cam, PickupRange);
+            Collider collider = RaycastUtil.TryGetPickupableCollider(cam, PickupRange, PickupLayerMask);
             if (collider != null)
             {
                 IPickupable pickupable = collider.GetComponent<IPickupable>();
                 if (pickupable != null)
                 {
-                    ShowPickupText(pickupable);
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        TryPickUpClue(pickupable);
-                    }
+                    HandlePickup(pickupable);
                 }
                 else
                 {
-                    HidePickupText();
+                    SetPickupTextActive(false);
                 }
             }
             else
             {
-                HidePickupText();
+                SetPickupTextActive(false);
             }
         }
 
-        private void ShowPickupText(IPickupable pickupable)
+        private void HandlePickup(IPickupable pickupable)
         {
-            PickupText.SetActive(true);
+            if (Input.GetMouseButtonDown(0))
+            {
+                switch (pickupable.GetItemType())
+                {
+                    case ItemType.Clue:
+                        TryPickUpItem(pickupable, specialPaperController.TryAddClue);
+                        break;
+                    case ItemType.InventoryItem:
+                        TryPickUpItem(pickupable, inventoryController.TryAddInventoryItem);
+                        break;
+                }
+            }
+            else
+            {
+                SetPickupTextActive(true);
+            }
         }
 
-        private void HidePickupText()
+        private void TryPickUpItem(IPickupable pickupable, System.Func<Item, bool> tryAddMethod)
         {
-            PickupText.SetActive(false);
-        }
-
-        private void TryPickUpClue(IPickupable pickupable)
-        {
-            ClueObject clueObject = pickupable as ClueObject;
-            if (clueObject != null && ClueInventory.TryAddClue(clueObject.Clue))
+            PickupableObject pickupableObject = pickupable as PickupableObject;
+            if (pickupableObject != null && tryAddMethod(pickupableObject.item))
             {
                 pickupable.OnPickUp();
+                SetPickupTextActive(false);
             }
+        }
+
+        private void SetPickupTextActive(bool isActive)
+        {
+            PickupText.SetActive(isActive);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace TT
     [CreateAssetMenu(fileName = "ClueDatabase", menuName = "TT/ClueDatabase")]
     public class ClueDatabase : ScriptableObject
     {
-        public List<Clue> Clues;
+        public List<Item> Clues;
     }
 }
