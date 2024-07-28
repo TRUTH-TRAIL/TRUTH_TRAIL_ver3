@@ -9,8 +9,9 @@ namespace TT
         public float ShakeAmount = 0.01f; 
         private Vector3 originalPosition;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             originalPosition = transform.localPosition;
             OnInteractionEvent.AddListener(Shake);
 

@@ -15,8 +15,6 @@ namespace TT
     
     public interface IPickupable
     {
-        string GetDescription();
-        ClueType GetClueType();
         ItemType GetItemType();
         void OnPickUp();
     }

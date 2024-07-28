@@ -7,14 +7,9 @@ namespace TT
     [RequireComponent(typeof(Collider))]
     public class PickupableObject : MonoBehaviour, IPickupable
     {
-        [FormerlySerializedAs("Clue")] public Item item;
-
-        public string GetDescription() => item.GetDescription();
-        public ClueType GetClueType() => item.GetClueType();
+        public Item item;
         public ItemType GetItemType() => item.GetItemType();
-
-        public Sprite GetImage() => item.GetImage();
-
+        
         public UnityEvent OnPickUpEvent;
         
         protected virtual void Awake()

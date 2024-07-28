@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -47,7 +46,9 @@ namespace TT
         {
             if (item == null) return false;
             
-            if (item.GetClueType() == ClueType.Curse)
+            Clue clue = item as Clue;
+            
+            if (clue.GetClueType() == ClueType.Curse)
             {
                 currentCurse = item;
             }
@@ -88,7 +89,7 @@ namespace TT
         {
             for (int i = 0; i < clues.Count; i++)
             {
-                Item item = clues[i];
+                Clue item = clues[i] as Clue;
                 if (item.GetClueType() == ClueType.Curse) continue;
 
                 Transform clueUI;

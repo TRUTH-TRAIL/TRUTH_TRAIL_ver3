@@ -14,8 +14,9 @@ namespace TT
 
         private MeshRenderer renderer;
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             originalPosition = transform.localPosition;
             OnInteractionEvent.AddListener(RiseAndFade);
 
