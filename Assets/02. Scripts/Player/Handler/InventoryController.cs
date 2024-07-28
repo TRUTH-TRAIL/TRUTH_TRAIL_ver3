@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace TT
@@ -14,7 +10,7 @@ namespace TT
         [Header("생성되는 UI Prefab")]
         public GameObject InventoryItemUIPrefab;
         
-        public bool TryAddInventoryItem(Item item)
+        public bool TryAddInventoryItem(IPickupable item)
         {
             if (item == null) return false;
             
@@ -22,12 +18,13 @@ namespace TT
             return true;
         }
 
-        private void UpdateInventoryUI(Item item)
+        private void UpdateInventoryUI(IPickupable item)
         {
             GameObject inventoryItemUI = Instantiate(InventoryItemUIPrefab, Root);
 
+            var _ = item as InventoryItemObject;
             //inventoryItemUI.GetComponentInChildren<TextMeshProUGUI>().text = item.GetDescription();
-            inventoryItemUI.GetComponentInChildren<Image>().sprite = item.GetImage();
+            inventoryItemUI.GetComponentInChildren<Image>().sprite = _.GetImage().sprite;
 
             inventoryItemUI.gameObject.SetActive(true);
         }

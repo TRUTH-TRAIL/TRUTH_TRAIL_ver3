@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace TT
 {
@@ -20,5 +21,6 @@ namespace TT
             OnPickUpEvent?.Invoke();
             Destroy(gameObject);
         }
+
     }
 }

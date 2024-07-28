@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TT
 {
@@ -7,10 +8,10 @@ namespace TT
         public string Description;
 
         public ItemType ItemType;
-        public Sprite ClueImage;
+        public Image ClueImage;
 
         public string GetDescription() => Description;
         public ItemType GetItemType() => ItemType;
-        public Sprite GetImage() => ClueImage;
+        public Image GetImage() => ClueImage;
     }
 }

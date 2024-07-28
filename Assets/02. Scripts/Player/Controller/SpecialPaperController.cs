@@ -39,30 +39,41 @@ namespace TT
         private Quaternion originalRotation = Quaternion.Euler(0,0,0);
         
         private bool isActiveState = false;
-        private List<Item> clues = new List<Item>();
-        private Item currentCurse;
+        private List<IPickupable> clues = new List<IPickupable>();
+        private IPickupable currentCurse;
 
-        public bool TryAddClue(Item item)
+        public bool TryAddClue(IPickupable item)
         {
             if (item == null) return false;
             
-            Clue clue = item as Clue;
+            FoldedNote note = item as FoldedNote;
             
-            if (clue.GetClueType() == ClueType.Curse)
+            if (note.ClueType == ClueType.Curse && !Player.Instance.IsCursed) //저주에 걸린 상태가 아니라면
             {
                 currentCurse = item;
             }
-            else if (clues.Count >= MaxClues)
+            else if (note.ClueType == ClueType.Curse && Player.Instance.IsCursed) //이미 저주에 걸린 상태라면
             {
-                StartCoroutine(DisplayLog("Cannot pick up more clues. Inventory is full."));
-                return false;
+                FoldedNote currentFoldedNote = item as FoldedNote;
+                currentFoldedNote.ChangeClueType();
+
+                note = currentFoldedNote;
+            }
+            
+            if (note.ClueType != ClueType.Curse)
+            {
+                if (clues.Count >= MaxClues)
+                {
+                    StartCoroutine(DisplayLog("Cannot pick up more clues. Inventory is full."));
+                    return false;
+                }
             }
 
-            clues.Add(item);
+            clues.Add(note);
             UpdateClueUI();
             return true;
         }
-
+        
         private IEnumerator DisplayLog(string message)
         {
             LogText.text = message;
@@ -83,8 +94,6 @@ namespace TT
             LogText.color = originalColor;
         }
 
-        public List<Item> GetClues() => clues;
-
         private void UpdateClueUI()
         {
             for (int i = 0; i < clues.Count; i++)
@@ -103,7 +112,7 @@ namespace TT
                 }
 
                 clueUI.GetComponentInChildren<TextMeshProUGUI>().text = item.GetDescription();
-                clueUI.GetComponentInChildren<Image>().sprite = item.GetImage();
+                clueUI.GetComponentInChildren<Image>().sprite = item.GetImage().sprite;
 
                 RectTransform rectTransform = clueUI.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(UpperOffset.x, UpperOffset.y - (i * (rectTransform.sizeDelta.y + UpperSpacing)));
@@ -128,9 +137,10 @@ namespace TT
                     curseUI = Instantiate(CurseUIPrefab, LowerGroupParent).transform;
                 }
 
-                curseUI.GetComponentInChildren<TextMeshProUGUI>().text = currentCurse.GetDescription();
+                var _ = currentCurse as FoldedNote;
+                curseUI.GetComponentInChildren<TextMeshProUGUI>().text = _.GetDescription();
                 curseUI.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
-                curseUI.GetComponentInChildren<Image>().sprite = currentCurse.GetImage();
+                //curseUI.GetComponentInChildren<Image>().sprite = currentCurse.GetImage().sprite;
 
                 RectTransform rectTransform = curseUI.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(LowerOffset.x, LowerOffset.y);

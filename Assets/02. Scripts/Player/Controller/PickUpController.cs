@@ -66,10 +66,10 @@ namespace TT
             }
         }
 
-        private void TryPickUpItem(IPickupable pickupable, System.Func<Item, bool> tryAddMethod)
+        private void TryPickUpItem(IPickupable pickupable, System.Func<IPickupable, bool> tryAddMethod)
         {
             PickupableObject pickupableObject = pickupable as PickupableObject;
-            if (pickupableObject != null && tryAddMethod(pickupableObject.item))
+            if (pickupableObject != null && tryAddMethod(pickupableObject))
             {
                 pickupable.OnPickUp();
                 SetPickupTextActive(false);
