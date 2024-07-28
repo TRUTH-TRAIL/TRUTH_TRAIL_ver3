@@ -18,6 +18,7 @@ namespace TT
                 }
             }
 
+            specialPaper.clues.Clear();
             specialPaper.clues = trueClues;
             Debug.Log("거짓과 저주 단서가 제거되었습니다.");
 

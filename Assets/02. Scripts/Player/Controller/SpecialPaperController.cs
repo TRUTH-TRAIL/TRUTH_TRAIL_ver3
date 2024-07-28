@@ -62,7 +62,7 @@ namespace TT
                 note = currentFoldedNote;
             }
             
-            if (note.ClueType != ClueType.Curse)
+            if (note.ClueType != ClueType.Curse) //Todo : 여기 저주 안먹어짐 수정해
             {
                 if (clues.Count >= MaxClues)
                 {
@@ -123,6 +123,7 @@ namespace TT
                 else
                 {
                     clueUI = Instantiate(ClueUIPrefab, UpperGroupParent).transform;
+                    clueUI.transform.localScale = Vector3.one;
                 }
 
                 clueUI.GetComponentInChildren<TextMeshProUGUI>().text = item.GetDescription();
