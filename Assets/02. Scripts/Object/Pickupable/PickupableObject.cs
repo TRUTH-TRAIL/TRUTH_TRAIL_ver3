@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace TT
 {
-    [RequireComponent(typeof(Collider))]
     public class PickupableObject : MonoBehaviour, IPickupable
     {
         public Item item;
