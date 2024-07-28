@@ -37,7 +37,7 @@ namespace TT
             }
             
             int randomValue = Random.Range(0, 10);
-            return randomValue < 7 ? ClueType.Fake : ClueType.Curse; // 70% 확률로 가짜 단서, 30% 확률로 저주 단서
+            return randomValue < 9 ? ClueType.Fake : ClueType.Curse; // 90% 확률로 가짜 단서, 10% 확률로 저주 단서
         }
 
         private void ApplyCurse()
