@@ -98,9 +98,9 @@ namespace TT
         {
             for (int i = 0; i < clues.Count; i++)
             {
-                Clue item = clues[i] as Clue;
-                if (item.GetClueType() == ClueType.Curse) continue;
-
+                FoldedNote item = clues[i] as FoldedNote;
+                if (item.ClueType == ClueType.Curse) continue;
+                 
                 Transform clueUI;
                 if (i < UpperGroupParent.childCount)
                 {
@@ -112,7 +112,7 @@ namespace TT
                 }
 
                 clueUI.GetComponentInChildren<TextMeshProUGUI>().text = item.GetDescription();
-                clueUI.GetComponentInChildren<Image>().sprite = item.GetImage().sprite;
+                //clueUI.GetComponentInChildren<Image>().sprite = item.GetImage().sprite;
 
                 RectTransform rectTransform = clueUI.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(UpperOffset.x, UpperOffset.y - (i * (rectTransform.sizeDelta.y + UpperSpacing)));
