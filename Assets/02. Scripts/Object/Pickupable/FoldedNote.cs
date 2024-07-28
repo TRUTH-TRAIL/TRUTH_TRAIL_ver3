@@ -1,5 +1,5 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
 namespace TT
 {
@@ -12,7 +12,7 @@ namespace TT
         protected override void Awake()
         {
             base.Awake();
-            ClueType clueType = GenerateRandomClueType();
+            ClueType clueType = GenerateClueType();
             ClueType = clueType;
             Debug.Log($"나는 어떤 단서일까요~? : {clueType}");
     
@@ -27,18 +27,19 @@ namespace TT
         {
             return ClueManager.Instance.GetClueDescription(ClueType);
         }
-        
-        private ClueType GenerateRandomClueType()
-        {
-            int randomValue = Random.Range(0, 10);
 
-            return randomValue switch
+        private ClueType GenerateClueType()
+        {
+            if (ClueManager.Instance.CanAddRealClue())
             {
-                < 2 => ClueType.Real,
-                < 8 => ClueType.Fake,
-                _ => ClueType.Curse,
-            };
+                ClueManager.Instance.AddRealClue();
+                return ClueType.Real;
+            }
+            
+            int randomValue = Random.Range(0, 10);
+            return randomValue < 9 ? ClueType.Fake : ClueType.Curse; // 90% 확률로 가짜 단서, 10% 확률로 저주 단서
         }
+
         private void ApplyCurse()
         {
             if (!Player.Instance.IsCursed)
@@ -51,7 +52,6 @@ namespace TT
 
         public void ChangeClueType()
         {
-            //item도 바꿔줘야지 아니면 문구 안달라짐 ㅅㅂ
             ClueType clueType = ClueType.Fake;
             ClueType = clueType;
         }
@@ -67,15 +67,13 @@ namespace TT
         private void OnDrawGizmos()
         {
             Gizmos.color = isCurseClue ? Color.red : Color.green;
-            Gizmos.DrawWireSphere(transform.position, 0.5f);
+            Gizmos.DrawWireSphere(transform.position, 0.1f);
 
 #if UNITY_EDITOR
             GUIStyle style = new GUIStyle();
             style.normal.textColor = Gizmos.color;
-            Handles.Label(transform.position + Vector3.up * 0.5f, isCurseClue ? "저주" : "저주아님", style);
+            Handles.Label(transform.position, "단서", style);
 #endif
         }
-
-        
     }
 }

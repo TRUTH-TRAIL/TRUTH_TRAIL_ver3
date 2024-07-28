@@ -8,6 +8,22 @@ namespace TT
         public List<string> fakeClues = new List<string>();
         public List<string> curseClues = new List<string>();
 
+        private int realClueCount = 0;
+        public int MaxRealClues = 10;
+        
+        public bool CanAddRealClue()
+        {
+            return realClueCount < MaxRealClues;
+        }
+
+        public void AddRealClue()
+        {
+            if (realClueCount < MaxRealClues)
+            {
+                realClueCount++;
+            }
+        }
+
         public string GetClueDescription(ClueType clueType)
         {
             List<string> clueList = GetClueList(clueType);
