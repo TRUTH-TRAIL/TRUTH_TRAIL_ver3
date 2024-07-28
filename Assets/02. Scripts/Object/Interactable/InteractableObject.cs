@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 namespace TT
 {
-    [RequireComponent(typeof(Collider))]
     public class InteractableObject : MonoBehaviour, IInteractable
     {
         public UnityEvent OnInteractionEvent;
