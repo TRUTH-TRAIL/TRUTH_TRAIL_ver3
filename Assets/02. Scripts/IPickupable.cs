@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace TT
@@ -22,7 +23,7 @@ namespace TT
 
     public interface IImageable
     {
-        Image GetImage();
+        Sprite GetImage();
     }
     
     public interface IPickupable

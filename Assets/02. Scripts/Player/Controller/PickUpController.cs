@@ -6,13 +6,14 @@ namespace TT
     public class PickUpController : MonoBehaviour
     {
         public float PickupRange = 2.0f;
-        public GameObject PickupText;
+       
         
         [FormerlySerializedAs("ClueInventory")] 
         public SpecialPaperController specialPaperController;
         public InventoryController inventoryController;
         public LayerMask PickupLayerMask;
-        
+
+        public string PickString = "Pick";
         private Camera cam;
 
         private void Awake()
@@ -37,12 +38,8 @@ namespace TT
                 }
                 else
                 {
-                    SetPickupTextActive(false);
+                    InteractionTextUI.Instance.SetPickupTextActive(false, PickString);
                 }
-            }
-            else
-            {
-                SetPickupTextActive(false);
             }
         }
 
@@ -62,7 +59,7 @@ namespace TT
             }
             else
             {
-                SetPickupTextActive(true);
+                InteractionTextUI.Instance.SetPickupTextActive(true, PickString);
             }
         }
 
@@ -72,13 +69,9 @@ namespace TT
             if (pickupableObject != null && tryAddMethod(pickupableObject))
             {
                 pickupable.OnPickUp();
-                SetPickupTextActive(false);
+                InteractionTextUI.Instance.SetPickupTextActive(false, PickString);
             }
         }
 
-        private void SetPickupTextActive(bool isActive)
-        {
-            PickupText.SetActive(isActive);
-        }
     }
 }

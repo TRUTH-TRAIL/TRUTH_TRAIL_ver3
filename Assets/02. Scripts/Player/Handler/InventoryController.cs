@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TT
 {
@@ -24,8 +23,15 @@ namespace TT
 
             var _ = item as InventoryItemObject;
             //inventoryItemUI.GetComponentInChildren<TextMeshProUGUI>().text = item.GetDescription();
-            inventoryItemUI.GetComponentInChildren<Image>().sprite = _.GetImage().sprite;
-
+            
+            var o = inventoryItemUI.GetComponent<InventoryItemUIElement>();
+            
+            o.ItemImage.sprite = _.GetImage();
+            if (item is SpecialPaper)
+            {
+                o.SetActiveTrueSee();
+            }
+            
             inventoryItemUI.gameObject.SetActive(true);
         }
     }

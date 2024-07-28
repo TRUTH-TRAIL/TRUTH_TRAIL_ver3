@@ -1,12 +1,14 @@
-using UnityEngine.UI;
+using UnityEngine;
 
 namespace TT
 {
     public class InventoryItemObject : PickupableObject, IImageable
     {
-        public Image GetImage()
+        public Sprite ItemImage;
+        
+        public Sprite GetImage()
         {
-            return null; //temp
+            return ItemImage;
         }
     }
 }

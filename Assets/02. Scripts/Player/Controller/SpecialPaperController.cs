@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 
 namespace TT
 {
@@ -26,8 +26,8 @@ namespace TT
         public Vector2 LowerOffset;
         public float UpperSpacing;
 
-        [Header("습득물보관(특수용지)")] 
-        public GameObject ClueInventoryObject;
+        [FormerlySerializedAs("ClueInventoryObject")] [Header("습득물보관(특수용지)")] 
+        public GameObject SpecialPaper;
         public KeyCode OpenInventoryKeyCode = KeyCode.Tab;
 
         [Header("장착 시")] 
@@ -39,9 +39,11 @@ namespace TT
         private Quaternion originalRotation = Quaternion.Euler(0,0,0);
         
         private bool isActiveState = false;
-        private List<IPickupable> clues = new List<IPickupable>();
+        public List<IPickupable> clues = new List<IPickupable>();
         private IPickupable currentCurse;
 
+        public bool IsSeeState;
+        
         public bool TryAddClue(IPickupable item)
         {
             if (item == null) return false;
@@ -106,7 +108,7 @@ namespace TT
             LogText.color = originalColor;
         }
 
-        private void UpdateClueUI()
+        public void UpdateClueUI()
         {
             for (int i = 0; i < clues.Count; i++)
             {
@@ -168,16 +170,18 @@ namespace TT
 
         private void Update()
         {
-            if (Input.GetKey(OpenInventoryKeyCode))
+            if (!Player.Instance.isAcquiredSpecialPaper) return;
+            
+            if (Input.GetKey(OpenInventoryKeyCode) || IsSeeState)
             {
-                if (!ClueInventoryObject.activeSelf && !IsEquipped)
+                if (!SpecialPaper.activeSelf && !IsEquipped)
                 {
-                    ClueInventoryObject.SetActive(true);
+                    SpecialPaper.SetActive(true);
                 }
             }
-            else if (Input.GetKeyUp(OpenInventoryKeyCode))
+            else if (Input.GetKeyUp(OpenInventoryKeyCode) && !IsEquipped)
             {
-                ClueInventoryObject.SetActive(false);
+                SpecialPaper.SetActive(false);
             }
 
             SpecialPaperImage.transform.localPosition = IsEquipped ? EquippedPosition : originalPosition;

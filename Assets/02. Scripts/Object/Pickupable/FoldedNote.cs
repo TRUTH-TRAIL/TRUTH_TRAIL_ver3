@@ -75,7 +75,7 @@ namespace TT
 #if UNITY_EDITOR
             GUIStyle style = new GUIStyle();
             style.normal.textColor = Gizmos.color;
-            Handles.Label(transform.position, "단서", style);
+            Handles.Label(transform.position, ClueType == ClueType.Real ? "진짜" : "가짜", style);
 #endif
         }
     }
