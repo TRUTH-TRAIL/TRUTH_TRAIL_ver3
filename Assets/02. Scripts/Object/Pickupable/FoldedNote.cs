@@ -6,16 +6,16 @@ namespace TT
     public class FoldedNote : PickupableObject, IDescribable
     {
         public ClueType ClueType;
-        
         private bool isCurseClue;
-        
+        private string description;
+
         protected override void Awake()
         {
             base.Awake();
             ClueType clueType = GenerateClueType();
             ClueType = clueType;
             Debug.Log($"나는 어떤 단서일까요~? : {clueType}");
-    
+
             isCurseClue = ClueType == ClueType.Curse;
             if (isCurseClue)
             {
@@ -25,7 +25,12 @@ namespace TT
 
         public string GetDescription()
         {
-            return ClueManager.Instance.GetClueDescription(ClueType);
+            return description;
+        }
+
+        public void SetDescription(string desc)
+        {
+            description = desc;
         }
 
         private ClueType GenerateClueType()
@@ -35,7 +40,7 @@ namespace TT
                 ClueManager.Instance.AddRealClue();
                 return ClueType.Real;
             }
-            
+
             int randomValue = Random.Range(0, 10);
             return randomValue < 9 ? ClueType.Fake : ClueType.Curse; // 90% 확률로 가짜 단서, 10% 확률로 저주 단서
         }
@@ -44,7 +49,6 @@ namespace TT
         {
             if (!Player.Instance.IsCursed)
             {
-                //저주 입히기 로직 추가
                 Player.Instance.IsCursed = true;
                 Debug.Log("ㅋㅋㅋ너 저주걸림");
             }
@@ -52,8 +56,7 @@ namespace TT
 
         public void ChangeClueType()
         {
-            ClueType clueType = ClueType.Fake;
-            ClueType = clueType;
+            ClueType = ClueType.Fake;
         }
 
         private void OnDestroy()
@@ -63,7 +66,7 @@ namespace TT
                 OnPickUpEvent.RemoveListener(ApplyCurse);
             }
         }
-        
+
         private void OnDrawGizmos()
         {
             Gizmos.color = isCurseClue ? Color.red : Color.green;

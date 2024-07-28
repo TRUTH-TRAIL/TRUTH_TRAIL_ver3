@@ -50,7 +50,7 @@ namespace TT
             
             if (note.ClueType == ClueType.Curse && !Player.Instance.IsCursed) //저주에 걸린 상태가 아니라면
             {
-                currentCurse = item;
+                currentCurse = note;
             }
             else if (note.ClueType == ClueType.Curse && Player.Instance.IsCursed) //이미 저주에 걸린 상태라면
             {
@@ -67,10 +67,22 @@ namespace TT
                     StartCoroutine(DisplayLog("Cannot pick up more clues. Inventory is full."));
                     return false;
                 }
-            }
+                
+                if (note.ClueType == ClueType.Real)
+                {
+                    ClueManager.Instance.GetRealClue();
+                }
 
-            clues.Add(note);
-            UpdateClueUI();
+                // 새로운 단서에만 설명 설정
+                if (string.IsNullOrEmpty(note.GetDescription()))
+                {
+                    note.SetDescription(ClueManager.Instance.GetClueDescription(note.ClueType));
+                }
+
+                clues.Add(note);
+                UpdateClueUI();
+            }
+            
             return true;
         }
         

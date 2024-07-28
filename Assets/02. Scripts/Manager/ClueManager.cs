@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace TT
@@ -10,6 +11,18 @@ namespace TT
 
         private int realClueCount = 0;
         public int MaxRealClues = 10;
+
+        public int CurrentRealCluesCount;
+        public Action OnChangeSpecialPaper;
+
+        public void GetRealClue()
+        {
+            CurrentRealCluesCount++;
+            if (CurrentRealCluesCount == 10)
+            {
+                OnChangeSpecialPaper?.Invoke();
+            }
+        }
         
         public bool CanAddRealClue()
         {
