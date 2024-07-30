@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace TT
 {
@@ -126,6 +128,7 @@ namespace TT
 
             // 현재 부모 안에 있는 자식 요소들을 리스트로 복사
             List<Transform> upperChildren = new List<Transform>();
+            
             foreach (Transform child in UpperGroupParent)
             {
                 upperChildren.Add(child);

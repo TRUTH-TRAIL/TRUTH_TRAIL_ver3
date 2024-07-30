@@ -4,6 +4,6 @@ namespace TT
     {
         public bool IsCursed;
         public bool isAcquiredSpecialPaper;
-        
+        public bool isEqiupSpecialPaper;
     }
 }

@@ -19,13 +19,9 @@ namespace TT
 
         public void Decrypt()
         {
-            if (specialPaperHandler != null)
+            if (specialPaperHandler != null && Player.Instance.isEqiupSpecialPaper)
             {
                 DecryptManager.Instance.RemoveFalseAndCurseClues();
-            }
-            else
-            {
-                Debug.LogWarning("현재 들고 있는 Special Paper가 없습니다.");
             }
         }
     }

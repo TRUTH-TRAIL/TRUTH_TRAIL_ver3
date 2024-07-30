@@ -82,6 +82,7 @@ namespace TT
                 isJustOnce = false;
             }
 
+            Player.Instance.isEqiupSpecialPaper = IsEquipped;
             SpecialPaperImage.transform.localPosition = IsEquipped ? EquippedPosition : originalPosition;
             SpecialPaperImage.transform.localRotation = IsEquipped ? EquippedRotation : originalRotation;
         }
