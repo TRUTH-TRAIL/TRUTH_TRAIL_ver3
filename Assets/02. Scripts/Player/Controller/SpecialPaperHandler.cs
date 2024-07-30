@@ -31,13 +31,17 @@ namespace TT
             if (note.ClueType == ClueType.Curse && !Player.Instance.IsCursed) //저주에 걸린 상태가 아니라면
             {
                 ClueManager.Instance.CurrentCurse = note;
+                ICurse curse = CurseManager.Instance.GetRandomCurse();
+                if (curse != null)
+                {
+                    note.SetDescription(curse.Description);
+                    ClueManager.Instance.CurrentCurse = note;
+                    curse.Activate();
+                }
             }
             else if (note.ClueType == ClueType.Curse && Player.Instance.IsCursed) //이미 저주에 걸린 상태라면
             {
-                FoldedNote currentFoldedNote = item as FoldedNote;
-                currentFoldedNote.ChangeClueType();
-
-                note = currentFoldedNote;
+                note.ChangeClueType();
             }
             
             if (ClueManager.Instance.Clues.Count >= MaxClues)

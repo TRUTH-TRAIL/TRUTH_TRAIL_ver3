@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace TT
 {
@@ -12,7 +10,6 @@ namespace TT
     {
         public List<string> realClues = new List<string>();
         public List<string> fakeClues = new List<string>();
-        public List<string> curseClues = new List<string>();
         
         [Header("UI")] 
         public Transform UpperGroupParent;
@@ -83,7 +80,6 @@ namespace TT
             {
                 ClueType.Real => realClues,
                 ClueType.Fake => fakeClues,
-                ClueType.Curse => curseClues,
                 _ => new List<string>(),
             };
         }
@@ -206,6 +202,5 @@ namespace TT
                 Destroy(currentCurseUI);
             }
         }
-
     }
 }
