@@ -1,28 +1,24 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace TT
 {
     public class DecryptManager : Singleton<DecryptManager>
     {
-        public void RemoveFalseAndCurseClues(SpecialPaperController specialPaper)
+        public void RemoveFalseAndCurseClues()
         {
-            List<IPickupable> trueClues = new List<IPickupable>();
+            List<FoldedNote> trueClues = new List<FoldedNote>();
 
-            foreach (var clue in specialPaper.clues)
+            foreach (var clue in ClueManager.Instance.Clues)
             {
-                FoldedNote note = clue as FoldedNote;
+                FoldedNote note = clue;
                 if (note != null && note.ClueType == ClueType.Real)
                 {
                     trueClues.Add(clue);
                 }
             }
 
-            specialPaper.clues.Clear();
-            specialPaper.clues = trueClues;
-            Debug.Log("거짓과 저주 단서가 제거되었습니다.");
-
-            specialPaper.UpdateClueUI();
+            Player.Instance.IsCursed = false;
+            ClueManager.Instance.Decrypt(trueClues);
         }
     }
 }

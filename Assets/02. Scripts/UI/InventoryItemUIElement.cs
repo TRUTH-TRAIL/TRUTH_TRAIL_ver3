@@ -30,6 +30,7 @@ namespace TT
         private void SetActiveTrueEquip()
         {
             EquipButton.gameObject.SetActive(isActive);
+            EquipButton.onClick.AddListener(ToggleSpecialPaperEquipped);
         }
         
         public void SetActiveTrueSee()
@@ -38,6 +39,15 @@ namespace TT
             {
                 SeeButton.gameObject.SetActive(isActive);
             });
+        }
+
+        private void ToggleSpecialPaperEquipped()
+        {
+            var specialPaper = FindObjectOfType<SpecialPaperHandler>();
+            if (specialPaper != null)
+            {
+                specialPaper.IsEquipped = !specialPaper.IsEquipped;
+            }
         }
     }
 }

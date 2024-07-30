@@ -18,7 +18,8 @@ namespace TT
         public void OnPickUp()
         {
             OnPickUpEvent?.Invoke();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
     }

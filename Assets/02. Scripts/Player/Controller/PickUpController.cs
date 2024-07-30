@@ -1,65 +1,29 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TT
 {
-    public class PickUpController : MonoBehaviour
+    public class PickUpController : BaseController<IPickupable>
     {
-        public float PickupRange = 2.0f;
-       
+        public SpecialPaperHandler specialPaperHandler;
+        public InventoryHandler inventoryHandler;
         
-        [FormerlySerializedAs("ClueInventory")] 
-        public SpecialPaperController specialPaperController;
-        public InventoryController inventoryController;
-        public LayerMask PickupLayerMask;
-
-        public string PickString = "Pick";
-        private Camera cam;
-
-        private void Awake()
-        {
-            cam = Camera.main;
-        }
-
-        private void Update()
-        {
-            CheckForPickupable();
-        }
-
-        private void CheckForPickupable()
-        {
-            Collider collider = RaycastUtil.TryGetPickupableCollider(cam, PickupRange, PickupLayerMask);
-            if (collider != null)
-            {
-                IPickupable pickupable = collider.GetComponent<IPickupable>();
-                if (pickupable != null)
-                {
-                    HandlePickup(pickupable);
-                }
-                else
-                {
-                    InteractionTextUI.Instance.SetPickupTextActive(false, PickString);
-                }
-            }
-        }
-
-        private void HandlePickup(IPickupable pickupable)
+        protected override void HandleAction(IPickupable pickupable)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 switch (pickupable.GetItemType())
                 {
                     case ItemType.Clue:
-                        TryPickUpItem(pickupable, specialPaperController.TryAddClue);
+                        TryPickUpItem(pickupable, specialPaperHandler.TryAddClue);
                         break;
                     case ItemType.InventoryItem:
-                        TryPickUpItem(pickupable, inventoryController.TryAddInventoryItem);
+                        TryPickUpItem(pickupable, inventoryHandler.TryAddInventoryItem);
                         break;
                 }
             }
             else
             {
-                InteractionTextUI.Instance.SetPickupTextActive(true, PickString);
+                InteractionTextUI.Instance.SetPickupTextActive(true, BaseString);
             }
         }
 
@@ -69,7 +33,7 @@ namespace TT
             if (pickupableObject != null && tryAddMethod(pickupableObject))
             {
                 pickupable.OnPickUp();
-                InteractionTextUI.Instance.SetPickupTextActive(false, PickString);
+                InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
             }
         }
 

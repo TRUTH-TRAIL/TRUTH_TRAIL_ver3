@@ -30,7 +30,10 @@ namespace TT
 
         public void SetDescription(string desc)
         {
-            description = desc;
+            if (desc != null)
+            {
+                description = desc;
+            }
         }
 
         private ClueType GenerateClueType()

@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TT
 {
     public class Decryptor : MonoBehaviour, IDecryptable
     {
-        public SpecialPaperController specialPaperController;
+        public SpecialPaperHandler specialPaperHandler;
 
         private void Awake()
         {
-            if (specialPaperController == null)
+            if (specialPaperHandler == null)
             {
-                specialPaperController = FindObjectOfType<SpecialPaperController>();
+                specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
             }
             
             gameObject.layer = LayerMask.NameToLayer("Decryptable");
@@ -18,9 +19,9 @@ namespace TT
 
         public void Decrypt()
         {
-            if (specialPaperController != null)
+            if (specialPaperHandler != null)
             {
-                DecryptManager.Instance.RemoveFalseAndCurseClues(specialPaperController);
+                DecryptManager.Instance.RemoveFalseAndCurseClues();
             }
             else
             {

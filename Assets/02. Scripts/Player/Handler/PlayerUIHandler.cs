@@ -1,5 +1,3 @@
-using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace TT
@@ -7,8 +5,8 @@ namespace TT
     public class PlayerUIHandler : MonoBehaviour
     {
         [Header("UI Elements")]
-        public GameObject InventoryUI;
-        public GameObject PausePanelUI;
+        public CanvasToggle InventoryUI;
+        public CanvasToggle PausePanelUI;
         public GameObject CenterMouseCursor;
         
         [Header("KeyCodes")]
@@ -31,14 +29,14 @@ namespace TT
             HandleUI(TogglePausePanelKey, ref isPaused, PausePanelUI);
         }
 
-        private void HandleUI(KeyCode key, ref bool isActive, GameObject uiElement)
+        private void HandleUI(KeyCode key, ref bool isActive, CanvasToggle uiElement)
         {
             if (Input.GetKeyDown(key))
             {
                 isActive = !isActive;
                 if (uiElement != null)
                 {
-                    uiElement.SetActive(isActive);
+                    uiElement.Toggle();
                     
                     // 인벤토리가 활성화되면 커서를 보이도록 설정
                     if (uiElement == InventoryUI)
