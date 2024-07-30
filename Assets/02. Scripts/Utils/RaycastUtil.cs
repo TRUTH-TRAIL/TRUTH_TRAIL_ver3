@@ -4,7 +4,7 @@ namespace TT
 {
     public static class RaycastUtil
     {
-        public static Collider TryGetPickupableCollider(Camera camera, float range, LayerMask layerMask)
+        public static Collider TryGetCollider(Camera camera, float range, LayerMask layerMask)
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;

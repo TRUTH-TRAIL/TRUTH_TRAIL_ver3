@@ -6,11 +6,19 @@ namespace TT
     {
         public string Description => "너 앞으로 되게 잘 걷는다. 계속 앞으로 걸어봐";
 
+        private bool isJustOnce;
+        
+        private void Awake()
+        {
+            isJustOnce = false;
+        }
+        
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.W) && !isJustOnce)
             {
                 Trigger();
+                isJustOnce = true;
             }
         }
 

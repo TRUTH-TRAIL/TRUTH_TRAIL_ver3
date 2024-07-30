@@ -19,6 +19,8 @@ namespace TT
         
         private void Start()
         {
+            InteractionType = InteractionType.Book;
+            
             originalPosition = transform.localPosition;
             OnInteractionEvent.AddListener(Slide);
 

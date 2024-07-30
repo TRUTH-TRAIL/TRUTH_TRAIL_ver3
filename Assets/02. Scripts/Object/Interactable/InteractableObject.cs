@@ -3,6 +3,13 @@ using UnityEngine.Events;
 
 namespace TT
 {
+    public enum InteractionType
+    {
+        Book = 0,
+        Drawer = 1,
+        Normal = 2,
+    }
+    
     public class InteractableObject : MonoBehaviour, IInteractable
     {
         public UnityEvent OnInteractionEvent;
@@ -10,7 +17,8 @@ namespace TT
         private float lastInteractionTime;
 
         public bool IsNeedPrerequisites = true;
-        
+
+        public InteractionType InteractionType = InteractionType.Normal;
         
         protected virtual void Awake()
         {

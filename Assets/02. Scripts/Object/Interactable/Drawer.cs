@@ -20,6 +20,7 @@ namespace TT
 
         private void Start()
         {
+            InteractionType = InteractionType.Drawer;
             originalPosition = transform.localPosition;
             targetPosition = originalPosition + MovementUtils.GetSlideVector(transform, Direction) * SlideDistance;
             OnInteractionEvent.AddListener(ToggleDrawer);

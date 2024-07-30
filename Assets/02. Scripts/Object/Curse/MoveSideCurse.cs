@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TT
@@ -5,12 +6,19 @@ namespace TT
     public class MoveSideCurse : MonoBehaviour, ICurse
     {
         public string Description => "옆으로 움직여 볼래?";
+        private bool isJustOnce;
+
+        private void Awake()
+        {
+            isJustOnce = false;
+        }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+            if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && !isJustOnce)
             {
                 Trigger();
+                isJustOnce = true;
             }
         }
 

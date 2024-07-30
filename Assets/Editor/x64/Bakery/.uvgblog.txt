@@ -1697,3 +1697,245 @@ Running halffloat2hdr "C:\Users\wlsdn\AppData\Local\Temp\frender/MainGame_LMA108
 Running halffloat2hdr "C:\Users\wlsdn\AppData\Local\Temp\frender/MainGame_LMA109_final_HDR.lz4" "C:/TRUTH_TRAIL/Assets/BakeryLightmaps/MainGame_LMA109_final.hdr" 64000
 Running halffloat2hdr "C:\Users\wlsdn\AppData\Local\Temp\frender/MainGame_LMA110_final_HDR.lz4" "C:/TRUTH_TRAIL/Assets/BakeryLightmaps/MainGame_LMA110_final.hdr" 64000
 Running halffloat2hdr "C:\Users\wlsdn\AppData\Local\Temp\frender/MainGame_LMA111_final_HDR.lz4" "C:/TRUTH_TRAIL/Assets/BakeryLightmaps/MainGame_LMA111_final.hdr" 64000
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+
+Aborting batchmode due to fatal error:
+The file 'MemoryStream' is corrupted! Remove it and launch unity again!
+[Position out of bounds!]
+
+
+
+Aborting batchmode due to fatal error:
+The file 'MemoryStream' is corrupted! Remove it and launch unity again!
+[Position out of bounds!]
+
+
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380
+Total cache size 268428380
+Total cache size after purge 268428380
+C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filename != NULL' failed
+
+Total cache size 268428380
+Total cache size after purge 268428380

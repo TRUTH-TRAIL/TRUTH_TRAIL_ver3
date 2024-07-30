@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace TT
 {
@@ -23,6 +23,16 @@ namespace TT
                 clickCount = 0;
             }
         }
+        
+        private LayerMask DoorMask;
+        private float InteractionRange = 2.0f;
+        private Camera cam;
+
+        private void Awake()
+        {
+            cam = Camera.main;
+            DoorMask = LayerMask.GetMask("Interactionable");
+        }
 
         private void Update()
         {
@@ -30,10 +40,25 @@ namespace TT
             {
                 clickCount = 0;
             }
-
+            
             if (Input.GetMouseButtonDown(0))
             {
-                OnClick();
+                Collider collider = RaycastUtil.TryGetCollider(cam, InteractionRange, DoorMask);
+                
+                bool isColliderNull = collider == null;
+                
+                if (!isColliderNull)
+                {
+                    Door door = collider.gameObject.GetComponent<Door>();
+                    if (door != null && door.DoorType == DoorType.Normal)
+                    {
+                        OnClick();
+                    }
+                    else
+                    {
+                        Debug.Log($"Collider has no Door component or not a normal door: {door}");
+                    }
+                }
             }
         }
 

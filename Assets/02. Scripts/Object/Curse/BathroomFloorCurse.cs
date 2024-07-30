@@ -6,9 +6,9 @@ namespace TT
     {
         public string Description => "화장실에 뭔가 있어. 확인해볼래?";
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("BathroomFloor"))
+            if (other.CompareTag("RestRoomFloor"))
             {
                 Trigger();
             }

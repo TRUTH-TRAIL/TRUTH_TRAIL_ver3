@@ -5,15 +5,35 @@ namespace TT
     public class LookOutWindowCurse : MonoBehaviour, ICurse
     {
         public string Description => "창문 밖을 봐";
-        public Transform window;
+     
+        private LayerMask WindowMask;
+        private float InteractionRange = 2.0f;
+        private Camera cam;
 
-        /*private void Update()
+        private bool isJustOnce;
+        
+        private void Awake()
         {
-            if (Vector3.Distance(transform.position, window.position) < 1.0f)
+            isJustOnce = false;
+            cam = Camera.main;
+            WindowMask = LayerMask.GetMask("Window");
+        }
+
+        private void Update()
+        {
+            Collider collider = RaycastUtil.TryGetCollider(cam, InteractionRange, WindowMask);
+            bool isColliderNull = collider == null;
+             
+            if (!isColliderNull)
             {
-                Activate();
+                if (Vector3.Distance(transform.position, collider.gameObject.transform.position) < 3.0f && !isJustOnce)
+                {
+                    Trigger();
+                    isJustOnce = true;
+                }
             }
-        }*/
+            
+        }
 
         public void Activate()
         {

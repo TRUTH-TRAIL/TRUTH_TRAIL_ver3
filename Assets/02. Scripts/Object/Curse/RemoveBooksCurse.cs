@@ -6,6 +6,40 @@ namespace TT
     {
         public string Description => "책장의 책을 치워봐";
 
+        public LayerMask InteractionMask;
+        public float InteractionRange = 3.0f;
+        private Camera cam;
+        private bool isJustOnce;
+
+      
+        private void Awake()
+        {
+            isJustOnce = false;
+            cam = Camera.main;
+            InteractionMask  = LayerMask.GetMask("Interactionable");
+        }
+        
+        private void Update()
+        {
+            Collider collider = RaycastUtil.TryGetCollider(cam, InteractionRange, InteractionMask);
+            if (collider != null)
+            {
+                IInteractable interactable = collider.GetComponent<IInteractable>();
+                if (interactable != null)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        InteractableObject o = interactable as Book;
+                        if (o != null && o.InteractionType == InteractionType.Book && !isJustOnce)
+                        {
+                            isJustOnce = true;
+                            Trigger();
+                        }
+                    }
+                }
+            }
+        }
+        
         public void Activate()
         {
             Player.Instance.CurrentCurse = Player.Instance.gameObject.AddComponent<RemoveBooksCurse>();

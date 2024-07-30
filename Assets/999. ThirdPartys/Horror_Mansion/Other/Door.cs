@@ -1,10 +1,18 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using TT;
 using UnityEngine;
 
+public enum DoorType
+{
+    Normal = 0,
+    Restroom = 1,
+    EntryFoyer = 2,
+    Basement = 3,
+}
+
 public class Door : InteractableObject
 {
+    
     private bool trig, open;
     [SerializeField] private float smooth = 2.0f;
     [SerializeField] private float doorOpenAngle = 90.0f;
@@ -20,6 +28,8 @@ public class Door : InteractableObject
     [SerializeField] private int fontSize;
     [SerializeField] private TextAlignmentOptions alignment = TextAlignmentOptions.Center;
 
+    public DoorType DoorType = DoorType.Normal;
+    
     public TextMeshProUGUI TXT
     {
         get => txt;

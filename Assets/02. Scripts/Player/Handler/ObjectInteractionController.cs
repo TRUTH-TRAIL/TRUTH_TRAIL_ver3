@@ -15,7 +15,7 @@ namespace TT
         
         private void Update()
         {
-            Collider collider = RaycastUtil.TryGetPickupableCollider(cam, InteractionRange, InteractionMask);
+            Collider collider = RaycastUtil.TryGetCollider(cam, InteractionRange, InteractionMask);
             if (collider != null)
             {
                 IInteractable interactable = collider.GetComponent<IInteractable>();

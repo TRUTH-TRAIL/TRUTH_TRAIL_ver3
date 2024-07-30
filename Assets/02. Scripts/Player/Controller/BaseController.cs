@@ -17,7 +17,7 @@ namespace TT
 
         private void Update()
         {
-            Collider collider = RaycastUtil.TryGetPickupableCollider(cam, BaseRange, BaseLayerMask);
+            Collider collider = RaycastUtil.TryGetCollider(cam, BaseRange, BaseLayerMask);
             if (collider != null)
             {
                 T actionable = collider.GetComponent<T>();
