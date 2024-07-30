@@ -10,16 +10,31 @@ namespace TT
         private string description;
         private ICurse appliedCurse;
 
+        private ClueManager clueManager;
+        private CurseManager curseManager;
+
+        public bool isTestCurse;
+        
         protected override void Awake()
         {
             base.Awake();
-            ClueType clueType = GenerateClueType();
-            ClueType = clueType;
+            curseManager = FindObjectOfType<CurseManager>();
+            clueManager = FindObjectOfType<ClueManager>();
+
+            if (!isTestCurse)
+            {
+                ClueType clueType = GenerateClueType();
+                ClueType = clueType;
+            }
+            else
+            {
+                ClueType = ClueType.Curse;
+            }
 
             isCurseClue = ClueType == ClueType.Curse;
             if (isCurseClue)
             {
-                appliedCurse = CurseManager.Instance.GetRandomCurse();
+                appliedCurse = curseManager.GetRandomCurse();
                 if (appliedCurse != null)
                 {
                     OnPickUpEvent.AddListener(appliedCurse.Activate);
@@ -42,9 +57,9 @@ namespace TT
 
         private ClueType GenerateClueType()
         {
-            if (ClueManager.Instance.CanAddRealClue())
+            if (clueManager.CanAddRealClue())
             {
-                ClueManager.Instance.AddRealClue();
+                clueManager.AddRealClue();
                 return ClueType.Real;
             }
 

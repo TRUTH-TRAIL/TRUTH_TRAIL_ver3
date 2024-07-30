@@ -1,12 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace TT
 {
     public class PickUpController : BaseController<IPickupable>
     {
-        public SpecialPaperHandler specialPaperHandler;
-        public InventoryHandler inventoryHandler;
-        
+        private SpecialPaperHandler specialPaperHandler;
+        private InventoryHandler inventoryHandler;
+
+        private void OnDrawGizmos()
+        {
+            specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
+            inventoryHandler = FindObjectOfType<InventoryHandler>();
+        }
+
         protected override void HandleAction(IPickupable pickupable)
         {
             if (Input.GetMouseButtonDown(0))

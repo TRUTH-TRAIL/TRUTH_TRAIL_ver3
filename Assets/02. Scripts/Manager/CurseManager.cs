@@ -3,16 +3,27 @@ using UnityEngine;
 
 namespace TT
 {
-    public class CurseManager : Singleton<CurseManager>
+    public class CurseManager : MonoBehaviour
     {
         private List<ICurse> availableCurses = new List<ICurse>();
-
+        private GameObject player;
+        
         private void Start()
         {
+            player = GameObject.FindWithTag("Player");
+
             // 초기 저주 목록 설정
-            availableCurses.Add(new StairCurse(GameObject.FindWithTag("Player")));
-            availableCurses.Add(new LookBackCurse(GameObject.FindWithTag("Player")));
-            // 다른 저주들도 추가
+            availableCurses.Add(new StairCurse(player));
+            availableCurses.Add(new LookBackCurse(player));
+            availableCurses.Add(new MoveSideCurse());
+            availableCurses.Add(new DoubleClickDoorCurse());
+            availableCurses.Add(new ExitHouseCurse());
+            availableCurses.Add(new OpenBasementDoorCurse());
+            availableCurses.Add(new LookOutWindowCurse());
+            availableCurses.Add(new OpenDrawerCurse());
+            availableCurses.Add(new RemoveBooksCurse());
+            availableCurses.Add(new WalkForwardCurse());
+            availableCurses.Add(new BathroomFloorCurse());
         }
 
         public ICurse GetRandomCurse()
@@ -26,13 +37,6 @@ namespace TT
 
             return selectedCurse;
         }
-
-        public void AddCurse(ICurse curse)
-        {
-            if (!availableCurses.Contains(curse))
-            {
-                availableCurses.Add(curse);
-            }
-        }
+        
     }
 }

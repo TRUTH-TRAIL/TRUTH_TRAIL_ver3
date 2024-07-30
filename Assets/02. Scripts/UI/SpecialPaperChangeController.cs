@@ -8,9 +8,13 @@ namespace TT
         
         public GameObject ToChangedPaper;
 
+        private ClueManager clueManager;
+        
         private void Awake()
         {
-            ClueManager.Instance.OnChangeSpecialPaper += Change;
+            clueManager = FindObjectOfType<ClueManager>();
+            
+            clueManager.OnChangeSpecialPaper += Change;
         }
 
         [ContextMenu("TestChange")]
@@ -21,7 +25,7 @@ namespace TT
 
         private void OnDestroy()
         {
-            ClueManager.Instance.OnChangeSpecialPaper -= Change;
+            clueManager.OnChangeSpecialPaper -= Change;
         }
     }
 }

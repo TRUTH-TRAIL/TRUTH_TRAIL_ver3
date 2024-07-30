@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TT
@@ -22,6 +23,14 @@ namespace TT
         private bool isActiveState = false;
         public bool IsSeeState;
 
+        private ClueManager clueManager;
+        private CurseManager curseManager;
+        private void Awake()
+        {
+            clueManager = FindObjectOfType<ClueManager>();
+            curseManager = FindObjectOfType<CurseManager>();
+        }
+
         public bool TryAddClue(IPickupable item)
         {
             if (item == null) return false;
@@ -30,12 +39,12 @@ namespace TT
 
             if (note.ClueType == ClueType.Curse && !Player.Instance.IsCursed) //저주에 걸린 상태가 아니라면
             {
-                ClueManager.Instance.CurrentCurse = note;
-                ICurse curse = CurseManager.Instance.GetRandomCurse();
+                clueManager.CurrentCurse = note;
+                ICurse curse = curseManager.GetRandomCurse();
                 if (curse != null)
                 {
                     note.SetDescription(curse.Description);
-                    ClueManager.Instance.CurrentCurse = note;
+                    clueManager.CurrentCurse = note;
                     curse.Activate();
                 }
             }
@@ -44,24 +53,24 @@ namespace TT
                 note.ChangeClueType();
             }
             
-            if (ClueManager.Instance.Clues.Count >= MaxClues)
+            if (clueManager.Clues.Count >= MaxClues)
             {
-                StartCoroutine(ClueManager.Instance.DisplayLog("인벤토리 꽉참."));
+                StartCoroutine(clueManager.DisplayLog("인벤토리 꽉참."));
                 return false;
             }
 
             if (note.ClueType == ClueType.Real)
             {
-                ClueManager.Instance.GetRealClue();
+                clueManager.GetRealClue();
             }
 
             // 새로운 단서에만 설명 설정
             if (string.IsNullOrEmpty(note.GetDescription()))
             {
-                note.SetDescription(ClueManager.Instance.GetClueDescription(note.ClueType));
+                note.SetDescription(clueManager.GetClueDescription(note.ClueType));
             }
 
-            ClueManager.Instance.AddClue(note);
+            clueManager.AddClue(note);
             
             return true;
         }

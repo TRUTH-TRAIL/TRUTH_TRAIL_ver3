@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace TT
 {
-    public class ClueManager : Singleton<ClueManager>
+    public class ClueManager : MonoBehaviour
     {
         public List<string> realClues = new List<string>();
         public List<string> fakeClues = new List<string>();
@@ -120,11 +120,23 @@ namespace TT
 
         private void UpdateClueUI()
         {
+            if (UpperGroupParent == null || LowerGroupParent == null)
+            {
+                Debug.LogError("UpperGroupParent or LowerGroupParent is null.");
+                return;
+            }
+
+            if (ClueUIPrefab == null || CurseUIPrefab == null)
+            {
+                Debug.LogError("ClueUIPrefab or CurseUIPrefab is null.");
+                return;
+            }
+
             int upperIndex = 0;
 
             // 현재 부모 안에 있는 자식 요소들을 리스트로 복사
             List<Transform> upperChildren = new List<Transform>();
-            
+
             foreach (Transform child in UpperGroupParent)
             {
                 upperChildren.Add(child);
@@ -139,6 +151,12 @@ namespace TT
             for (int i = 0; i < Clues.Count; i++)
             {
                 FoldedNote item = Clues[i];
+                if (item == null)
+                {
+                    Debug.LogError("FoldedNote item is null.");
+                    continue;
+                }
+
                 Transform clueUI;
 
                 if (item.ClueType != ClueType.Curse)
@@ -177,8 +195,11 @@ namespace TT
                     }
 
                     var curseNote = CurrentCurse as FoldedNote;
-                    currentCurseUI.GetComponentInChildren<TextMeshProUGUI>().text = curseNote.GetDescription();
-                    currentCurseUI.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+                    if (curseNote != null)
+                    {
+                        currentCurseUI.GetComponentInChildren<TextMeshProUGUI>().text = curseNote.GetDescription();
+                        currentCurseUI.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+                    }
 
                     RectTransform rectTransform = currentCurseUI.GetComponent<RectTransform>();
                     rectTransform.anchoredPosition = new Vector2(LowerOffset.x, LowerOffset.y);
@@ -202,5 +223,6 @@ namespace TT
                 Destroy(currentCurseUI);
             }
         }
+
     }
 }

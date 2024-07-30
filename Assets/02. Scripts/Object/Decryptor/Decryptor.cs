@@ -5,15 +5,17 @@ namespace TT
 {
     public class Decryptor : MonoBehaviour, IDecryptable
     {
+        private DecryptManager decryptManager;
         public SpecialPaperHandler specialPaperHandler;
-
+        
         private void Awake()
         {
             if (specialPaperHandler == null)
             {
                 specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
             }
-            
+
+            decryptManager = FindObjectOfType<DecryptManager>();
             gameObject.layer = LayerMask.NameToLayer("Decryptable");
         }
 
@@ -21,7 +23,7 @@ namespace TT
         {
             if (specialPaperHandler != null && Player.Instance.isEqiupSpecialPaper)
             {
-                DecryptManager.Instance.RemoveFalseAndCurseClues();
+                decryptManager.RemoveFalseAndCurseClues();
             }
         }
     }

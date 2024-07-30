@@ -4,8 +4,8 @@ namespace TT
 {
     public class ObjectInteractionController : MonoBehaviour
     {    
-        public float InteractionRange = 2.0f;
         public LayerMask InteractionMask;
+        public float InteractionRange = 2.0f;
         private Camera cam;
 
         private void Awake()

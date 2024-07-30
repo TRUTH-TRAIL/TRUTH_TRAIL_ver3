@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TT
 {
-    public class StairCurse : ICurse
+    public class StairCurse : MonoBehaviour, ICurse
     {
         public string Description => "계단으로 와볼래?";
         private GameObject player;
@@ -11,17 +11,25 @@ namespace TT
         {
             this.player = player;
         }
-
-        public bool CanActivate()
-        {
-            // 플레이어가 계단에 닿았는지 확인하는 로직
-            return true; //player.GetComponent<Player>().IsOnStairs;
-        }
-
+        
         public void Activate()
         {
             // 저주 발동 로직
+            Player.Instance.CurrentCurse = player.AddComponent<StairCurse>();
             Debug.Log("계단 저주 발동!");
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Stair"))
+            {
+                Trigger();
+            }
+        }
+
+        private void Trigger()
+        {
+            Debug.Log("저주가 발동되면 AI에게 풀리지 않는 어그로가 발동하여 사망에 이르게 된다");
         }
     }
 
