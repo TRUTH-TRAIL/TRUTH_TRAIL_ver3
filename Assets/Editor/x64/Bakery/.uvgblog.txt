@@ -1939,3 +1939,7 @@ C:\build\output\Unity-Technologies\mono\mono\eglib\gpath.c:115: assertion 'filen
 
 Total cache size 268428380
 Total cache size after purge 268428380
+abort_threads: Failed aborting id: 000000000000AB14, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000AB14, mono_thread_manage will ignore it
+

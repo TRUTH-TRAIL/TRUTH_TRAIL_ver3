@@ -1998,7 +1998,6 @@ namespace ECM2
                         characterMovement.constrainToGround = true;
                     
                     // Trigger Landed event
-                    
                     OnLanded(characterMovement.landedVelocity);
                     
                     break;

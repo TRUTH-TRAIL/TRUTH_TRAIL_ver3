@@ -8,6 +8,10 @@ namespace TT
         public bool isAcquiredSpecialPaper;
         public bool isEqiupSpecialPaper;
 
+        public bool IsWalkingState;
+        public bool IsRunningState;
+        public bool IsSlowWalkingState;
+        
         private ICurse currentCurse;
         public ICurse CurrentCurse
         {
