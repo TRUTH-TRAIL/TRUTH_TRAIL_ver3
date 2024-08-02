@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TT
 {
-    public class Player : Singleton<Player>
+    public class Player : MonoBehaviour
     {
         public bool IsCursed { get; private set; }
         public bool isAcquiredSpecialPaper;
@@ -11,6 +11,10 @@ namespace TT
         public bool IsWalkingState;
         public bool IsRunningState;
         public bool IsSlowWalkingState;
+
+        public bool IsDeadCurseState;
+        public bool IsDead;
+        
         
         private ICurse currentCurse;
         public ICurse CurrentCurse
@@ -31,6 +35,14 @@ namespace TT
                 Destroy(curseMonoBehaviour);
                 CurrentCurse = null;
             }
+            
+            IsDeadCurseState = false;
+        }
+
+        public void Dead()
+        {
+            IsDead = true;
+            //죽는 애니메이션 실행
         }
     }
 }

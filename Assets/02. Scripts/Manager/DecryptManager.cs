@@ -7,9 +7,11 @@ namespace TT
     public class DecryptManager : MonoBehaviour
     {
         [SerializeField] private ClueManager clueManager;
-
+        private Player Player;
+        
         private void Awake()
         {
+            Player = FindObjectOfType<Player>();
             clueManager = FindObjectOfType<ClueManager>();
         }
 
@@ -26,7 +28,7 @@ namespace TT
                 }
             }
 
-            Player.Instance.RemoveComponent();
+            Player.RemoveComponent();
             clueManager.Decrypt(trueClues);
         }
     }

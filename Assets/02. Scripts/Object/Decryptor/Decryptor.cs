@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 namespace TT
 {
@@ -7,6 +7,8 @@ namespace TT
     {
         private DecryptManager decryptManager;
         public SpecialPaperHandler specialPaperHandler;
+
+        public UnityEvent OnDecryptEvent;
         
         private void Awake()
         {
@@ -21,8 +23,9 @@ namespace TT
 
         public void Decrypt()
         {
-            if (specialPaperHandler != null && Player.Instance.isEqiupSpecialPaper)
+            if (specialPaperHandler != null && FindObjectOfType<Player>().isEqiupSpecialPaper)
             {
+                OnDecryptEvent?.Invoke();
                 decryptManager.RemoveFalseAndCurseClues();
             }
         }

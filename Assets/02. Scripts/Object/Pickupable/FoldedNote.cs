@@ -13,7 +13,7 @@ namespace TT
         private ClueManager clueManager;
         private CurseManager curseManager;
 
-        public bool isTestCurse;
+        public bool isTest;
         
         protected override void Awake()
         {
@@ -21,15 +21,15 @@ namespace TT
             curseManager = FindObjectOfType<CurseManager>();
             clueManager = FindObjectOfType<ClueManager>();
 
-            if (!isTestCurse)
+            if (!isTest)
             {
                 ClueType clueType = GenerateClueType();
                 ClueType = clueType;
             }
-            else
+            /*else
             {
                 ClueType = ClueType.Curse;
-            }
+            }*/
 
             isCurseClue = ClueType == ClueType.Curse;
             if (isCurseClue)

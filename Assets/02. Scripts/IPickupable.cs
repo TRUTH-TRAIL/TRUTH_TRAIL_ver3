@@ -14,6 +14,7 @@ namespace TT
     {
         Clue,
         InventoryItem,
+        Normal,
     }
     
     public interface IDescribable

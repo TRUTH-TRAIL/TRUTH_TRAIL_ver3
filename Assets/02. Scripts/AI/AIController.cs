@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using ECM2;
+using Micosmo.SensorToolkit;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +9,8 @@ namespace TT
     public enum AIStateType
     {
         Wandering,
-        Chasing
+        Chasing,
+        Idle
     }
 
     public interface IAIState
@@ -23,17 +26,19 @@ namespace TT
         [SerializeField] private NavMeshAgent agent;
         public AIStateType currentStateType;
         public Transform PlayerTarget;
-        public Transform[] pathPoints; 
+        public Transform PathsContainer;
+        private Transform[] paths;
+        public Character Character;
+        public Sensor DetectionSensor;
+        public Sensor DetectionRangeSensor;
+        public bool IsNearPlayer => DetectionRangeSensor.GetNearestDetection() != null;
+        public PlayerSound PlayerSound;
+        public Player Player;
         
         [Header("Animation")]
         public Animator animator;
         public float walkSpeed = 3.5f;
         public float runSpeed = 7.0f;
-        
-
-        [Header("FOV")]
-        public float detectionRange = 10f; 
-        public float fieldOfView = 90f;
 
         [Header("Touch")]
         public float TouchDistance = 2f;
@@ -44,15 +49,28 @@ namespace TT
         private int currentPathIndex = 0;
         private readonly int Speed = Animator.StringToHash("Speed");
 
+        [Header("Detection")]
+        public float DetectionTimeGuage;
+        public float NeedDetectionTime;
+        
+        
         private void Start()
         {
+            Character = FindObjectOfType<Character>();
+            PlayerTarget = Character.transform;
+            PlayerSound = FindObjectOfType<PlayerSound>();
+            Player = FindObjectOfType<Player>();
+            
             states = new Dictionary<AIStateType, IAIState>
             {
                 { AIStateType.Wandering, new WanderState() },
-                { AIStateType.Chasing, new ChaseState() }
+                { AIStateType.Chasing, new ChaseState() },
+                { AIStateType.Idle, new IdleState() }
             };
 
             ChangeState(AIStateType.Wandering);
+
+            paths = PathsContainer.GetComponentsInChildren<Transform>();
         }
 
         public void ChangeState(AIStateType newStateType)
@@ -96,8 +114,8 @@ namespace TT
         {
             if (!agent.pathPending && agent.remainingDistance < 0.5f)
             {
-                currentPathIndex = (currentPathIndex + 1) % pathPoints.Length;
-                agent.destination = pathPoints[currentPathIndex].position;
+                currentPathIndex = Random.Range(0, paths.Length);
+                agent.destination = paths[currentPathIndex].position;
             }
         }
 
@@ -108,39 +126,17 @@ namespace TT
 
         public bool CanSeePlayer()
         {
-            Vector3 directionToPlayer = PlayerTarget.position - transform.position;
-            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-
-            if (angleToPlayer < fieldOfView / 2 && directionToPlayer.magnitude <= detectionRange)
-            {
-                Ray ray = new Ray(transform.position, directionToPlayer.normalized);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit, detectionRange))
-                {
-                    if (hit.collider.transform == PlayerTarget)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            return DetectionSensor.GetNearestDetection()!= null;
         }
 
         public bool IsPlayerRunning()
         {
-            return Player.Instance.IsRunningState; 
+            return Player.IsRunningState; 
         }
 
         public bool IsPlayerWalking()
         {
-            return Player.Instance.IsWalkingState; 
-        }
-
-        public bool IsPlayerMakingNoise()
-        {
-            return IsPlayerRunning() || IsPlayerWalking(); 
+            return Player.IsWalkingState; 
         }
 
         private Vector3 GetPlayerPosition()

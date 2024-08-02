@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Stair
   - RestRoomFloor
+  - Lights
+  - InteractionCanvas
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Pickupable
   - Decryptable
   - Window
-  - 
+  - Player
   - 
   - 
   - 

@@ -1,3 +1,4 @@
+using TT;
 using UnityEngine;
 
 namespace ECM2.Examples.FirstPerson
@@ -9,15 +10,22 @@ namespace ECM2.Examples.FirstPerson
     public class FirstPersonCharacterInput : MonoBehaviour
     {
         private Character _character;
-
+        private Player Player;
+        
         private void Awake()
         {
             _character = GetComponent<Character>();
+            Player = FindObjectOfType<Player>();
         }
 
         private void Update()
         {
             // Movement input, relative to character's view direction
+            if (Player.IsDead)
+            {
+                _character.SetMovementDirection(Vector3.zero);
+                return;
+            }
             
             Vector2 inputMove = new Vector2()
             {

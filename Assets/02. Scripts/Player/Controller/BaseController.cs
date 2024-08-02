@@ -6,9 +6,10 @@ namespace TT
     {
         public LayerMask BaseLayerMask;
         public float BaseRange;
-
         public string BaseString;
+
         private Camera cam;
+        private bool isTextVisible = false;
 
         protected virtual void Awake()
         {
@@ -23,19 +24,36 @@ namespace TT
                 T actionable = collider.GetComponent<T>();
                 if (actionable != null)
                 {
-                    HandleAction(actionable);
+                    if (!isTextVisible)
+                    {
+                        InteractionTextUI.Instance.SetPickupTextActive(true, BaseString);
+                        isTextVisible = true;
+                    }
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        HandleAction(actionable);
+                    }
                 }
                 else
                 {
-                    InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
+                    if (isTextVisible)
+                    {
+                        InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
+                        isTextVisible = false;
+                    }
                 }
             }
             else
             {
-                InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
+                if (isTextVisible)
+                {
+                    InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
+                    isTextVisible = false;
+                }
             }
         }
-        
+
         protected abstract void HandleAction(T actionable);
     }
 }

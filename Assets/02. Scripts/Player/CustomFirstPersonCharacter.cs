@@ -10,9 +10,12 @@ namespace TT
         [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
         
         private float originSpeed;
-
+        private Player Player;
+        
         protected override void Start()
         {
+            Player = FindObjectOfType<Player>();
+            
             originSpeed = maxWalkSpeed;
         }
 
@@ -20,22 +23,22 @@ namespace TT
         {
             if (Input.GetKeyDown(runKey))
             {
-                Player.Instance.IsRunningState = true;
+                Player.IsRunningState = true;
                 maxWalkSpeed *= speedMutiplier;
             }
             else if (Input.GetKeyUp(runKey))
             {
-                Player.Instance.IsRunningState = false;
+                Player.IsRunningState = false;
                 maxWalkSpeed = originSpeed;
             }
             
-            Player.Instance.IsSlowWalkingState = IsCrouched() && !IsWalking() && !IsRunning();
-            Player.Instance.IsWalkingState = IsWalking() && !IsCrouched() && !IsRunning();
+            Player.IsSlowWalkingState = IsCrouched() && !IsWalking() && !IsRunning();
+            Player.IsWalkingState = IsWalking() && !IsCrouched() && !IsRunning();
         }
 
         private bool IsRunning()
         {
-            return Player.Instance.IsRunningState;
+            return Player.IsRunningState;
         }
     }
 }

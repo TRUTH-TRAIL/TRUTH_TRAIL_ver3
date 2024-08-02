@@ -9,7 +9,8 @@ namespace TT
         public void Activate()
         {
             // 저주 발동 로직
-            Player.Instance.CurrentCurse = Player.Instance.gameObject.AddComponent<ExitHouseCurse>();
+            var o = FindObjectOfType<Player>();
+            o.CurrentCurse = o.gameObject.AddComponent<ExitHouseCurse>();
             Debug.Log("집 밖으로 나가봐 저주 발동!");
         }
 
@@ -39,6 +40,8 @@ namespace TT
 
         private void Trigger()
         {
+            var Player = FindObjectOfType<Player>();
+            Player.IsDeadCurseState = true;
             Debug.Log("저주가 발동되면 AI에게 풀리지 않는 어그로가 발동하여 사망에 이르게 된다");
         }
     }

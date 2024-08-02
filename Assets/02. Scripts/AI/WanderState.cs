@@ -17,23 +17,35 @@ namespace TT
         public void Execute(AIController ai)
         {
             ai.FollowPath(); 
-
-            if (ai.CanSeePlayer())
+            
+            if (ai.CanSeePlayer() || ai.Player.IsDeadCurseState)
             {
                 ai.ChangeState(AIStateType.Chasing);
+                return;
             }
-            else if (ai.IsPlayerRunning() || footstepTimer >= footstepThreshold || Player.Instance.IsCursed)
+            
+            if (ai.IsNearPlayer)
             {
-                ai.ChangeState(AIStateType.Chasing);
-            }
+                ai.PlayerSound.PlaySound("CruelDollDetection", true);
+     
+                if (ai.Character.speed > 0f && ai.IsPlayerWalking())
+                {
+                    ai.DetectionTimeGuage += Time.deltaTime;
 
-            if (ai.IsPlayerWalking())
-            {
-                footstepTimer += Time.deltaTime;
+                    if (ai.DetectionTimeGuage >= ai.NeedDetectionTime)
+                    {
+                        ai.DetectionTimeGuage = ai.NeedDetectionTime;
+
+                        ai.ChangeState(AIStateType.Chasing);
+                    }
+                }
             }
             else
             {
-                footstepTimer = 0f;
+                ai.DetectionTimeGuage -= Time.deltaTime;
+                if (ai.DetectionTimeGuage <= 0f) ai.DetectionTimeGuage = 0f;
+                
+                ai.PlayerSound.StopSound();
             }
         }
 

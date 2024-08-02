@@ -16,12 +16,15 @@ namespace TT
 
         public void Activate()
         {
-            Player.Instance.CurrentCurse = Player.Instance.gameObject.AddComponent<WalkForwardCurse>();
+            var o = FindObjectOfType<Player>();
+            o.CurrentCurse = o.gameObject.AddComponent<WalkForwardCurse>();
             Debug.Log("화장실에 뭔가 있어. 확인해볼래? 저주 발동!");
         }
         
         private void Trigger()
         {
+            var o = FindObjectOfType<Player>();
+            o.IsDeadCurseState = true;
             Debug.Log("저주가 발동되면 AI에게 풀리지 않는 어그로가 발동하여 사망에 이르게 된다");
         }
     }

@@ -25,8 +25,11 @@ namespace TT
 
         private ClueManager clueManager;
         private CurseManager curseManager;
+        private Player Player;
+        
         private void Awake()
         {
+            Player = FindObjectOfType<Player>();
             clueManager = FindObjectOfType<ClueManager>();
             curseManager = FindObjectOfType<CurseManager>();
         }
@@ -36,8 +39,8 @@ namespace TT
             if (item == null) return false;
 
             FoldedNote note = item as FoldedNote;
-
-            if (note.ClueType == ClueType.Curse && !Player.Instance.IsCursed) //저주에 걸린 상태가 아니라면
+            
+            if (note.ClueType == ClueType.Curse && !Player.IsCursed) //저주에 걸린 상태가 아니라면
             {
                 clueManager.CurrentCurse = note;
                 ICurse curse = curseManager.GetRandomCurse();
@@ -48,7 +51,7 @@ namespace TT
                     curse.Activate();
                 }
             }
-            else if (note.ClueType == ClueType.Curse && Player.Instance.IsCursed) //이미 저주에 걸린 상태라면
+            else if (note.ClueType == ClueType.Curse && Player.IsCursed) //이미 저주에 걸린 상태라면
             {
                 note.ChangeClueType();
             }
@@ -79,7 +82,7 @@ namespace TT
         
         private void Update()
         {
-            if (!Player.Instance.isAcquiredSpecialPaper) return;
+            if (!Player.isAcquiredSpecialPaper) return;
 
             if (Input.GetKey(OpenSpecialPaperKeyCode) || IsSeeState)
             {
@@ -95,7 +98,7 @@ namespace TT
                 isJustOnce = false;
             }
 
-            Player.Instance.isEqiupSpecialPaper = IsEquipped;
+            Player.isEqiupSpecialPaper = IsEquipped;
             SpecialPaperImage.transform.localPosition = IsEquipped ? EquippedPosition : originalPosition;
             SpecialPaperImage.transform.localRotation = IsEquipped ? EquippedRotation : originalRotation;
         }

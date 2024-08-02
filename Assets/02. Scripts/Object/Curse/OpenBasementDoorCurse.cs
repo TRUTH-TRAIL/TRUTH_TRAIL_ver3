@@ -8,7 +8,8 @@ namespace TT
         
         public void Activate()
         {
-            Player.Instance.CurrentCurse = Player.Instance.gameObject.AddComponent<OpenBasementDoorCurse>();
+            var Player = FindObjectOfType<Player>();
+            Player.CurrentCurse = Player.gameObject.AddComponent<OpenBasementDoorCurse>();
             Debug.Log("지하실 문을 열어봐 저주 발동!");
             // 추가적인 저주 효과 로직
         }
@@ -39,6 +40,8 @@ namespace TT
         
         private void Trigger()
         {
+            
+            FindObjectOfType<Player>().IsDeadCurseState = true;
             Debug.Log("저주가 발동되면 AI에게 풀리지 않는 어그로가 발동하여 사망에 이르게 된다");
         }
     }

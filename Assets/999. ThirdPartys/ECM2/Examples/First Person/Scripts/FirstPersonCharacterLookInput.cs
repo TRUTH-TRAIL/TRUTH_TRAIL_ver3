@@ -1,3 +1,4 @@
+using TT;
 using UnityEngine;
 
 namespace ECM2.Examples.FirstPerson
@@ -20,9 +21,11 @@ namespace ECM2.Examples.FirstPerson
         public float maxPitch = 80.0f;
         
         private FirstPersonCharacter _character;
-
+        private Player Player;
+        
         private void Awake()
         {
+            Player = FindObjectOfType<Player>();
             _character = GetComponent<FirstPersonCharacter>();
         }
 
@@ -33,6 +36,8 @@ namespace ECM2.Examples.FirstPerson
 
         private void Update()
         {
+            if (Player.IsDead) return;
+            
             Vector2 lookInput = new Vector2
             {
                 x = Input.GetAxisRaw("Mouse X"),

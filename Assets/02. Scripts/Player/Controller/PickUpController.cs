@@ -7,7 +7,7 @@ namespace TT
         private SpecialPaperHandler specialPaperHandler;
         private InventoryHandler inventoryHandler;
 
-        private void OnDrawGizmos()
+        private void Start()
         {
             specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
             inventoryHandler = FindObjectOfType<InventoryHandler>();
@@ -25,6 +25,9 @@ namespace TT
                     case ItemType.InventoryItem:
                         TryPickUpItem(pickupable, inventoryHandler.TryAddInventoryItem);
                         break;
+                    case ItemType.Normal:
+                        TryPickUpItem(pickupable);
+                        break;
                 }
             }
             else
@@ -32,7 +35,17 @@ namespace TT
                 InteractionTextUI.Instance.SetPickupTextActive(true, BaseString);
             }
         }
-
+        
+        private void TryPickUpItem(IPickupable pickupable)
+        {
+            PickupableObject pickupableObject = pickupable as PickupableObject;
+            if (pickupableObject != null)
+            {
+                pickupable.OnPickUp();
+                InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
+            }
+        }
+        
         private void TryPickUpItem(IPickupable pickupable, System.Func<IPickupable, bool> tryAddMethod)
         {
             PickupableObject pickupableObject = pickupable as PickupableObject;
@@ -42,6 +55,7 @@ namespace TT
                 InteractionTextUI.Instance.SetPickupTextActive(false, BaseString);
             }
         }
-
+        
+       
     }
 }

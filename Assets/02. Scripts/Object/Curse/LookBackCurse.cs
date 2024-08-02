@@ -29,7 +29,7 @@ namespace TT
 
         public void Activate()
         {
-            Player.Instance.CurrentCurse = player.AddComponent<LookBackCurse>();
+            FindObjectOfType<Player>().CurrentCurse = player.AddComponent<LookBackCurse>();
             Debug.Log("뒤돌아봐 저주 발동!");
         }
 
@@ -62,6 +62,8 @@ namespace TT
 
         private void Trigger()
         {
+            
+            FindObjectOfType<Player>().IsDeadCurseState = true;
             Debug.Log("저주가 발동되면 AI에게 풀리지 않는 어그로가 발동하여 사망에 이르게 된다");
         }
     }

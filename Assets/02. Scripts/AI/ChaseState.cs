@@ -4,47 +4,41 @@ namespace TT
 {
     public class ChaseState : IAIState
     {
-        private AIController aiController;
-
         private bool isKilling;
         
         public void Enter(AIController ai)
         {
             Debug.Log("Entering Chasing State");
-            aiController = ai;
+            isKilling = false;
             ai.SetSpeed(ai.runSpeed);
             ai.SetAnimation(ai.runSpeed);
         }
 
         public void Execute(AIController ai)
         {
-            if (isKilling) return;
+            //PlayerSound.Instance.PlaySound("Chasing", true);
             
-            ai.ChasePlayer();
-
             if (ai.NearestPlayer())
             {
-                Kill();
+                GameManager.Instance.GameOver();
+                //ai.ChangeState(AIStateType.Idle);
+                return;
             }
             
-            if (!ai.CanSeePlayer() && !ai.IsPlayerMakingNoise())
+            if (!ai.CanSeePlayer() && !ai.Player.IsDeadCurseState)
             {
                 ai.ChangeState(AIStateType.Wandering);
+            }
+            else
+            {
+                ai.ChasePlayer();
             }
         }
         
         public void Exit(AIController ai)
         {
+            //PlayerSound.Instance.StopSound();
             Debug.Log("Exiting Chasing State");
-        }
-
-        private void Kill()
-        {
-            Debug.Log("Killing Chasing State");
-            isKilling = true;
-            aiController.StopNavMesh();
-            aiController.SetSpeed(0);
-            aiController.SetAnimation("Kill");
         }
     }
 }

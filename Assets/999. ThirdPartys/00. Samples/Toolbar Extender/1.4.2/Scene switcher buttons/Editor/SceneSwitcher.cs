@@ -32,15 +32,15 @@ namespace UnityToolbarExtender.Examples
         static void OnToolbarGUI()
         {
             GUILayout.FlexibleSpace();
-	 
-            if(GUILayout.Button(new GUIContent("Awake", "Awake Scene"))) 
-            {
-                SceneHelper.OpenScene("Awake");
-            }
-	 
+
             if(GUILayout.Button(new GUIContent("MainMenu", "MainMenu Scene")))
             {
                 SceneHelper.OpenScene("MainMenu");
+            }
+            
+            if(GUILayout.Button(new GUIContent("Tutorial", "Tutorial Scene")))
+            {
+                SceneHelper.OpenScene("Tutorial");
             }
 	         
             if(GUILayout.Button(new GUIContent("MainGame", "MainGame Scene")))
