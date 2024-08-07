@@ -23,6 +23,7 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-737120662-0
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1044293986-0
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1753812868-0
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-7376452690341458159-181375471
         values:
         - colorIndex: 0
           iconNameOrGuid: Folder Icon
@@ -34,3 +35,5 @@ MonoBehaviour:
           iconNameOrGuid: Light Icon
         - colorIndex: 0
           iconNameOrGuid: Settings Icon
+        - colorIndex: 0
+          iconNameOrGuid: Camera Icon
