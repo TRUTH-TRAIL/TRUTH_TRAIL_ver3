@@ -159,6 +159,7 @@ namespace TT
 
         public bool NearestPlayer()
         {
+            //Todo : Ignore Y Position Value
             if (Vector3.Distance(PlayerTarget.position, transform.position) < TouchDistance)
             {
                 return true;
