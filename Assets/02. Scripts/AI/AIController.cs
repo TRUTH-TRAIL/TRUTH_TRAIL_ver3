@@ -3,6 +3,7 @@ using ECM2;
 using Micosmo.SensorToolkit;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace TT
 {
@@ -23,43 +24,55 @@ namespace TT
     public class AIController : MonoBehaviour
     {
         [Header("Core")]
-        [SerializeField] private NavMeshAgent agent;
-        public AIStateType currentStateType;
-        public Transform PlayerTarget;
+        public AIStateType CurrentStateType;
         public Transform PathsContainer;
-        private Transform[] paths;
-        public Character Character;
-        public Sensor DetectionSensor;
-        public Sensor DetectionRangeSensor;
-        public bool IsNearPlayer => DetectionRangeSensor.GetNearestDetection() != null;
-        public PlayerSound PlayerSound;
-        public Player Player;
-        
-        [Header("Animation")]
-        public Animator animator;
         public float walkSpeed = 3.5f;
         public float runSpeed = 7.0f;
-
-        [Header("Touch")]
-        public float TouchDistance = 2f;
         
-        private IAIState currentState;
-        private Dictionary<AIStateType, IAIState> states;
+        private LOSSensor DetectionSensor;
+        private RangeSensor DetectionRangeSensor;
+        
+        public Transform PlayerTarget { get; private set; }
+        public PlayerSound PlayerSound { get; private set; }
+        public Player Player { get; private set; }
+        public Character Character { get; private set; }
+        public bool IsNearPlayer => DetectionRangeSensor.GetNearestDetection() != null;
 
-        private int currentPathIndex = 0;
-        private readonly int Speed = Animator.StringToHash("Speed");
-
-        [Header("Detection")]
+        
+        [Header("Touch & Detection")]
+        public float TouchDistance = 2f;
         public float DetectionTimeGuage;
         public float NeedDetectionTime;
         
+        private Transform[] paths;
+        private NavMeshAgent agent;
+        private Animator animator;
+        private IAIState currentState;
+        private Dictionary<AIStateType, IAIState> states;
+        private int currentPathIndex = 0;
+       
+        private readonly int Speed = Animator.StringToHash("Speed");
         
-        private void Start()
+
+        private void Awake()
+        {
+            agent = GetComponent<NavMeshAgent>();
+            animator = GetComponentInChildren<Animator>();
+            DetectionSensor = GetComponentInChildren<LOSSensor>();
+            DetectionRangeSensor = GetComponentInChildren<RangeSensor>();
+        }
+
+        private void InitPlayerComponent()
         {
             Character = FindObjectOfType<Character>();
             PlayerTarget = Character.transform;
             PlayerSound = FindObjectOfType<PlayerSound>();
             Player = FindObjectOfType<Player>();
+        }
+        
+        private void Start()
+        {
+            InitPlayerComponent();
             
             states = new Dictionary<AIStateType, IAIState>
             {
@@ -81,7 +94,7 @@ namespace TT
             }
 
             currentState = states[newStateType];
-            currentStateType = newStateType;
+            CurrentStateType = newStateType;
             currentState.Enter(this);
         }
 

@@ -24,6 +24,9 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1044293986-0
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1753812868-0
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-7376452690341458159-181375471
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1369268876-0
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-566633593-0
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1585214216-0
         values:
         - colorIndex: 0
           iconNameOrGuid: Folder Icon
@@ -37,3 +40,9 @@ MonoBehaviour:
           iconNameOrGuid: Settings Icon
         - colorIndex: 0
           iconNameOrGuid: Camera Icon
+        - colorIndex: 2
+          iconNameOrGuid: 
+        - colorIndex: 3
+          iconNameOrGuid: 
+        - colorIndex: 4
+          iconNameOrGuid: 

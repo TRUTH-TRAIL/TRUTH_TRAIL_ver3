@@ -47,6 +47,11 @@ namespace UnityToolbarExtender.Examples
             {
                 SceneHelper.OpenScene("MainGame");
             }
+            
+            if(GUILayout.Button(new GUIContent("Exorcism", "Exorcism Scene")))
+            {
+                SceneHelper.OpenScene("Exorcism");
+            }
         }
     }
 	   

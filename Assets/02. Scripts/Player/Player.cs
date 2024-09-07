@@ -1,9 +1,17 @@
+using System;
 using UnityEngine;
 
 namespace TT
 {
     public class Player : MonoBehaviour
     {
+        public static Player Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         public bool IsCursed { get; private set; }
         public bool isAcquiredSpecialPaper;
         public bool isEqiupSpecialPaper;
