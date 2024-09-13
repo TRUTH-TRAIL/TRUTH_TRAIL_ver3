@@ -1,2 +1,2 @@
 # TRUTH_TRAIL_ver3
-24년 3분기 출시를 위해... 달려보자..
+TRUTH TRAIL : exorcism of deceoption 1인칭 3D PC 공포게임
