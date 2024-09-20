@@ -18756,6 +18756,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 168359796249151817, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_Intensity
+      value: 38409.938
+      objectReference: {fileID: 0}
+    - target: {fileID: 168359796249151817, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 225364111519820317, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18777,8 +18785,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2432267442410874347, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: spotAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432267442410874347, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: fallOffEnd
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432267442410874347, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: intensityOutside
+      value: 38409.938
       objectReference: {fileID: 0}
     - target: {fileID: 2432267442410874347, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: hdrpExposureWeight
@@ -18807,6 +18823,14 @@ PrefabInstance:
     - target: {fileID: 3699875297223008904, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093442261205114570, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_Intensity
+      value: 38409.938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093442261205114570, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4211138623948145117, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled

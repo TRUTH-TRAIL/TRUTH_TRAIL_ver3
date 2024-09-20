@@ -6,14 +6,14 @@ namespace TT
     {
         public CanvasGroup CanvasGroup;
 
-        private bool isActive;
-        
+        public bool IsActive { get; set; }
+
         public void Toggle()
         {
-            isActive = !isActive;
-            CanvasGroup.alpha = isActive ? 1f : 0f;
-            CanvasGroup.interactable = isActive;
-            CanvasGroup.blocksRaycasts = isActive;
+            IsActive = !IsActive;
+            CanvasGroup.alpha = IsActive ? 1f : 0f;
+            CanvasGroup.interactable = IsActive;
+            CanvasGroup.blocksRaycasts = IsActive;
         }
     }
 }

@@ -15889,6 +15889,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 168359796249151817, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_Intensity
+      value: 38409.938
+      objectReference: {fileID: 0}
+    - target: {fileID: 168359796249151817, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 225364111519820317, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -15932,6 +15940,14 @@ PrefabInstance:
     - target: {fileID: 3742468014882891757, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_IncludeForRayTracing
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093442261205114570, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_Intensity
+      value: 38409.938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093442261205114570, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4211138623948145117, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
@@ -83214,7 +83230,6 @@ SceneRoots:
   - {fileID: 846891688}
   - {fileID: 1753812869}
   - {fileID: 752080162}
-  - {fileID: 458342595}
   - {fileID: 1921370621}
   - {fileID: 1834097993}
   - {fileID: 515101514}
@@ -83226,3 +83241,4 @@ SceneRoots:
   - {fileID: 1821108418}
   - {fileID: 1781145073}
   - {fileID: 5424134154109413047}
+  - {fileID: 458342595}

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace TT
@@ -36,11 +35,11 @@ namespace TT
             
             var inventoryItemObject = item as InventoryItemObject;
             var inventoryItemUIElement = inventoryItemUI.GetComponent<InventoryItemUIElement>();
-            inventoryItemUIElement.ItemImage.sprite = inventoryItemObject.GetImage();
+            inventoryItemUIElement.ItemImage.sprite = inventoryItemObject?.GetImage();
             
             if (item is SpecialPaper)
             {
-                inventoryItemUIElement.SetActiveTrueSee();
+                inventoryItemUIElement.SetActiveSeeButton();
             }
         }
     }

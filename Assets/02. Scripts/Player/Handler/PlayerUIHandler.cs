@@ -13,37 +13,40 @@ namespace TT
         public KeyCode ToggleInventoryKey = KeyCode.Tab;
         public KeyCode TogglePausePanelKey = KeyCode.Escape;
 
-        private bool isSpecialPaperOn = false;
-        private bool isInventoryActive = false;
-        private bool isPaused = false;
-
+        private SpecialPaperHandler specialPaperHandler;
+        
         private void Awake()
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+
+            specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
         }
 
         private void Update()
         {
-            HandleUI(ToggleInventoryKey, ref isInventoryActive, InventoryUI);
-            HandleUI(TogglePausePanelKey, ref isPaused, PausePanelUI);
+            HandleUI(ToggleInventoryKey, InventoryUI);
+            HandleUI(TogglePausePanelKey, PausePanelUI);
         }
 
-        private void HandleUI(KeyCode key, ref bool isActive, CanvasToggle uiElement)
+        public void HandleUI(KeyCode key, CanvasToggle uiElement, bool IsToggle = false)
         {
-            if (Input.GetKeyDown(key))
+            if (Input.GetKeyDown(key) || IsToggle)
             {
-                isActive = !isActive;
                 if (uiElement != null)
                 {
                     uiElement.Toggle();
                     
-                    // 인벤토리가 활성화되면 커서를 보이도록 설정
                     if (uiElement == InventoryUI)
                     {
-                        Cursor.visible = isActive;
-                        Cursor.lockState = isActive ? CursorLockMode.None : CursorLockMode.Locked;
-                        CenterMouseCursor.SetActive(!isActive);
+                        if (specialPaperHandler.IsSeeState)
+                        {
+                            specialPaperHandler.IsSeeState = false;
+                        }
+                        bool isInventoryActive = uiElement.IsActive;
+                        Cursor.visible = isInventoryActive;
+                        Cursor.lockState = isInventoryActive ? CursorLockMode.None : CursorLockMode.Locked;
+                        CenterMouseCursor.SetActive(!isInventoryActive);
                     }
                 }
             }

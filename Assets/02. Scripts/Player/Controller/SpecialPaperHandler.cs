@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace TT
@@ -21,11 +20,14 @@ namespace TT
         private Quaternion originalRotation = Quaternion.Euler(0,0,0);
         
         private bool isActiveState = false;
-        public bool IsSeeState;
 
         private ClueManager clueManager;
         private CurseManager curseManager;
         private Player Player;
+        
+        private bool isJustOnce = false;
+        
+        public bool IsSeeState { get; set; }
         
         private void Awake()
         {
@@ -40,7 +42,7 @@ namespace TT
 
             FoldedNote note = item as FoldedNote;
             
-            if (note.ClueType == ClueType.Curse && !Player.IsCursed) //저주에 걸린 상태가 아니라면
+            if (note?.ClueType == ClueType.Curse && !Player.IsCursed) //저주에 걸린 상태가 아니라면
             {
                 clueManager.CurrentCurse = note;
                 ICurse curse = curseManager.GetRandomCurse();
@@ -51,7 +53,7 @@ namespace TT
                     curse.Activate();
                 }
             }
-            else if (note.ClueType == ClueType.Curse && Player.IsCursed) //이미 저주에 걸린 상태라면
+            else if (note?.ClueType == ClueType.Curse && Player.IsCursed) //이미 저주에 걸린 상태라면
             {
                 note.ChangeClueType();
             }
@@ -62,29 +64,27 @@ namespace TT
                 return false;
             }
 
-            if (note.ClueType == ClueType.Real)
+            if (note?.ClueType == ClueType.Real)
             {
                 clueManager.GetRealClue();
             }
 
             // 새로운 단서에만 설명 설정
-            if (string.IsNullOrEmpty(note.GetDescription()))
+            if (string.IsNullOrEmpty(note?.GetDescription()))
             {
-                note.SetDescription(clueManager.GetClueDescription(note.ClueType));
+                note?.SetDescription(clueManager.GetClueDescription(note.ClueType));
             }
 
             clueManager.AddClue(note);
             
             return true;
         }
-
-        private bool isJustOnce = false;
         
         private void Update()
         {
             if (!Player.isAcquiredSpecialPaper) return;
 
-            if (Input.GetKey(OpenSpecialPaperKeyCode) || IsSeeState)
+            if (Input.GetKey(OpenSpecialPaperKeyCode) || IsEquipped || IsSeeState)
             {
                 if (!isJustOnce)
                 {
@@ -92,15 +92,27 @@ namespace TT
                     isJustOnce = true;
                 }
             }
-            else if (Input.GetKeyUp(OpenSpecialPaperKeyCode))
+            else if (Input.GetKeyUp(OpenSpecialPaperKeyCode) || !IsEquipped || !IsSeeState)
             {
-                SpecialPaper.Toggle();
-                isJustOnce = false;
+                if (isJustOnce)
+                {
+                    SpecialPaper.Toggle();
+                    isJustOnce = false;
+                }
             }
 
             Player.isEqiupSpecialPaper = IsEquipped;
-            SpecialPaperImage.transform.localPosition = IsEquipped ? EquippedPosition : originalPosition;
-            SpecialPaperImage.transform.localRotation = IsEquipped ? EquippedRotation : originalRotation;
+
+            if (IsSeeState || !IsEquipped)
+            {
+                SpecialPaperImage.transform.localPosition = originalPosition;
+                SpecialPaperImage.transform.localRotation = originalRotation;
+            }
+            else if (!IsSeeState || IsEquipped)
+            {
+                SpecialPaperImage.transform.localPosition = EquippedPosition;
+                SpecialPaperImage.transform.localRotation = EquippedRotation;
+            }
         }
     }
 }

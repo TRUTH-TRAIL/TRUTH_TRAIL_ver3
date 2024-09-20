@@ -734,7 +734,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 65333
 --- !u!114 &2024365249514682384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,3 +751,4 @@ MonoBehaviour:
   ItemButton: {fileID: 1005611958290789325}
   SeeButton: {fileID: 1736158604281776814}
   EquipButton: {fileID: 2618901791756361673}
+  equipButtonText: {fileID: 1017575129356793436}
