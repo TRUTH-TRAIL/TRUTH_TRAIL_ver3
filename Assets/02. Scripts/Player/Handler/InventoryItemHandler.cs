@@ -65,7 +65,6 @@ namespace TT
         {
             if (CurrentHeldInventoryItem.name == "SpecialPaper")
             {
-                Debug.Log($"Toggle 1");
                 SpecialPaper.Toggle();  
                 SetItemTransform(SpecialPaperImage, EquippedPosition, EquippedRotation);
                 previousCanvas = SpecialPaper;
@@ -82,14 +81,17 @@ namespace TT
         {
             if (CurrentHeldInventoryItem.name == "SpecialPaper")
             {
-                Debug.Log($"Toggle 2");
                 SpecialPaper.Off(); 
                 SetItemTransform(SpecialPaperImage, originalPosition, originalRotation);
             }
             else
             {
+                Debug.Log("Off");
+                InventoryItem.Off();
                 Handle3DUnequipped();
             }
+            
+            CurrentHeldInventoryItem = null;
         }
 
         private void SetItemTransform(GameObject item, Vector2 position, Quaternion rotation)

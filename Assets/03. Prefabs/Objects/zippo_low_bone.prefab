@@ -561,7 +561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2468303470562360045}
   m_Layer: 0
-  m_Name: zippo_low_bone
+  m_Name: Zippo_low_bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

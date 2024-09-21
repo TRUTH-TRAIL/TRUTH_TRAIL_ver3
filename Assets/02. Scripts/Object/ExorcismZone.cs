@@ -1,19 +1,22 @@
-using System;
 using UnityEngine;
 
 namespace TT
 {
     public class ExorcismZone : MonoBehaviour, IInteractable
     {
-        public string requiredItem; 
+        public string requiredItem;
         public GameObject objectToPlace;
         public Transform placementPosition;
-        public InventoryUIHandler inventoryUIHandler;  
+        [HideInInspector] public InventoryUIHandler inventoryUIHandler;
+        [HideInInspector] public InventoryItemHandler inventoryItemHandler;
+       
         private bool isPlayerInZone = false;
-
+        private bool isJustOnce;
+        
         private void Awake()
         {
             inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
+            inventoryItemHandler = FindObjectOfType<InventoryItemHandler>();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -31,21 +34,40 @@ namespace TT
                 isPlayerInZone = false;
             }
         }
-        
+
         public void Interact()
         {
-            if (isPlayerInZone) 
+            if (isPlayerInZone && !isJustOnce)
             {
                 TryPlaceObject();
             }
         }
-        
+
         private void TryPlaceObject()
         {
             if (IsPlayerHoldingRequiredItem())
             {
                 PlaceObject();
+                isJustOnce = true; // TODO : UI에 이미 배치했다는 경고 ㄱ?
                 inventoryUIHandler.RemoveInventoryItem(requiredItem);
+                ResetPlayerEquipment();
+
+                if (requiredItem == "SpecialCandle")
+                {
+                    ExorcismManager.Instance.PlaceCandle();
+                }
+                else if (requiredItem == "Lighter")
+                {
+                    ExorcismManager.Instance.LightCandle();
+                }
+                else if (requiredItem == "Cross")
+                {
+                    ExorcismManager.Instance.PlaceCross();
+                }
+                else if (requiredItem == "SpecialPaper")
+                {
+                    ExorcismManager.Instance.PlaceExorcismBook();
+                }
             }
         }
 
@@ -61,8 +83,6 @@ namespace TT
                     return Player.Instance.isEqiupCross;
                 case "SpecialPaper":
                     return Player.Instance.isEqiupSpecialPaper;
-                case "Key":
-                    return Player.Instance.isEqiupKey;
                 default:
                     return false;
             }
@@ -72,11 +92,22 @@ namespace TT
         {
             if (objectToPlace != null && placementPosition != null)
             {
-                objectToPlace.transform.position = placementPosition.position;
-                objectToPlace.transform.rotation = placementPosition.rotation;
-                objectToPlace.SetActive(true);
+                GameObject spawnObject = Instantiate(objectToPlace);
+                spawnObject.transform.position = placementPosition.position;
+                spawnObject.transform.rotation = placementPosition.rotation;
+                spawnObject.SetActive(true);
             }
         }
-        
+
+        private void ResetPlayerEquipment()
+        {
+            Player.Instance.isEqiupSpecialCandle = false;
+            Player.Instance.isEqiupLighter = false;
+            Player.Instance.isEqiupCross = false;
+            Player.Instance.isEqiupSpecialPaper = false;
+            Player.Instance.isEqiupKey = false;
+
+            inventoryItemHandler.ChangeEquippedItem(null, null, true);
+        }
     }
 }
