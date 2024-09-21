@@ -1051,7 +1051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634242aafaf9ce74a8d9abb86c79ecc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Tutorial
+  defaultSceneName: Tutorial
+  exorcismSceneName: Exorcism
 --- !u!1 &1808763969
 GameObject:
   m_ObjectHideFlags: 0

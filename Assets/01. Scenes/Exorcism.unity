@@ -23582,6 +23582,10 @@ PrefabInstance:
       propertyPath: sceneName
       value: Exorcism
       objectReference: {fileID: 0}
+    - target: {fileID: 2312549754915559386, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
+      propertyPath: defaultSceneName
+      value: Exorcism
+      objectReference: {fileID: 0}
     - target: {fileID: 3575867140733097697, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

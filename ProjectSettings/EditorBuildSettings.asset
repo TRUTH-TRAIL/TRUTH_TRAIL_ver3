@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01. Scenes/MainGame.unity
     guid: 46ea322a31a77bb44a9347311bee3e87
+  - enabled: 1
+    path: Assets/01. Scenes/Exorcism.unity
+    guid: 02a8e97003ae9bb4b856b342ca5bfd03
   m_configObjects: {}
