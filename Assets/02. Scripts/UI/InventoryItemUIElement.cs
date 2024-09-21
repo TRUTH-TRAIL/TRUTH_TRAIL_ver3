@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +6,7 @@ namespace TT
 {
     public class InventoryItemUIElement : MonoBehaviour
     {
+        public string ItemName;
         public Image ItemImage;
         public Button ItemButton;
         public Button SeeButton;
@@ -61,6 +60,7 @@ namespace TT
         
         public void Inject(InventoryItemObject item)
         {
+            ItemName = item.item.name;
             itemDescription = item.item.name;
             inventoryItemObject = item;
             

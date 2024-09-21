@@ -19,7 +19,8 @@ namespace TT
         public float fadeDuration = 1.0f;
 
         public string CurrentSceneName;
-        public string MenuSceneName;
+        public string MenuSceneName = "MainMenu";
+        public string ExorcismSceneName = "Exorcism";
 
         private Player Player;
         private void Awake()
@@ -30,8 +31,8 @@ namespace TT
 
         private void Start()
         {
-            Light = GameObject.FindGameObjectWithTag("Lights");
-            CursorObject = GameObject.FindGameObjectWithTag("InteractionCanvas");
+            Light ??= GameObject.FindGameObjectWithTag("Lights");
+            CursorObject ??= GameObject.FindGameObjectWithTag("InteractionCanvas");
         }
 
         public void ReGame()
@@ -62,6 +63,12 @@ namespace TT
             StartCoroutine(FadeInCanvas());
         }
 
+        public void NextExorcismScene()
+        {
+            SaveExorcismProgress.SaveProgress();
+            SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
+        }
+        
         private IEnumerator FadeInCanvas()
         {
             float elapsedTime = 0f;

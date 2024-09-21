@@ -7,20 +7,12 @@ namespace TT
     {
         bool m_IsInsideBeam = false;
         [SerializeField] private Collider m_Collider = null;
-
         [SerializeField] private MeshRenderer meshRenderer;
         
-        private void Start()
+        private void Awake()
         {
-            if (m_Collider == null)
-            {
-                m_Collider = GetComponent<Collider>();
-            }
-
-            if (meshRenderer == null)
-            {
-                meshRenderer = GetComponent<MeshRenderer>();
-            }
+            m_Collider = GetComponent<Collider>();
+            meshRenderer = GetComponent<MeshRenderer>();
         }
 
         private void FixedUpdate()

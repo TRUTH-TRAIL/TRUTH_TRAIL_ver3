@@ -8,8 +8,8 @@ namespace TT
 {
     public class ClueManager : MonoBehaviour
     {
-        public List<string> realClues = new List<string>();
-        public List<string> fakeClues = new List<string>();
+        public List<string> realClues = new ();
+        public List<string> fakeClues = new ();
         
         [Header("UI")] 
         public Transform UpperGroupParent;
@@ -31,7 +31,7 @@ namespace TT
         public int CurrentRealCluesCount;
         
         public IPickupable CurrentCurse { get; set; }
-        public List<FoldedNote> Clues = new List<FoldedNote>();
+        public List<FoldedNote> Clues = new ();
 
         private int realClueCount = 0;
         private GameObject currentCurseUI;
@@ -43,6 +43,7 @@ namespace TT
             CurrentRealCluesCount++;
             if (CurrentRealCluesCount == 10)
             {
+                Debug.Log("모든 진짜 단서 다 모음");
                 OnChangeSpecialPaper?.Invoke();
             }
         }
@@ -206,13 +207,11 @@ namespace TT
                 }
             }
 
-            // 사용되지 않은 UpperGroupParent 자식 요소 파괴
             foreach (var child in upperChildren)
             {
                 Destroy(child.gameObject);
             }
 
-            // 사용되지 않은 LowerGroupParent 자식 요소 파괴
             foreach (var child in lowerChildren)
             {
                 Destroy(child.gameObject);

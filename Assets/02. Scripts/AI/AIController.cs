@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ECM2;
 using Micosmo.SensorToolkit;
@@ -21,9 +22,16 @@ namespace TT
         void Exit(AIController ai);
     }
 
+    public enum GameState
+    {
+        MainGame = 0,
+        Exorcism = 1,
+    }
+    
     public class AIController : MonoBehaviour
     {
-        [Header("Core")]
+        [Header("Core")] 
+        public GameState State;
         public AIStateType CurrentStateType;
         public Transform PathsContainer;
         public float walkSpeed = 3.5f;
@@ -53,6 +61,7 @@ namespace TT
        
         private readonly int Speed = Animator.StringToHash("Speed");
         
+        public bool IsInRedBeam { get; set; }
 
         private void Awake()
         {
@@ -62,28 +71,38 @@ namespace TT
             DetectionRangeSensor = GetComponentInChildren<RangeSensor>();
         }
 
+        private void Start()
+        {
+            InitPlayerComponent();
+            
+            if (State is GameState.MainGame)
+            {
+                states = new Dictionary<AIStateType, IAIState>
+                {
+                    { AIStateType.Wandering, new WanderState() },
+                    { AIStateType.Chasing, new ChaseState() },
+                    { AIStateType.Idle, new IdleState() }
+                };
+                paths = PathsContainer.GetComponentsInChildren<Transform>();
+                ChangeState(AIStateType.Wandering);    
+            }
+            else if (State is GameState.Exorcism)
+            {
+                states = new Dictionary<AIStateType, IAIState>
+                {
+                    { AIStateType.Chasing, new ChaseState() },
+                    { AIStateType.Idle, new IdleState() }
+                };
+                ChangeState(AIStateType.Chasing);
+            }
+        }
+
         private void InitPlayerComponent()
         {
             Character = FindObjectOfType<Character>();
             PlayerTarget = Character.transform;
             PlayerSound = FindObjectOfType<PlayerSound>();
             Player = FindObjectOfType<Player>();
-        }
-        
-        private void Start()
-        {
-            InitPlayerComponent();
-            
-            states = new Dictionary<AIStateType, IAIState>
-            {
-                { AIStateType.Wandering, new WanderState() },
-                { AIStateType.Chasing, new ChaseState() },
-                { AIStateType.Idle, new IdleState() }
-            };
-
-            ChangeState(AIStateType.Wandering);
-
-            paths = PathsContainer.GetComponentsInChildren<Transform>();
         }
 
         public void ChangeState(AIStateType newStateType)
@@ -116,6 +135,11 @@ namespace TT
         public void SetAnimation(string value)
         {
             animator.SetTrigger(value);
+        }
+
+        public void SetAnimation(string value, bool on)
+        {
+            animator.SetBool(value, on);
         }
 
         public void StopNavMesh()

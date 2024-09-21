@@ -9,14 +9,18 @@ namespace TT
         [Header("생성되는 UI Prefab")]
         public GameObject InventoryItemUIPrefab;
 
-        public GameObject InitInventoryItem;
+        public GameObject[] InitInventoryItems;
         
         private void Start()
         {
-            if (Player.Instance.isAcquiredSpecialPaper)
+            foreach (var initItem in InitInventoryItems)
             {
-                IPickupable pickupable = InitInventoryItem.GetComponentInChildren<IPickupable>();
-                TryAddInventoryItem(pickupable);
+                if (Player.Instance.isAcquiredSpecialPaper)
+                {
+                    IPickupable pickupable = initItem.GetComponentInChildren<IPickupable>();
+
+                    TryAddInventoryItem(pickupable);
+                }
             }
         }
 
@@ -42,6 +46,19 @@ namespace TT
             if (item is SpecialPaper)
             {
                 inventoryItemUIElement.SetActiveSeeButton();
+            }
+        }
+        
+        public void RemoveInventoryItem(string itemName)
+        {
+            foreach (Transform child in Root)
+            {
+                InventoryItemUIElement uiElement = child.GetComponent<InventoryItemUIElement>();
+                if (uiElement != null && uiElement.ItemName == itemName)
+                {
+                    Destroy(child.gameObject); 
+                    break;
+                }
             }
         }
     }
