@@ -6,11 +6,6 @@ namespace TT
     public class PickupableObject : MonoBehaviour, IPickupable
     {
         public Item item;
-        public ItemType GetItemType()
-        {
-            return item.GetItemType();
-        }
-        
         public UnityEvent OnPickUpEvent;
         
         protected virtual void Awake()
@@ -24,5 +19,9 @@ namespace TT
             gameObject.SetActive(false);
         }
 
+        public ItemType GetItemType()
+        {
+            return item.GetItemType();
+        }
     }
 }

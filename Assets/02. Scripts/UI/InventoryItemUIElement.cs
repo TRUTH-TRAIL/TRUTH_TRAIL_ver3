@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,29 +15,62 @@ namespace TT
 
         [SerializeField] private TextMeshProUGUI equipButtonText;
         
-        private bool isActive = false;
         private SpecialPaperHandler specialPaperHandler;
         private PlayerUIHandler playerUIHandler;
+        private InventoryItemHandler inventoryItemHandler;
+        private InventoryItemObject inventoryItemObject;
         
-        private void Awake()
+        private string itemDescription;
+        private bool isActive = false;
+        public bool IsEquipped { get; set; }
+        
+        private void AfterInject()
         {
-            ItemButton.onClick.AddListener(() =>
+            if(inventoryItemObject.item.name == "Battery")
             {
-                isActive = !isActive;
-            });
-        
+                Player.Instance.isAcquiredBattery = true;
+                return;
+            }
+            ItemButton.onClick.AddListener(ToggleIsActive);
             ItemButton.onClick.AddListener(SetActiveEquipButton);
+            
+            InitializeSpecialPaperHandler();
+            InitializePlayerUIHandler();
+            InitializeInventoryItemHandler();
+
+            playerUIHandler.OnToggleUI += Off;
+            
+            EquipButton.onClick.AddListener(ToggleEquipped);
+            
+            inventoryItemHandler.InventoryItemUIElements.Add(this);
         }
 
         private void OnDestroy()
         {
             ItemButton.onClick.RemoveAllListeners();
+            if (playerUIHandler is not null)
+            {
+                playerUIHandler.OnToggleUI -= Off;    
+            }
         }
 
+        private void ToggleIsActive()
+        {
+            isActive = !isActive;
+        }
+        
+        public void Inject(InventoryItemObject item)
+        {
+            itemDescription = item.item.name;
+            inventoryItemObject = item;
+            
+            AfterInject();
+        }
+        
         private void SetActiveEquipButton()
         {
             EquipButton.gameObject.SetActive(isActive);
-            EquipButton.onClick.AddListener(ToggleEquipped);
+            equipButtonText.text = IsEquipped ? "X" : "O";
         }
         
         public void SetActiveSeeButton()
@@ -46,46 +81,96 @@ namespace TT
             });
             SeeButton.onClick.AddListener(ToggleSee);
         }
-
-       
+        
         private void ToggleSee()
         {
-            if (specialPaperHandler is null)
+            if (itemDescription == "SpecialPaper")
             {
-                specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
+                ToggleInventoryState();
+                ToggleSpecialPaperSeeState();
             }
-            ToggleInventory();
-            
-            if (specialPaperHandler is not null)
+        }
+
+        private void ToggleEquipped()
+        {
+            ChangeEquippedItem();
+            ToggleInventoryState();
+        }
+        
+        private void InitializeInventoryItemHandler()
+        {
+            if (inventoryItemHandler is null)
             {
-                specialPaperHandler.IsSeeState = !specialPaperHandler.IsSeeState;
+                inventoryItemHandler = FindObjectOfType<InventoryItemHandler>();
             }
         }
         
-        private void ToggleEquipped()
-        {
-            //장착 아이템이 여러개므로 아래 리팩토링 수정 필요
-            if (specialPaperHandler is null)
-            {
-                specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
-            }
-            
-            if (specialPaperHandler is not null)
-            {
-                specialPaperHandler.IsEquipped = !specialPaperHandler.IsEquipped;
-                equipButtonText.text = specialPaperHandler.IsEquipped ? "장착 해제하기" : "장착하기";
-            }
-
-            ToggleInventory();
-        }
-
-        private void ToggleInventory()
+        private void InitializePlayerUIHandler()
         {
             if (playerUIHandler is null)
             {
                 playerUIHandler = FindObjectOfType<PlayerUIHandler>();
             }
+        }
+
+        private void InitializeSpecialPaperHandler()
+        {
+            if (specialPaperHandler is null)
+            {
+                specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
+            }
+        }
+
+        private void ToggleInventoryState()
+        {
+            Off();
             playerUIHandler?.HandleUI(playerUIHandler.ToggleInventoryKey, playerUIHandler.InventoryUI, true);
+        }
+        
+        private void ToggleSpecialPaperSeeState()
+        {
+            if (specialPaperHandler is not null)
+            {
+                inventoryItemHandler.IsEquipped = false;
+                specialPaperHandler.IsSeeState = !specialPaperHandler.IsSeeState;
+                Player.Instance.isEqiupSpecialPaper = false;
+            }
+        }
+
+        private void ChangeEquippedItem()
+        {
+            inventoryItemHandler.ChangeEquippedItem(inventoryItemObject, this, IsEquipped);
+            IsEquipped = !IsEquipped;
+            equipButtonText.text = IsEquipped ? "X" : "O"; // Todo :  장착해제 / 장착
+            UpdatePlayerEquipmentStatus();
+        }
+
+        public void UpdatePlayerEquipmentStatus()
+        {
+            switch (inventoryItemObject.item.name)
+            {
+                case "SpecialPaper":
+                    Player.Instance.isEqiupSpecialPaper = IsEquipped;
+                    break;
+                case "Cross":
+                    Player.Instance.isEqiupCross = IsEquipped;
+                    break;
+                case "Lighter":
+                    Player.Instance.isEqiupLighter = IsEquipped;
+                    break;
+                case "Key":
+                    Player.Instance.isEqiupKey = IsEquipped;
+                    break;
+                case "SpecialCandle":
+                    Player.Instance.isEqiupSpecialCandle = IsEquipped;
+                    break;
+            }
+        }
+        
+        private void Off()
+        {
+            EquipButton.gameObject.SetActive(false);
+            SeeButton.gameObject.SetActive(false);    
         }
     }
 }

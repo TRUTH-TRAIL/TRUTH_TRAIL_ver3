@@ -658,6 +658,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4242540573138397468, guid: de99a227127af4644a76904c833db10f, type: 3}
   m_PrefabInstance: {fileID: 28469707}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &29412453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6778488242655918677, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+  m_PrefabInstance: {fileID: 1500283276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &39337637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18768,6 +18773,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 329752796485496574, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_Intensity
+      value: 38409.938
+      objectReference: {fileID: 0}
+    - target: {fileID: 329752796485496574, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_SpotAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 329752796485496574, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 431893382350689187, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18775,6 +18792,10 @@ PrefabInstance:
     - target: {fileID: 552672288439838488, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985280094058149395, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_CustomSpotLightShadowCone
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1413089030305434118, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
@@ -18832,9 +18853,25 @@ PrefabInstance:
       propertyPath: m_SpotAngle
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 4093442261205114570, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 16555
+      objectReference: {fileID: 0}
     - target: {fileID: 4211138623948145117, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211138623948145117, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: RedFlashlight
+      value: 
+      objectReference: {fileID: 29412453}
+    - target: {fileID: 4211138623948145117, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: BlueFlashlight
+      value: 
+      objectReference: {fileID: 1500283278}
+    - target: {fileID: 4211138623948145117, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: ToggleRedFlashlightKey
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 5257151428480284621, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_IsActive
@@ -18888,6 +18925,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7711665485292770561, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: colorGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711665485292770561, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: colorGradient.key1.a
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 7711665485292770561, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+      propertyPath: colorGradient.m_NumAlphaKeys
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8417774061831199881, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -18905,6 +18954,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+--- !u!1 &1500283278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7104805961144330232, guid: 8492f0740af80714fbc5d662512b68c0, type: 3}
+  m_PrefabInstance: {fileID: 1500283276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1501572899
 PrefabInstance:
   m_ObjectHideFlags: 0

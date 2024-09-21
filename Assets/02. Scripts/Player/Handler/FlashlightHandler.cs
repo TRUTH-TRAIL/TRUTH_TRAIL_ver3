@@ -8,11 +8,13 @@ namespace TT
 
         [Header("Flashlights")] 
         public GameObject WhiteFlashlight;
+        public GameObject BlueFlashlight;
         public GameObject RedFlashlight;
 
         [Header("KeyCodes")] 
         public KeyCode ToggleWhiteFlashlightKey = KeyCode.Alpha1;
-        public KeyCode ToggleRedFlashlightKey = KeyCode.Alpha2;
+        public KeyCode ToggleBlueFlashlightKey = KeyCode.Alpha2;
+        public KeyCode ToggleRedFlashlightKey = KeyCode.Alpha3;
 
         private GameObject currentFlashlight;
 
@@ -26,6 +28,8 @@ namespace TT
             {
                 Destroy(gameObject);
             }
+
+            currentFlashlight = WhiteFlashlight;
         }
 
         private void Update()
@@ -42,19 +46,21 @@ namespace TT
                 ToggleFlashlight(WhiteFlashlight);
             }
 
-            if (Input.GetKeyDown(ToggleRedFlashlightKey))
+            if (Input.GetKeyDown(ToggleRedFlashlightKey) && Player.Instance.isAcquiredBattery)
             {
                 ToggleFlashlight(RedFlashlight);
             }
-
-            if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+            
+            if (Input.GetKeyDown(ToggleBlueFlashlightKey))
             {
-                SwitchFlashlight();
+                ToggleFlashlight(BlueFlashlight);
             }
         }
 
         private void ToggleFlashlight(GameObject flashlight)
         {
+            if (flashlight == null) return;
+            
             if (currentFlashlight == flashlight)
             {
                 currentFlashlight.SetActive(!currentFlashlight.activeSelf);
@@ -68,18 +74,6 @@ namespace TT
 
                 currentFlashlight = flashlight;
                 currentFlashlight.SetActive(true);
-            }
-        }
-
-        private void SwitchFlashlight()
-        {
-            if (currentFlashlight == WhiteFlashlight)
-            {
-                ToggleFlashlight(RedFlashlight);
-            }
-            else if (currentFlashlight == RedFlashlight)
-            {
-                ToggleFlashlight(WhiteFlashlight);
             }
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TT
@@ -14,6 +15,8 @@ namespace TT
         public KeyCode TogglePausePanelKey = KeyCode.Escape;
 
         private SpecialPaperHandler specialPaperHandler;
+
+        public Action OnToggleUI;
         
         private void Awake()
         {
@@ -39,10 +42,10 @@ namespace TT
                     
                     if (uiElement == InventoryUI)
                     {
-                        if (specialPaperHandler.IsSeeState)
-                        {
-                            specialPaperHandler.IsSeeState = false;
-                        }
+                        //오로지 특수용지를 위한
+                        specialPaperHandler.IsSeeState = false;
+                        
+                        OnToggleUI?.Invoke();
                         bool isInventoryActive = uiElement.IsActive;
                         Cursor.visible = isInventoryActive;
                         Cursor.lockState = isInventoryActive ? CursorLockMode.None : CursorLockMode.Locked;

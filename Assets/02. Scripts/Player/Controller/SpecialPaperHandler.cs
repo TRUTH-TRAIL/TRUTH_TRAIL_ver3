@@ -13,9 +13,6 @@ namespace TT
         public KeyCode OpenSpecialPaperKeyCode = KeyCode.R;
 
         [Header("장착 시")] 
-        public bool IsEquipped;
-        public Vector2 EquippedPosition = new Vector3(491.600006f,-508.589996f,0);
-        public Quaternion EquippedRotation = Quaternion.Euler(0,0,27.3699989f);
         private Vector2 originalPosition = new Vector2(0,0);
         private Quaternion originalRotation = Quaternion.Euler(0,0,0);
         
@@ -84,7 +81,7 @@ namespace TT
         {
             if (!Player.isAcquiredSpecialPaper) return;
 
-            if (Input.GetKey(OpenSpecialPaperKeyCode) || IsEquipped || IsSeeState)
+            if (Input.GetKey(OpenSpecialPaperKeyCode) || IsSeeState)
             {
                 if (!isJustOnce)
                 {
@@ -92,7 +89,7 @@ namespace TT
                     isJustOnce = true;
                 }
             }
-            else if (Input.GetKeyUp(OpenSpecialPaperKeyCode) || !IsEquipped || !IsSeeState)
+            else if (Input.GetKeyUp(OpenSpecialPaperKeyCode) || !IsSeeState)
             {
                 if (isJustOnce)
                 {
@@ -101,17 +98,10 @@ namespace TT
                 }
             }
 
-            Player.isEqiupSpecialPaper = IsEquipped;
-
-            if (IsSeeState || !IsEquipped)
+            if (IsSeeState)
             {
                 SpecialPaperImage.transform.localPosition = originalPosition;
                 SpecialPaperImage.transform.localRotation = originalRotation;
-            }
-            else if (!IsSeeState || IsEquipped)
-            {
-                SpecialPaperImage.transform.localPosition = EquippedPosition;
-                SpecialPaperImage.transform.localRotation = EquippedRotation;
             }
         }
     }

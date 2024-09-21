@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace TT
@@ -9,13 +8,19 @@ namespace TT
 
         private void Awake()
         {
-            Instance = this;
+            Instance = this; //lazy
         }
 
         public bool IsCursed { get; private set; }
         public bool isAcquiredSpecialPaper;
+        public bool isAcquiredBattery;
+        
         public bool isEqiupSpecialPaper;
-
+        public bool isEqiupKey;
+        public bool isEqiupLighter;
+        public bool isEqiupSpecialCandle;
+        public bool isEqiupCross;
+    
         public bool IsWalkingState;
         public bool IsRunningState;
         public bool IsSlowWalkingState;

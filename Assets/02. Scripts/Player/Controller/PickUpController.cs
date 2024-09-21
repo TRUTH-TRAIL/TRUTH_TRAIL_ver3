@@ -5,12 +5,12 @@ namespace TT
     public class PickUpController : BaseController<IPickupable>
     {
         private SpecialPaperHandler specialPaperHandler;
-        private InventoryHandler inventoryHandler;
+        private InventoryUIHandler _inventoryUIHandler;
 
         private void Start()
         {
             specialPaperHandler = FindObjectOfType<SpecialPaperHandler>();
-            inventoryHandler = FindObjectOfType<InventoryHandler>();
+            _inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
         }
 
         protected override void HandleAction(IPickupable pickupable)
@@ -23,7 +23,7 @@ namespace TT
                         TryPickUpItem(pickupable, specialPaperHandler.TryAddClue);
                         break;
                     case ItemType.InventoryItem:
-                        TryPickUpItem(pickupable, inventoryHandler.TryAddInventoryItem);
+                        TryPickUpItem(pickupable, _inventoryUIHandler.TryAddInventoryItem);
                         break;
                     case ItemType.Normal:
                         TryPickUpItem(pickupable);
