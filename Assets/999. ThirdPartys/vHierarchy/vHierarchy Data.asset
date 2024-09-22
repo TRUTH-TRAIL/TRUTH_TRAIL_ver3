@@ -28,6 +28,11 @@ MonoBehaviour:
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1369268876-0
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-566633593-0
         - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1585214216-0
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-571649816-0
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-139640481851650579-4354249399206815633
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-9128422322233632478-1846502751
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-4404508418574519940-4701094006927677100
+        - globalObjectIdString: GlobalObjectId_V1-2-46ea322a31a77bb44a9347311bee3e87-1985683428-0
         values:
         - colorIndex: 0
           iconNameOrGuid: Folder Icon
@@ -47,6 +52,16 @@ MonoBehaviour:
           iconNameOrGuid: 
         - colorIndex: 4
           iconNameOrGuid: 
+        - colorIndex: 0
+          iconNameOrGuid: Favorite
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 0
+          iconNameOrGuid: AvatarMask On Icon
+        - colorIndex: 0
+          iconNameOrGuid: Canvas Icon
+        - colorIndex: 0
+          iconNameOrGuid: Terrain Icon
     - goDatas_byGlobalId:
         keys:
         - globalObjectIdString: GlobalObjectId_V1-2-02a8e97003ae9bb4b856b342ca5bfd03-1999342583-0
