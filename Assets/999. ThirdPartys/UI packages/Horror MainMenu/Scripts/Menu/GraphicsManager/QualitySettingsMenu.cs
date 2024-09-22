@@ -17,10 +17,12 @@ public class QualitySettingsMenu : MonoBehaviour {
 	[SerializeField] private Button revertButton; // Reset Preset
 	[SerializeField] private Toggle fullscreenToggle; // Full Sreen of/onn
 	[SerializeField] private Toggle vSyncToggle; // vSync
+	[SerializeField] private Dropdown language; // Language
 
 	
 	private int[] aliasing = new int[]{0, 2, 4, 8};
 	private int[] texRes = new int[]{0, 1, 2, 3};
+	private int[] texLan = new int[]{0, 1};
 	private int[] af = new int[]{0, 2, 4, 8, 16};
 	private string[] shadowQualityList, shadowResolutionList, qualityNamesList;
 	private Resolution[] resolutionsList;
@@ -76,6 +78,7 @@ public class QualitySettingsMenu : MonoBehaviour {
 		textureRes.RefreshShownValue();
 		anisotropic.RefreshShownValue();
 		shadowQuality.RefreshShownValue();
+		language.RefreshShownValue();
 	}
 
 	void BuildMenu()
@@ -87,6 +90,7 @@ public class QualitySettingsMenu : MonoBehaviour {
 		textureRes.options = new List<Dropdown.OptionData>();
 		anisotropic.options = new List<Dropdown.OptionData>();
 		shadowQuality.options = new List<Dropdown.OptionData>();
+		language.options = new List<Dropdown.OptionData>();
 
 		for(int i = 0; i < resolutionsList.Length; i++)
 		{
@@ -118,6 +122,13 @@ public class QualitySettingsMenu : MonoBehaviour {
 			textureRes.options.Add(option);
 		}
 
+		for(int i = 0; i < texLan.Length; i++)
+		{
+			Dropdown.OptionData option = new Dropdown.OptionData();
+			option.text = LanguageNames(texLan[i]);
+			language.options.Add(option);
+		}
+
 		for(int i = 0; i < af.Length; i++)
 		{
 			Dropdown.OptionData option = new Dropdown.OptionData();
@@ -143,6 +154,7 @@ public class QualitySettingsMenu : MonoBehaviour {
 
 		shadowQuality.value = (int)QualitySettings.shadows;
 		textureRes.value = QualitySettings.globalTextureMipmapLimit;
+		// language.value = QualitySettings. > 번역 적용
 		qualityPreset.value = QualitySettings.GetQualityLevel();
 		qualityPreset.onValueChanged.AddListener(delegate{ApplyPresets();});
 		applyButton.onClick.AddListener(()=>{ApplySettings();});
@@ -286,6 +298,28 @@ public class QualitySettingsMenu : MonoBehaviour {
 		{
 			return "Low";
 		}
+
+		return "Error";
+	}
+
+	string LanguageNames(int value)
+	{
+		if(value == 0)
+		{
+			return "Korean";
+		}
+		else if(value == 1)
+		{
+			return "English";
+		}
+		// else if(value == 2)
+		// {
+		// 	return "Medium";
+		// }
+		// else if(value == 3)
+		// {
+		// 	return "Low";
+		// }
 
 		return "Error";
 	}

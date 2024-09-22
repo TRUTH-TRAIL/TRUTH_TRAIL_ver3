@@ -9,6 +9,7 @@ TagManager:
   - RestRoomFloor
   - Lights
   - InteractionCanvas
+  - Menu
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Player
   - NoNavMeshSurface
   - Terrain
-  - 
+  - SeparationCanvas
   - 
   - 
   - 

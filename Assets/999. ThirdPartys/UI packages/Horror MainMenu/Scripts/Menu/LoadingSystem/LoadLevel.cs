@@ -22,7 +22,7 @@ public class LoadLevel : MonoBehaviour {
 	public void LoadScene (string level) 
 	{
 		levelName = level;
-		SceneManager.LoadScene("Loading");
+		SceneManager.LoadScene(levelName);
 	}
 	
 	public void MainMenu () 
