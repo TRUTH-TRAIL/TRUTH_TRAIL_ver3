@@ -36,6 +36,8 @@ namespace TT
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
+                        if (FindObjectOfType<BaseManager>().State is not GameState.MainGame) return;
+                        
                         Drawer drawer = interactable as Drawer;
                         if (drawer != null && drawer.InteractionType == InteractionType.Drawer && !isJustOnce)
                         {

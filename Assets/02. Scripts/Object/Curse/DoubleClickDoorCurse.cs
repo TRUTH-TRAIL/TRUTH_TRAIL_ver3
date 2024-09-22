@@ -43,6 +43,8 @@ namespace TT
             
             if (Input.GetMouseButtonDown(0))
             {
+                if (FindObjectOfType<BaseManager>().State is not GameState.MainGame) return;
+                
                 Collider collider = RaycastUtil.TryGetCollider(cam, InteractionRange, DoorMask);
                 
                 bool isColliderNull = collider == null;

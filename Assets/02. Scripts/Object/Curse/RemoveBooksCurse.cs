@@ -29,6 +29,8 @@ namespace TT
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
+                        if (FindObjectOfType<BaseManager>().State is not GameState.MainGame) return;
+                        
                         InteractableObject o = interactable as Book;
                         if (o != null && o.InteractionType == InteractionType.Book && !isJustOnce)
                         {

@@ -9221,6 +9221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cb3c6e243724541879db1063e03230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 2
   AI: {fileID: 1448502113}
   KillAI: {fileID: 776361283}
   Light: {fileID: 1500283281}
@@ -17876,7 +17877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196709436741153463, guid: c08669eabae1bde4283fb26eda094b76, type: 3}
       propertyPath: State
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4196709436741153463, guid: c08669eabae1bde4283fb26eda094b76, type: 3}
       propertyPath: runSpeed
@@ -18772,6 +18773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f944fe93fd2707e45b5e8c15fe800389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 0
   placedCandleCount: 0
   litCandleCount: 0
   hasPlacedCross: 0

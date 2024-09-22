@@ -21,12 +21,6 @@ namespace TT
         void Execute(AIController ai);
         void Exit(AIController ai);
     }
-
-    public enum GameState
-    {
-        MainGame = 0,
-        Exorcism = 1,
-    }
     
     public class AIController : MonoBehaviour
     {

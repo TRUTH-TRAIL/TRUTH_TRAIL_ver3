@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TT
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : BaseManager
     {
         public static GameManager Instance;
 

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace TT
 {
-    public class TutorialManager : MonoBehaviour
+    public class TutorialManager : BaseManager
     {
         public AudioSource horrorSound;
         public AudioSource attackSound;

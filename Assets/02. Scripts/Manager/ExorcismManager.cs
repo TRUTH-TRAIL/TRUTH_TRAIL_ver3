@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TT
 {
-    public class ExorcismManager : MonoBehaviour
+    public class ExorcismManager : BaseManager
     {
         public static ExorcismManager Instance;
 

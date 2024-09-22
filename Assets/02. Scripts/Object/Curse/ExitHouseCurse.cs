@@ -29,6 +29,8 @@ namespace TT
             Collider collider = RaycastUtil.TryGetCollider(cam, InteractionRange, EntryFoyerDoorMask);
             if (Input.GetMouseButtonDown(0))
             {
+                if (FindObjectOfType<BaseManager>().State is not GameState.MainGame) return;
+                
                 bool isColliderNull = collider == null;
              
                 if (!isColliderNull && collider.gameObject.GetComponent<Door>().DoorType == DoorType.EntryFoyer)
