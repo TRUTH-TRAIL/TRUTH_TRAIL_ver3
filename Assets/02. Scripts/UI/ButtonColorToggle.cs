@@ -20,12 +20,17 @@ namespace TT
 
             // 버튼 클릭 이벤트 리스너 추가
             targetButton.onClick.AddListener(ToggleButtonTextColor);
+        }
+        private void OnEnable() {
+            Text buttonText = targetButton.GetComponentInChildren<Text>();
 
-            // 초기 색상 설정 (optional, 이미 원래 색으로 되어 있을 수 있음)
-            if (buttonText != null)
+            // 활성화될 때 origin 컬러가 아니면 변경
+            if (buttonText.color != originalColor)
             {
                 buttonText.color = originalColor;
             }
+            
+            isTargetColor = false;
         }
         void ToggleButtonTextColor()
         {
