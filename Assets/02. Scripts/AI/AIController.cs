@@ -183,13 +183,16 @@ namespace TT
 
         public bool NearestPlayer()
         {
-            //Todo : Ignore Y Position Value
-            if (Vector3.Distance(PlayerTarget.position, transform.position) < TouchDistance)
+            Vector3 playerPos = new Vector3(PlayerTarget.position.x, 0, PlayerTarget.position.z);
+            Vector3 objectPos = new Vector3(transform.position.x, 0, transform.position.z);
+    
+            if (Vector3.Distance(playerPos, objectPos) < TouchDistance)
             {
                 return true;
             }
 
             return false;
         }
+
     }
 }

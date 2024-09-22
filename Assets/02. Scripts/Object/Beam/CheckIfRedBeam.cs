@@ -22,10 +22,6 @@ namespace TT
             {
                 m_IsInsideBeam = !dynamicOcclusion.IsColliderHiddenByDynamicOccluder(m_Collider);
             }
-            else
-            {
-                m_IsInsideBeam = true;
-            }
         }
 
         private void OnTriggerExit(Collider other)

@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7619282331220952282, guid: 2f2be9e6117b26a4c896e53551634267, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d42fe6a8ff8b2274bab0cfbd21353d7c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -310,7 +314,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2140024870659502445, guid: 2f2be9e6117b26a4c896e53551634267, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8495331582060398139}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f2be9e6117b26a4c896e53551634267, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8618317823098680820}
   m_SourcePrefab: {fileID: 100100000, guid: 2f2be9e6117b26a4c896e53551634267, type: 3}
 --- !u!4 &8060641948507007714 stripped
 Transform:
@@ -322,6 +329,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f2be9e6117b26a4c896e53551634267, type: 3}
   m_PrefabInstance: {fileID: 8246023216958954383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9128422322233632478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f2be9e6117b26a4c896e53551634267, type: 3}
+  m_PrefabInstance: {fileID: 8246023216958954383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1773428102 &8618317823098680820
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128422322233632478}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 0, y: 0.874, z: 0.403}
+  m_RotationAtRest: {x: 0, y: 180, z: 0}
+  m_TranslationOffsets:
+  - {x: -1.035, y: -1.1259999, z: 19.253}
+  m_RotationOffsets:
+  - {x: 0, y: 180, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_Active: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1001 &8246023217008042448
 PrefabInstance:
   m_ObjectHideFlags: 0

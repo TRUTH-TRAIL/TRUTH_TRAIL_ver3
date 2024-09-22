@@ -4,18 +4,13 @@ namespace TT
 {
     public class ChaseState : IAIState
     {
-        private bool isKilling;
         public bool IsInRedBeam;
-        
-        private float footstepTimer;
-        private float footstepInterval = 0.85f;
-
         private bool isInAgony;
 
+        private Coroutine agonyCoroutine;
+        
         public void Enter(AIController ai)
         {
-            //Debug.Log("Entering Chasing State");
-            isKilling = false;
             IsInRedBeam = false;
             isInAgony = false;
             ai.SetSpeed(ai.runSpeed);
@@ -25,9 +20,7 @@ namespace TT
 
         public void Execute(AIController ai)
         {
-            //PlayerSound.Instance.PlaySound("Chasing", true);
             ai.PlayerSound.PlaySound("CruelDollDetection", true);
-            //HandleFootsteps(ai);
             
             if (ai.NearestPlayer())
             {
@@ -36,7 +29,6 @@ namespace TT
                 return;
             }
             
-            //손전등에 당하면 고통스러워하며 애니메이션 실행되게
             if (ai.IsInRedBeam && !isInAgony)
             {
                 ai.StopNavMesh();
@@ -46,10 +38,11 @@ namespace TT
                 
                 return;
             }
-            else if (!ai.IsInRedBeam && isInAgony && IsInRedBeam)
+            
+            if (!ai.IsInRedBeam && isInAgony && IsInRedBeam)
             {
                 IsInRedBeam = false;
-                ai.StartCoroutine(ExitAgonyAfterDelay(ai, 3f));
+                agonyCoroutine ??= ai.StartCoroutine(ExitAgonyAfterDelay(ai, 3f));    
             }
 
             if (IsInRedBeam || isInAgony)
@@ -73,32 +66,6 @@ namespace TT
             }
         }
         
-        private void HandleFootsteps(AIController ai)
-        {
-            footstepTimer += Time.deltaTime;
-            if (footstepTimer >= footstepInterval)
-            {
-                footstepTimer = 0f;
-
-                RaycastHit hit;
-                Vector3 rayOrigin = ai.transform.position; 
-
-                if (Physics.Raycast(rayOrigin, Vector3.down, out hit, 5f, 1<<16))
-                {
-                    GameObject footprint = FootprintPool.Instance.GetFootprint();
-                    
-                    footprint.transform.position = hit.point + Vector3.up * 0.15f;
-                    footprint.transform.forward = ai.transform.forward;
-
-                    footprint.transform.rotation = Quaternion.Euler(hit.normal) * Quaternion.AngleAxis(90f, Vector3.forward);
-
-                    footprint.SetActive(true);
-
-                    ai.StartCoroutine(DeactivateFootprintAfterDelay(footprint, 60f));
-                }
-            }
-        }
-        
         private System.Collections.IEnumerator ExitAgonyAfterDelay(AIController ai, float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -106,18 +73,20 @@ namespace TT
             ai.SetAnimation("Agony", false);
             ai.ChasePlayer();
             isInAgony = false;
-        }
-        
-        private System.Collections.IEnumerator DeactivateFootprintAfterDelay(GameObject footprint, float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            footprint.SetActive(false);
+
+            agonyCoroutine = null;
         }
         
         public void Exit(AIController ai)
         {
-            //PlayerSound.Instance.StopSound();
-            Debug.Log("Exiting Chasing State");
+            if (agonyCoroutine is not null)
+            {
+                ai.StopCoroutine(agonyCoroutine);
+                agonyCoroutine = null;
+            }
+            
+            ai.PlayerSound.StopSound();
+            //Debug.Log("Exiting Chasing State");
         }
     }
 }
