@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
+  - Stair
+  - RestRoomFloor
+  - Lights
+  - InteractionCanvas
+  - Menu
   layers:
   - Default
   - TransparentFX
@@ -16,14 +21,14 @@ TagManager:
   - 
   - PostProcessing
   - Not in Reflection
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Interactionable
+  - Pickupable
+  - Decryptable
+  - Window
+  - Player
+  - NoNavMeshSurface
+  - Terrain
+  - SeparationCanvas
   - 
   - 
   - 

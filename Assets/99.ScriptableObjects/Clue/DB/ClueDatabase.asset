@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5fbc9e84efce84ebdc705966633ab9, type: 3}
+  m_Name: ClueDatabase
+  m_EditorClassIdentifier: 
+  Clues:
+  - {fileID: 11400000, guid: 5becc7d4f4eab544f9efa9d09f039685, type: 2}
+  - {fileID: 11400000, guid: b4164aefcd2a305488c7f6145d2304f4, type: 2}
+  - {fileID: 11400000, guid: a064923dc8d99a2488ddef3010644405, type: 2}
+  - {fileID: 11400000, guid: a4d7c2a314082c349aa9fe715de256fb, type: 2}
+  - {fileID: 11400000, guid: ad6ff8de1005738499274f104b8f543f, type: 2}
+  - {fileID: 11400000, guid: 3bd2c36f71678f743a75b86455d2b724, type: 2}
+  - {fileID: 11400000, guid: 569efb201d7d12445b506f0ac9ebe141, type: 2}
+  - {fileID: 11400000, guid: 32b220cd1e9690b4f80baa81951861eb, type: 2}
+  - {fileID: 11400000, guid: 0a311ec666d9156439fad628bec3603e, type: 2}
+  - {fileID: 11400000, guid: bace988c7290ed041a553a313ff2e1d2, type: 2}
+  - {fileID: 11400000, guid: 12f3629ac2161e546ae98b1677ab4af7, type: 2}
+  - {fileID: 11400000, guid: 97279e6524da22047b52c771e0ef4272, type: 2}
+  - {fileID: 11400000, guid: 77fce23ba27f26548b61f4abd6a44490, type: 2}
+  - {fileID: 11400000, guid: ae400f12c4ea4b64099ddb077aa6d14f, type: 2}

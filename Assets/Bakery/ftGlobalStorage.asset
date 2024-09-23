@@ -400,7 +400,82 @@ MonoBehaviour:
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
-  uvOverlapAssetList: 00000000ffffffff
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Hit_Back.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Poses/AS_CruelDoll_Pose02.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Scary_Walk.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Scary_Run.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Scream.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Hit_Right.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Sit2Standup.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Crawl_Run.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Hit_Left.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Agony.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Poses/AS_CruelDoll_Pose01.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Attack01.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Walk.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Idle.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Death02.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Death01.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Death2Standup.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Jump.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Attack02.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Meshes/SK_CruelDoll.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Meshes/SM_CruelDoll_Scissor.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Hit_Front.fbx
+  - Assets/Zectorlab/CruelDoll/Art/Animations/AS_CruelDoll_Run.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidRunTurn.fbx
+  - Assets/ECM2/Shared Assets/Models/Models/Cylinder.obj
+  - Assets/ECM2/Shared Assets/Models/Rocks03.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidMidAir.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidJumpAndFall.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidWalk.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidRunTurnSharp.fbx
+  - Assets/ECM2/Shared Assets/Models/Plane/Plane.obj
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Models/DefaultMale.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidCrouch.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidWalkTurnSharp.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidWalkTurn.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidRun.fbx
+  - Assets/ECM2/Shared Assets/Models/Rocks01.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidIdleJumpUp.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidStandTurn.fbx
+  - Assets/ECM2/Shared Assets/Models/UnityCharacter/Animations/HumanoidIdle.fbx
+  - Assets/ECM2/Shared Assets/Models/Rocks.fbx
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Models/Cylinder.obj
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Rocks03.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote3.obj
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Meshes/Structure/Model/TR_Counter_01.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote1.obj
+  - Assets/999. ThirdPartys/foldednote/foldednote2.obj
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Plane/Plane.obj
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Controllers/ThirdPersonController/Character/Models/Armature.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote4.obj
+  - Assets/999. ThirdPartys/paper/paper.obj
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/ProbeDebugPyramid.fbx
+  - Packages/com.unity.render-pipelines.core/Runtime/RenderPipelineResources/Mesh/UnityMaterialBall.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/ProbeDebugSphere.fbx
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Meshes/Structure/Model/TR_CurveWall_01.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Disc.fbx
+  - Assets/999. ThirdPartys/foldednote/foldednote.obj
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Rocks01.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Cylinder.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/HumanEyeModel.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Quad.fbx
+  - Assets/999. ThirdPartys/00. Samples/SampleSceneAssets/Meshes/Props/Furniture/Models/GlassCase_01.fbx
+  - Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Mesh/Sphere.fbx
+  - Packages/com.unity.render-pipelines.core/Editor/Resources/DebugProbe.fbx
+  - Assets/999. ThirdPartys/ECM2/Shared Assets/Models/Rocks.fbx
+  - Assets/999. ThirdPartys/flashlight/flashlight.fbx
+  - Assets/999. ThirdPartys/zippo/zippo_low_bone.fbx
+  - Assets/999. ThirdPartys/CruelDoll/Art/Animations/AS_CruelDoll_Scream.fbx
+  - Assets/999. ThirdPartys/CruelDoll/Art/Animations/AS_CruelDoll_Death01.fbx
+  - Assets/999. ThirdPartys/CruelDoll/Art/Animations/AS_CruelDoll_Death02.fbx
+  - Assets/999. ThirdPartys/CruelDoll/Art/Animations/AS_CruelDoll_Attack01.fbx
+  - Assets/999. ThirdPartys/CruelDoll/Art/Animations/AS_CruelDoll_Attack02.fbx
+  - Assets/SensorToolkit/Examples/assets/common/Models/Mannequin.fbx
+  - Assets/999. ThirdPartys/CruelDoll/Art/Meshes/SK_CruelDoll.fbx
+  uvOverlapAssetList: 00000000ffffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010100000101000000000000000000000000000000000000000000000000000000000000000000000000000000000000010100000000000000000000000000000101000001010000010100000000000001010000000000000000000000000000000000000000000000000000ffffffff0000000000000000ffffffff01010000000000000101000001010000ffffffff010100000000000001010000000000000000000001010000000000000000000000000000000000000000000000000000000000000000000000000000
   xatlasWarningShown: 0
   foundCompatibleSetup: 0
   gpuName: 
