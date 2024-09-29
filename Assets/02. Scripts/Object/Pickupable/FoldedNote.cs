@@ -13,7 +13,7 @@ namespace TT
         private ClueManager clueManager;
         private CurseManager curseManager;
 
-        public bool isTest;
+        [Tooltip("false로 설정 시 반드시 진짜 단서가 됨")] public bool isTest;
         
         protected override void Awake()
         {

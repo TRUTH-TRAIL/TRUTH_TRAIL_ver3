@@ -20,10 +20,12 @@ namespace TT
         public string MenuSceneName = "MainMenu";
         public string ExorcismSceneName = "Exorcism";
 
-        private Player Player;
+        private Player player;
+        private PlayerSound playerSound;
         private void Awake()
         {
-            Player = FindObjectOfType<Player>();
+            player = FindObjectOfType<Player>();
+            playerSound = FindObjectOfType<PlayerSound>();
             Instance = this;
         }
 
@@ -35,7 +37,7 @@ namespace TT
 
         public void ReGame()
         {
-            Player.IsDead = false;
+            player.IsDead = false;
             SceneSwitchManager.Instance.ChangeScene(CurrentSceneName);
         }
 
@@ -50,11 +52,10 @@ namespace TT
             Light.SetActive(false);
             CursorObject.SetActive(false);
             KillAI.SetActive(true);
-            Player.Dead();
+            player.Dead();
 
-            var o = FindObjectOfType<PlayerSound>();
-            o.StopSound();
-            o.PlaySound("GameOver", false);
+            playerSound.StopSound();
+            playerSound.PlaySound("GameOver", false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             

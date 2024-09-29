@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using ECM2;
 using Micosmo.SensorToolkit;
