@@ -16,6 +16,12 @@ namespace TT
         
         public string mainSceneName = "MainGame"; 
         public CanvasGroup blackScreenCanvasGroup;
+        
+        private void Start()
+        {
+            count = 0;
+        }
+        
         public void ClearTutorial()
         {
             if (count == 3)
