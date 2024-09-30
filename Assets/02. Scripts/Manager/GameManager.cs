@@ -50,10 +50,15 @@ namespace TT
         public void GameOver()
         {
             AI.SetActive(false);
-            Light.SetActive(false);
+            Light.SetActive(false);     // ¼ÕÀüµîÀÌ Åö ²¨Áö´Â°Å ¸»°í Ä¡Ä¡Á÷ ±ôºý±ôºýÇÏ¸ç ²¨Áö´Â ¿¬Ãâ Ãß°¡
             CursorObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            playerSound.StopSound();
+            playerSound.PlaySound("GameOver", false);
+            player.Dead();
 
-            StartCoroutine(DeathCutScene());
+            StartCoroutine(DeathCutScene());    // »ç¸ÁÄÆ¾À ¿¬Ãâ¿ë ÄÚ·çÆ¾(½Ã³×¸Ó½Å Ä«¸Þ¶ó ºÙ¿©Çá ÇÒµí)
         }
 
         public void NextExorcismScene()
@@ -66,24 +71,18 @@ namespace TT
         /// »ç¸Á ÄÆ¾À
         private IEnumerator DeathCutScene()
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            playerSound.StopSound();
-            playerSound.PlaySound("GameOver", false);
-
             Vector3 killAiPosi = AI.transform.position;
             killAiPosi.y = killAiPosi.y - 3f;
             KillAI.transform.position = killAiPosi;
             KillAI.transform.LookAt(player.transform);
-            killAiPosi.y = killAiPosi.y + 3f;
+            killAiPosi.y = killAiPosi.y + 2f;
             MainCemera.transform.LookAt(killAiPosi);
             
             yield return new WaitForSeconds(3f);
             Light.SetActive(true);
             KillAI.SetActive(true);
-            player.Dead();
             
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3.5f);
             StartCoroutine(FadeInCanvas());
         }
         
