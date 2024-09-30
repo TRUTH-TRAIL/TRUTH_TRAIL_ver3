@@ -6,9 +6,9 @@ namespace TT
 {
     public class CameraShake : MonoBehaviour
     {
-        public float shakeDuration = 3.5f;    // 흔들림 지속시간
+        public float shakeDuration = 5f;    // 흔들림 지속시간
         public float shakeMagnitude = 0.5f;   // 흔들림 진폭
-        public float shakeFrequency = 3.0f;   // 흔들림 속도
+        public float shakeFrequency = 3f;   // 흔들림 속도
         private Vector3 initialPosition;
 
         /// 카메라 흔들림

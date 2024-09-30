@@ -81,15 +81,16 @@ namespace TT
             yield return new WaitForSeconds(3f);
             Light.SetActive(true);
             KillAI.SetActive(true);
-            MainCemera.GetComponent<CameraShake>().OnCameraShake(3.5f);
+            MainCemera.GetComponent<CameraShake>().OnCameraShake(5f);
 
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(5f);
             StartCoroutine(FadeInCanvas());
         }
         
         private IEnumerator FadeInCanvas()
         {
             float elapsedTime = 0f;
+            Light.SetActive(false);
 
             gameOverCanvasGroup.alpha = 0f;
             gameOverCanvasGroup.gameObject.SetActive(true);
