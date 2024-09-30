@@ -81,7 +81,8 @@ namespace TT
             yield return new WaitForSeconds(3f);
             Light.SetActive(true);
             KillAI.SetActive(true);
-            
+            MainCemera.GetComponent<CameraShake>().OnCameraShake(3.5f);
+
             yield return new WaitForSeconds(3.5f);
             StartCoroutine(FadeInCanvas());
         }
