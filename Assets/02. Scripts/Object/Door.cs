@@ -128,7 +128,7 @@ public class Door : InteractableObject
         UpdateText();
     }
 
-    private void RotateDoor()
+    public void RotateDoor()
     {
         transform.eulerAngles = open 
             ? Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth) 
