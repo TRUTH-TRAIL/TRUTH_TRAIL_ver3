@@ -6,6 +6,7 @@ public class SceneLoad_Timelne : MonoBehaviour
 {
     [SerializeField] private GameObject Timeline_Obj;
     [SerializeField] private GameObject Play_Obj;
+   // [SerializeField] private GameObject Play_Obj;
     [SerializeField] private PlayableDirector playableDirector;  // 타임라인에 연결된 PlayableDirector
     void Start()
     {
