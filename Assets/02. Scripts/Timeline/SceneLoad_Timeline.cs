@@ -6,7 +6,7 @@ public class SceneLoad_Timelne : MonoBehaviour
 {
     [SerializeField] private GameObject Timeline_Obj;
     [SerializeField] private GameObject Play_Obj;
-   // [SerializeField] private GameObject Play_Obj;
+    [SerializeField] private GameObject AI_Obj;
     [SerializeField] private PlayableDirector playableDirector;  // 타임라인에 연결된 PlayableDirector
     void Start()
     {
@@ -39,6 +39,7 @@ public class SceneLoad_Timelne : MonoBehaviour
             Debug.Log("특정 씬이 로드되었습니다!");
             Timeline_Obj.SetActive(true);
             Play_Obj.SetActive(false);
+            AI_Obj.SetActive(false);
             // 예: 게임 오브젝트 활성화, 변수 초기화 등
         }
     }
@@ -54,6 +55,7 @@ public class SceneLoad_Timelne : MonoBehaviour
         Debug.Log("Timeline이 끝났습니다!");
         Timeline_Obj.SetActive(false);
         Play_Obj.SetActive(true);
+        AI_Obj.SetActive(true);
         // Timeline이 끝났을 때 실행할 로직을 여기에 추가
     }
 }
