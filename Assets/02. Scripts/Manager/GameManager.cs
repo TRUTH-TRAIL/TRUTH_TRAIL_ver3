@@ -11,6 +11,7 @@ namespace TT
         public GameObject KillAI;
         public GameObject Light;
         public GameObject CursorObject;
+        public Camera MainCemera;
         
         public CanvasGroup gameOverCanvasGroup; 
 
@@ -20,10 +21,12 @@ namespace TT
         public string MenuSceneName = "MainMenu";
         public string ExorcismSceneName = "Exorcism";
 
-        private Player Player;
+        private Player player;
+        private PlayerSound playerSound;
         private void Awake()
         {
-            Player = FindObjectOfType<Player>();
+            player = FindObjectOfType<Player>();
+            playerSound = FindObjectOfType<PlayerSound>();
             Instance = this;
         }
 
@@ -35,7 +38,7 @@ namespace TT
 
         public void ReGame()
         {
-            Player.IsDead = false;
+            player.IsDead = false;
             SceneSwitchManager.Instance.ChangeScene(CurrentSceneName);
         }
 
@@ -47,18 +50,15 @@ namespace TT
         public void GameOver()
         {
             AI.SetActive(false);
-            Light.SetActive(false);
+            Light.SetActive(false);     // ¼ÕÀüµîÀÌ Åö ²¨Áö´Â°Å ¸»°í Ä¡Ä¡Á÷ ±ôºý±ôºýÇÏ¸ç ²¨Áö´Â ¿¬Ãâ Ãß°¡
             CursorObject.SetActive(false);
-            KillAI.SetActive(true);
-            Player.Dead();
-
-            var o = FindObjectOfType<PlayerSound>();
-            o.StopSound();
-            o.PlaySound("GameOver", false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            
-            StartCoroutine(FadeInCanvas());
+            playerSound.StopSound();
+            playerSound.PlaySound("GameOver", false);
+            player.Dead();
+
+            StartCoroutine(DeathCutScene());    // »ç¸ÁÄÆ¾À ¿¬Ãâ¿ë ÄÚ·çÆ¾(½Ã³×¸Ó½Å Ä«¸Þ¶ó ºÙ¿©Çá ÇÒµí)
         }
 
         public void NextExorcismScene()
@@ -66,10 +66,31 @@ namespace TT
             SaveExorcismProgress.SaveProgress();
             SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
         }
+
+
+        /// »ç¸Á ÄÆ¾À
+        private IEnumerator DeathCutScene()
+        {
+            Vector3 killAiPosi = AI.transform.position;
+            killAiPosi.y = killAiPosi.y - 3f;
+            KillAI.transform.position = killAiPosi;
+            KillAI.transform.LookAt(player.transform);
+            killAiPosi.y = killAiPosi.y + 2f;
+            MainCemera.transform.LookAt(killAiPosi);
+            
+            yield return new WaitForSeconds(3f);
+            Light.SetActive(true);
+            KillAI.SetActive(true);
+            MainCemera.GetComponent<CameraShake>().OnCameraShake(5f);
+
+            yield return new WaitForSeconds(5f);
+            StartCoroutine(FadeInCanvas());
+        }
         
         private IEnumerator FadeInCanvas()
         {
             float elapsedTime = 0f;
+            Light.SetActive(false);
 
             gameOverCanvasGroup.alpha = 0f;
             gameOverCanvasGroup.gameObject.SetActive(true);

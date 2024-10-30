@@ -62,7 +62,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5179e9c573c8a4545ad3e88267b56c35, type: 2}
-  - {fileID: 2100000, guid: 5179e9c573c8a4545ad3e88267b56c35, type: 2}
+  - {fileID: 2100000, guid: d2bd6d41cc06bf846aade6f04c301cd7, type: 2}
   - {fileID: 2100000, guid: 1bab28d664f0b1b4cae2174b763197af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -159,8 +159,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 0
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -177,8 +177,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0
-  m_fontSizeBase: 0
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -407,16 +407,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4162366dd8f897d4da8955cfc0504b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteractionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  InteractionCooldown: 1
+  IsNeedPrerequisites: 1
+  InteractionType: 2
   smooth: 2
   doorOpenAngle: 90
   txt: {fileID: 7102684240354594682}
-  openText: Press E to Open
-  closeText: Press E to Close
-  font: {fileID: 0}
+  openText: Left Click
+  closeText: Left Click
+  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   txtTransform: {fileID: 6287144319157888681}
-  textColor: {r: 0, g: 0, b: 0, a: 0}
-  fontSize: 0
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  fontSize: 75
   alignment: 514
+  DoorType: 0
 --- !u!65 &2213543497508120783
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -449,6 +456,7 @@ GameObject:
   - component: {fileID: 6749069485997814974}
   - component: {fileID: 2615108016425104303}
   - component: {fileID: 549124193485192436}
+  - component: {fileID: 1600523355518675546}
   m_Layer: 0
   m_Name: Interior_Door_02_LOD1
   m_TagString: Untagged
@@ -521,6 +529,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1600523355518675546
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553162918401769263}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.108175896, y: 2.1553185, z: 1.2446045}
+  m_Center: {x: 0.019570667, y: 1.0776592, z: -0.6177047}
 --- !u!1 &6419061043267081605
 GameObject:
   m_ObjectHideFlags: 0

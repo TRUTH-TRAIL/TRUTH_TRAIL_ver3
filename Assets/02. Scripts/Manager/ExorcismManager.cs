@@ -10,6 +10,7 @@ namespace TT
         public int litCandleCount = 0;
         public bool hasPlacedCross = false;
         public bool hasPlacedExorcismBook = false;
+        public GameObject Timeline_E;
 
         private const int totalCandleCount = 3; 
 
@@ -24,7 +25,8 @@ namespace TT
                 litCandleCount >= totalCandleCount &&
                 hasPlacedCross && hasPlacedExorcismBook)
             {
-                Debug.Log("GameClear");
+                //Debug.Log("GameClear");
+                Timeline_E.SetActive(true);
             }
         }
 
