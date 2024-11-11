@@ -9,7 +9,9 @@ namespace TT
         Key = 2,
         Lighter = 3,
         Cross = 4,
-        SpecialCandle = 5,
+        SpecialCandle1 = 5,
+        SpecialCandle2 = 6,
+        SpecialCandle3 = 7
     }
     
     public class InventoryItemObject : PickupableObject, IImageable
