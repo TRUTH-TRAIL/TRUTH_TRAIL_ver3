@@ -64,7 +64,11 @@ namespace TT
         public void NextExorcismScene()
         {
             SaveExorcismProgress.SaveProgress();
-            SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
+            // ¿­¼è ÀåÂø
+            if (player.isEqiupKey)
+            {
+                SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
+            }     
         }
 
 

@@ -76,7 +76,7 @@ namespace TT
             switch (requiredItem)
             {
                 case "SpecialCandle":
-                    return Player.Instance.isEqiupSpecialCandle;
+                    return Player.Instance.isEqiupSpecialCandle1;
                 case "Lighter":
                     return Player.Instance.isEqiupLighter;
                 case "Cross":
@@ -101,7 +101,9 @@ namespace TT
 
         private void ResetPlayerEquipment()
         {
-            Player.Instance.isEqiupSpecialCandle = false;
+            Player.Instance.isEqiupSpecialCandle1 = false;
+            Player.Instance.isEqiupSpecialCandle2 = false;
+            Player.Instance.isEqiupSpecialCandle3 = false;
             Player.Instance.isEqiupLighter = false;
             Player.Instance.isEqiupCross = false;
             Player.Instance.isEqiupSpecialPaper = false;

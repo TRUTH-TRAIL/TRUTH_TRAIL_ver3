@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description: 
   ItemType: 1
-  ClueImage: {fileID: 21300000, guid: f2e8f6cdc4b4d8d4495f7b32f1b7acd3, type: 3}
+  ClueImage: {fileID: 21300000, guid: e894741656dca1649badc26786410e46, type: 3}
