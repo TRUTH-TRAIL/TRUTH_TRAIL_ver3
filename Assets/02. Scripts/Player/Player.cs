@@ -18,7 +18,9 @@ namespace TT
         public bool isEqiupSpecialPaper;
         public bool isEqiupKey;
         public bool isEqiupLighter;
-        public bool isEqiupSpecialCandle;
+        public bool isEqiupSpecialCandle1;
+        public bool isEqiupSpecialCandle2;
+        public bool isEqiupSpecialCandle3;
         public bool isEqiupCross;
     
         public bool IsWalkingState;

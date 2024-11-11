@@ -141,7 +141,7 @@ namespace TT
         {
             inventoryItemHandler.ChangeEquippedItem(inventoryItemObject, this, IsEquipped);
             IsEquipped = !IsEquipped;
-            equipButtonText.text = IsEquipped ? "X" : "O"; // Todo :  장착해제 / 장착
+            equipButtonText.text = IsEquipped ? "장착해제" : "장착"; // Todo :  장착해제 / 장착
             UpdatePlayerEquipmentStatus();
         }
 
@@ -161,8 +161,14 @@ namespace TT
                 case "Key":
                     Player.Instance.isEqiupKey = IsEquipped;
                     break;
-                case "SpecialCandle":
-                    Player.Instance.isEqiupSpecialCandle = IsEquipped;
+                case "SpecialCandle1":
+                    Player.Instance.isEqiupSpecialCandle1 = IsEquipped;
+                    break;
+                case "SpecialCandle2":
+                    Player.Instance.isEqiupSpecialCandle2 = IsEquipped;
+                    break;
+                case "SpecialCandle3":
+                    Player.Instance.isEqiupSpecialCandle3 = IsEquipped;
                     break;
             }
         }

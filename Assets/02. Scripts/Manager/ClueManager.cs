@@ -48,7 +48,7 @@ namespace TT
             {
                 Debug.Log("모든 진짜 단서 다 모음");
                 // 여기 부모님 숨은공간 제어 추가
-                screetDoor.transform.position = new Vector3(0,0,1);
+                screetDoor.SetActive(false);
                 OnChangeSpecialPaper?.Invoke();
             }
         }
