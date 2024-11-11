@@ -33,6 +33,9 @@ namespace TT
         public IPickupable CurrentCurse { get; set; }
         public List<FoldedNote> Clues = new ();
 
+        [Header("ScreetDoor")]
+        public GameObject screetDoor;
+
         private int realClueCount = 0;
         private GameObject currentCurseUI;
         
@@ -44,6 +47,8 @@ namespace TT
             if (CurrentRealCluesCount == 10)
             {
                 Debug.Log("모든 진짜 단서 다 모음");
+                // 여기 부모님 숨은공간 제어 추가
+                screetDoor.transform.position = new Vector3(0,0,1);
                 OnChangeSpecialPaper?.Invoke();
             }
         }

@@ -64,6 +64,8 @@ namespace TT
         public void NextExorcismScene()
         {
             SaveExorcismProgress.SaveProgress();
+            // 여기 T씬 이동
+            // 모든 오브젝트를 습득 했을떄만 이동 가능하게
             SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
         }
 
