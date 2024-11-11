@@ -70,7 +70,7 @@ namespace TT
         private void SetActiveEquipButton()
         {
             EquipButton.gameObject.SetActive(isActive);
-            equipButtonText.text = IsEquipped ? "X" : "O";
+            equipButtonText.text = IsEquipped ? "장착해제" : "장착";
         }
         
         public void SetActiveSeeButton()
