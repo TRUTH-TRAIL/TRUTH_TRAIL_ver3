@@ -71,24 +71,28 @@ namespace TT
                     activatedObjects[0].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "SpecialCandle2":
                     activatedObjects[1].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "SpecialCandle3":
                     activatedObjects[2].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "Cross":
                     activatedObjects[3].SetActive(true);
                     ExorcismManager.Instance.PlaceCross();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "Lighter":
@@ -101,12 +105,12 @@ namespace TT
                         {
                             fireTransform.gameObject.SetActive(true);
                             ExorcismManager.Instance.LightCandle();
+                            hit.collider.enabled = false;
                         }
                         else
                         {
                             Debug.LogWarning("Fire 오브젝트를 찾을 수 없음");
                         }
-                        ExorcismManager.Instance.LightCandle();
                     }
                     break;
 
@@ -114,10 +118,11 @@ namespace TT
                     activatedObjects[4].SetActive(true);
                     ExorcismManager.Instance.PlaceExorcismBook();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
             }
 
-            ResetPlayerEquipment();  // 장착상태 초기화
+            
         }
 
         /// 장착 아이템 검사
@@ -142,7 +147,7 @@ namespace TT
         }
       
         /// 아이템 장착상태 해제
-        private void ResetPlayerEquipment()
+        public void ResetPlayerEquipment()
         {
             Player.Instance.isEqiupSpecialCandle1 = false;
             Player.Instance.isEqiupSpecialCandle2 = false;

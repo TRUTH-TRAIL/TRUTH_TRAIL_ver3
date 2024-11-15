@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TT
 {
@@ -13,8 +14,7 @@ namespace TT
         public GameObject CursorObject;
         public Camera MainCemera;
         
-        public CanvasGroup gameOverCanvasGroup; 
-
+        public CanvasGroup gameOverCanvasGroup;
         public float fadeDuration = 1.0f;
 
         public string CurrentSceneName;
@@ -23,6 +23,8 @@ namespace TT
 
         private Player player;
         private PlayerSound playerSound;
+
+
         private void Awake()
         {
             player = FindObjectOfType<Player>();
@@ -109,6 +111,6 @@ namespace TT
             gameOverCanvasGroup.interactable = true;
             gameOverCanvasGroup.blocksRaycasts = true;
             gameOverCanvasGroup.alpha = 1f;
-        }
+        } 
     }
 }
