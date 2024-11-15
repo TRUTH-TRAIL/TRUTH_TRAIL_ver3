@@ -6,35 +6,40 @@ namespace TT
     {
         public static ExorcismManager Instance;
 
-        public int placedCandleCount = 0;
+        // 퇴마 조건
+        public int placedCandleCount = 0; 
         public int litCandleCount = 0;
         public bool hasPlacedCross = false;
         public bool hasPlacedExorcismBook = false;
-        public GameObject Timeline_E;
+        private const int totalCandleCount = 3;
 
-        private const int totalCandleCount = 3; 
+        public GameObject Timeline_E;
+ 
 
         private void Awake()
         {
             Instance = this;
         }
 
+        /// 게임 성공
         private void CheckGameClear()
         {
             if (placedCandleCount >= totalCandleCount &&
                 litCandleCount >= totalCandleCount &&
                 hasPlacedCross && hasPlacedExorcismBook)
             {
-                //Debug.Log("GameClear");
+                Debug.Log("GameClear");
                 Timeline_E.SetActive(true);
             }
         }
 
+        /// 퇴마 조건
         public void PlaceCandle()
         {
             placedCandleCount++;
             CheckGameClear();
         }
+
 
         public void LightCandle()
         {
