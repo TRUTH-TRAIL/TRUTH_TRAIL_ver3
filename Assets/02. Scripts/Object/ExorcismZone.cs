@@ -110,7 +110,6 @@ namespace TT
                         {
                             Debug.LogWarning("Fire 오브젝트를 찾을 수 없음");
                         }
-                        ExorcismManager.Instance.LightCandle();
                     }
                     break;
 
