@@ -52100,6 +52100,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExorcismZone_woo
       objectReference: {fileID: 0}
+    - target: {fileID: 2496175797881384324, guid: e6029fd4782838246ad91109970e7735, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496175797881384324, guid: e6029fd4782838246ad91109970e7735, type: 3}
+      propertyPath: m_Size.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496175797881384324, guid: e6029fd4782838246ad91109970e7735, type: 3}
+      propertyPath: m_Center.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496175797881384324, guid: e6029fd4782838246ad91109970e7735, type: 3}
+      propertyPath: m_Center.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 7114193651682351584, guid: e6029fd4782838246ad91109970e7735, type: 3}
       propertyPath: m_LocalPosition.x
       value: 349.71625

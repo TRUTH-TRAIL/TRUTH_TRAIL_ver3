@@ -44,6 +44,7 @@ namespace TT
         public void LightCandle()
         {
             litCandleCount++;
+            Debug.Log("litCandleCount : " + litCandleCount);
             CheckGameClear();
         }
 
