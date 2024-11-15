@@ -146,7 +146,7 @@ namespace TT
         }
       
         /// 아이템 장착상태 해제
-        private void ResetPlayerEquipment()
+        public void ResetPlayerEquipment()
         {
             Player.Instance.isEqiupSpecialCandle1 = false;
             Player.Instance.isEqiupSpecialCandle2 = false;
