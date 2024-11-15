@@ -62,22 +62,22 @@ namespace TT
         {
             // 장착한 아이템명 get
             string itemName = GetEqiupItemName();
-            Debug.Log("itemName"+itemName);
+            Debug.Log("itemName : " + itemName);
 
             // 배치 로직 작성
             switch (itemName)
             {
-                case "Candle1":
+                case "SpecialCandle1":
                     activatedObjects[0].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     break;
-                case "Candle2":
+                case "SpecialCandle2":
                     activatedObjects[1].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     break;
-                case "Candle3":
+                case "SpecialCandle3":
                     activatedObjects[2].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
@@ -107,11 +107,11 @@ namespace TT
             string item = null;
 
             if (Player.Instance.isEqiupSpecialCandle1)
-                item = "Candle1";
+                item = "SpecialCandle1";
             else if(Player.Instance.isEqiupSpecialCandle2)
-                item = "Candle2";
+                item = "SpecialCandle2";
             else if (Player.Instance.isEqiupSpecialCandle3)
-                item = "Candle3";
+                item = "SpecialCandle3";
             else if (Player.Instance.isEqiupCross)
                 item = "Cross";
             else if (Player.Instance.isEqiupLighter)
