@@ -71,24 +71,28 @@ namespace TT
                     activatedObjects[0].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "SpecialCandle2":
                     activatedObjects[1].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "SpecialCandle3":
                     activatedObjects[2].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "Cross":
                     activatedObjects[3].SetActive(true);
                     ExorcismManager.Instance.PlaceCross();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
 
                 case "Lighter":
@@ -114,10 +118,11 @@ namespace TT
                     activatedObjects[4].SetActive(true);
                     ExorcismManager.Instance.PlaceExorcismBook();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
+                    ResetPlayerEquipment();
                     break;
             }
 
-            ResetPlayerEquipment();  // 장착상태 초기화
+            
         }
 
         /// 장착 아이템 검사
