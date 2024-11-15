@@ -105,6 +105,7 @@ namespace TT
                         {
                             fireTransform.gameObject.SetActive(true);
                             ExorcismManager.Instance.LightCandle();
+                            hit.collider.enabled = false;
                         }
                         else
                         {
