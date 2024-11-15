@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoad_Timelne : MonoBehaviour
 {
+    [SerializeField] private GameObject Player_Obj;
     [SerializeField] private GameObject Timeline_Obj;
     [SerializeField] private GameObject Play_Obj;
     [SerializeField] private GameObject AI_Obj;
@@ -57,5 +58,6 @@ public class SceneLoad_Timelne : MonoBehaviour
         AI_Obj.SetActive(true);
 
         Play_Obj.transform.rotation = Quaternion.Euler(0, 0, 0);
+        Player_Obj.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }

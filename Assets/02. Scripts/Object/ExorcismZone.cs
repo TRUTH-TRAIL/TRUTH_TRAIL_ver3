@@ -72,25 +72,44 @@ namespace TT
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     break;
+
                 case "SpecialCandle2":
                     activatedObjects[1].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     break;
+
                 case "SpecialCandle3":
                     activatedObjects[2].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     break;
+
                 case "Cross":
                     activatedObjects[3].SetActive(true);
                     ExorcismManager.Instance.PlaceCross();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     break;
+
                 case "Lighter":
-                    activatedObjects[5].SetActive(true);
-                    ExorcismManager.Instance.LightCandle();
+                    Ray ray = new Ray(Player.Instance.transform.position, Player.Instance.transform.forward);
+                    if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Candle")))
+                    {
+                        Transform fireTransform = hit.collider.gameObject.transform.Find("Fire");
+
+                        if (fireTransform != null)
+                        {
+                            fireTransform.gameObject.SetActive(true);
+                            ExorcismManager.Instance.LightCandle();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Fire 오브젝트를 찾을 수 없음");
+                        }
+                        ExorcismManager.Instance.LightCandle();
+                    }
                     break;
+
                 case "SpecialPaper":
                     activatedObjects[4].SetActive(true);
                     ExorcismManager.Instance.PlaceExorcismBook();
