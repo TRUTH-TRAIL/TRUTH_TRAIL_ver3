@@ -1,22 +1,35 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TT
 {
     public class ExorcismZone : MonoBehaviour, IInteractable
     {
-        public string requiredItem;
-        public GameObject objectToPlace;
-        public Transform placementPosition;
+        // 플레이어 좌클릭 검사 -> is exorxism zone -> 장착 아이템명 return 
+        // -> 아이템명에 따른 activatedObjects Active
+        // 라이터는 양초에 클릭 추가 검사
+        public List<GameObject> activatedObjects;
+
         [HideInInspector] public InventoryUIHandler inventoryUIHandler;
         [HideInInspector] public InventoryItemHandler inventoryItemHandler;
        
         private bool isPlayerInZone = false;
-        private bool isJustOnce;
+        private bool isJustOnce;        
+
         
         private void Awake()
         {
             inventoryUIHandler = FindObjectOfType<InventoryUIHandler>();
             inventoryItemHandler = FindObjectOfType<InventoryItemHandler>();
+        }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Interact();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -35,70 +48,81 @@ namespace TT
             }
         }
 
+        /// 아이템 배치 시도
         public void Interact()
         {
-            if (isPlayerInZone && !isJustOnce)
+            if (isPlayerInZone)
             {
                 TryPlaceObject();
             }
         }
 
+        /// 퇴마 아이템 배치
         private void TryPlaceObject()
         {
-            if (IsPlayerHoldingRequiredItem())
-            {
-                PlaceObject();
-                isJustOnce = true; // TODO : UI에 이미 배치했다는 경고 ㄱ?
-                inventoryUIHandler.RemoveInventoryItem(requiredItem);
-                ResetPlayerEquipment();
+            // 장착한 아이템명 get
+            string itemName = GetEqiupItemName();
+            Debug.Log("itemName"+itemName);
 
-                if (requiredItem == "SpecialCandle")
-                {
+            // 배치 로직 작성
+            switch (itemName)
+            {
+                case "Candle1":
+                    activatedObjects[0].SetActive(true);
                     ExorcismManager.Instance.PlaceCandle();
-                }
-                else if (requiredItem == "Lighter")
-                {
-                    ExorcismManager.Instance.LightCandle();
-                }
-                else if (requiredItem == "Cross")
-                {
-                    ExorcismManager.Instance.PlaceCross();
-                }
-                else if (requiredItem == "SpecialPaper")
-                {
-                    ExorcismManager.Instance.PlaceExorcismBook();
-                }
-            }
-        }
-
-        private bool IsPlayerHoldingRequiredItem()
-        {
-            switch (requiredItem)
-            {
-                case "SpecialCandle":
-                    return Player.Instance.isEqiupSpecialCandle1;
-                case "Lighter":
-                    return Player.Instance.isEqiupLighter;
+                    inventoryUIHandler.RemoveInventoryItem(itemName);
+                    break;
+                case "Candle2":
+                    activatedObjects[1].SetActive(true);
+                    ExorcismManager.Instance.PlaceCandle();
+                    inventoryUIHandler.RemoveInventoryItem(itemName);
+                    break;
+                case "Candle3":
+                    activatedObjects[2].SetActive(true);
+                    ExorcismManager.Instance.PlaceCandle();
+                    inventoryUIHandler.RemoveInventoryItem(itemName);
+                    break;
                 case "Cross":
-                    return Player.Instance.isEqiupCross;
+                    activatedObjects[3].SetActive(true);
+                    ExorcismManager.Instance.PlaceCross();
+                    inventoryUIHandler.RemoveInventoryItem(itemName);
+                    break;
+                case "Lighter":
+                    activatedObjects[5].SetActive(true);
+                    ExorcismManager.Instance.LightCandle();
+                    break;
                 case "SpecialPaper":
-                    return Player.Instance.isEqiupSpecialPaper;
-                default:
-                    return false;
+                    activatedObjects[4].SetActive(true);
+                    ExorcismManager.Instance.PlaceExorcismBook();
+                    inventoryUIHandler.RemoveInventoryItem(itemName);
+                    break;
             }
+
+            ResetPlayerEquipment();  // 장착상태 초기화
         }
 
-        private void PlaceObject()
+        /// 장착 아이템 검사
+        private string GetEqiupItemName()
         {
-            if (objectToPlace != null && placementPosition != null)
-            {
-                GameObject spawnObject = Instantiate(objectToPlace);
-                spawnObject.transform.position = placementPosition.position;
-                spawnObject.transform.rotation = placementPosition.rotation;
-                spawnObject.SetActive(true);
-            }
-        }
+            string item = null;
 
+            if (Player.Instance.isEqiupSpecialCandle1)
+                item = "Candle1";
+            else if(Player.Instance.isEqiupSpecialCandle2)
+                item = "Candle2";
+            else if (Player.Instance.isEqiupSpecialCandle3)
+                item = "Candle3";
+            else if (Player.Instance.isEqiupCross)
+                item = "Cross";
+            else if (Player.Instance.isEqiupLighter)
+                item = "Lighter";
+            else if (Player.Instance.isEqiupSpecialPaper)
+                item = "SpecialPaper";
+
+            return item;
+        }
+      
+        /// 아이템 장착상태 해제
         private void ResetPlayerEquipment()
         {
             Player.Instance.isEqiupSpecialCandle1 = false;
