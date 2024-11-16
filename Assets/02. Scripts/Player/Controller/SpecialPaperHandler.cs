@@ -87,6 +87,7 @@ namespace TT
                 {
                     SpecialPaper.Toggle();
                     isJustOnce = true;
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Paper");
                 }
             }
             else if (Input.GetKeyUp(OpenSpecialPaperKeyCode) || !IsSeeState)
@@ -95,6 +96,7 @@ namespace TT
                 {
                     SpecialPaper.Toggle();
                     isJustOnce = false;
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Paper");
                 }
             }
 
