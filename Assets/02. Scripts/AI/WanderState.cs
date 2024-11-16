@@ -9,9 +9,12 @@ namespace TT
         
         public void Enter(AIController ai)
         {
-            //Debug.Log("Entering Wandering State");
+            Debug.Log("Entering Wandering State");
+
             ai.SetSpeed(ai.walkSpeed);
             ai.SetAnimation(ai.walkSpeed);
+
+            ai.PlayerSound.PlaySound("NearAI", true);
         }
 
         public void Execute(AIController ai)
@@ -27,8 +30,6 @@ namespace TT
             
             if (ai.IsNearPlayer)
             {
-                ai.PlayerSound.PlaySound("CruelDollDetection", true);
-     
                 if (ai.Character.speed > 0f && ai.IsPlayerWalking())
                 {
                     ai.DetectionTimeGuage += Time.deltaTime;

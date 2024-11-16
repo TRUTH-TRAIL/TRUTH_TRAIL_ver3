@@ -11,17 +11,19 @@ namespace TT
         
         public void Enter(AIController ai)
         {
+            Debug.Log("Entering Chase State");
+
             IsInRedBeam = false;
             isInAgony = false;
             ai.SetSpeed(ai.runSpeed);
             ai.SetAnimation(ai.runSpeed);
+
+            ai.PlayerSound.PlaySound("FindAI", true);
         }
 
 
         public void Execute(AIController ai)
         {
-            ai.PlayerSound.PlaySound("CruelDollDetection", true);
-            
             if (ai.NearestPlayer())
             {
                 GameManager.Instance.GameOver();
