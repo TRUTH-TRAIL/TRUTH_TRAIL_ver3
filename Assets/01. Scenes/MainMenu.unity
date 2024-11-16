@@ -581,14 +581,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.9764706}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0e7368835db1718439dadd3883931c4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68752d0f26c45de439b5e157729e83eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2031,7 +2031,7 @@ Transform:
   m_GameObject: {fileID: 1296455980}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: 91.3, z: 91.1}
+  m_LocalPosition: {x: -14, y: 91.3, z: 67.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2407,8 +2407,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 100000
+  m_Color: {r: 0.86415094, g: 0.6109033, b: 0.5331648, a: 1}
+  m_Intensity: 3000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 100000
+  m_Intensity: 3000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -14531,7 +14531,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PLAY
+  m_Text: TUTORIAL
 --- !u!114 &114963364889832574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20272,15 +20272,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149253707997}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9999949, z: -0, w: 0.0032037003}
-  m_LocalPosition: {x: -13, y: -7, z: 132}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: 0, y: 0.9494255, z: -0, w: -0.3139925}
+  m_LocalPosition: {x: 288.1, y: -183.4, z: 539.7}
+  m_LocalScale: {x: 80.6, y: 80.6, z: 80.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3355482962045949057}
   - {fileID: 9164912261579768084}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 179.633, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 216.6, z: 0}
 --- !u!1 &667809315244351785
 GameObject:
   m_ObjectHideFlags: 0
@@ -22883,7 +22883,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a323ed45818066e4b9df9c7166fda638, type: 2}
+  - {fileID: 2100000, guid: d42fe6a8ff8b2274bab0cfbd21353d7c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
