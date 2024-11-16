@@ -9,6 +9,7 @@ namespace TT
             if (Input.GetMouseButtonDown(0))
             {
                 decryptable.Decrypt();
+                MainGameSoundManager.Instance.PlaySFX("Click_1");   // 해독 사운드 교체하기
             }
             else
             {

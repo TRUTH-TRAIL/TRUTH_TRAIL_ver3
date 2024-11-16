@@ -24,6 +24,7 @@ namespace TT
                     if (Input.GetMouseButtonDown(0))
                     {
                         interactable.Interact();
+                        // ¿©±â?
                     }
                 }
             }

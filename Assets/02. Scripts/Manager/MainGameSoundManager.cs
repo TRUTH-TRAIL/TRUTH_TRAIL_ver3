@@ -20,6 +20,8 @@ namespace TT
 
         public static MainGameSoundManager Instance { get; private set; }
 
+        private string playerState;
+
         private void Awake()
         {
             if (Instance == null)
@@ -29,8 +31,13 @@ namespace TT
             else
             {
                 Destroy(gameObject);
-            }
+            }   
+        }
+
+        private void Start()
+        {
             PlayBGM();
+            StartCoroutine(PlayerFootStepSound());
         }
 
         /// BGM
@@ -38,7 +45,7 @@ namespace TT
         {
             bgmSource.clip = bgmClip;
             bgmSource.loop = true;
-            bgmSource.volume = 0.005f;
+            bgmSource.volume = 0.1f;
             bgmSource.Play();
         }
 
@@ -76,16 +83,41 @@ namespace TT
 
         }
 
-        /// Player 惯家府
-        public void PlayerStopSound()
+        /// Player 惯家府 
+        public void PlayerState(string playerState)
         {
-            //playerSfxSource
-            //playerStepClipList
+            this.playerState = playerState;
         }
 
-        public void PlayerRunSound()
+        IEnumerator PlayerFootStepSound()
         {
+            while (true)
+            {
+                switch (playerState)
+                {
+                    case "walking":
+                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                        yield return new WaitForSeconds(1f);
+                        break;
+                    case "slowWalking":
+                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                        yield return new WaitForSeconds(2f);
+                        break;
+                    case "running":
+                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                        yield return new WaitForSeconds(0.5f);
+                        break;
+                    default:
+                        yield return null;
+                        break;
+                }
+                Debug.Log(playerState);
+            }
+        }
 
+        public void PlayerRunStop()
+        {
+            playerSfxSource.Stop();
         }
 
 

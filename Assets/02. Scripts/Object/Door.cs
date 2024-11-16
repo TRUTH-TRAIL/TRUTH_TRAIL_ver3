@@ -133,6 +133,9 @@ public class Door : InteractableObject
         transform.eulerAngles = open 
             ? Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth) 
             : Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
+
+        //if(open) MainGameSoundManager.Instance.PlaySFX("SFX_DoorOpen");
+        //else MainGameSoundManager.Instance.PlaySFX("SFX_DoorClose");
     }
 
 

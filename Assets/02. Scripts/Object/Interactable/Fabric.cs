@@ -37,6 +37,7 @@ namespace TT
             if (curtainMaterial != null)
             {
                 StartCoroutine(RiseAndFadeCoroutine());
+                MainGameSoundManager.Instance.PlaySFX("SFX_Cloth");
             }
             else
             {

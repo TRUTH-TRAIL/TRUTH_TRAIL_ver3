@@ -43,6 +43,8 @@ namespace TT
             if (!isRotating)
             {
                 StartCoroutine(RotateDoor(isOpen ? closedRotation : openRotation));
+                if(isOpen) MainGameSoundManager.Instance.PlaySFX("SFX_GlasscaseOpen");
+                else MainGameSoundManager.Instance.PlaySFX("SFX_GlasscaseClose");
                 isOpen = !isOpen;
             }
         }

@@ -69,8 +69,13 @@ namespace TT
             // ¿­¼è ÀåÂø
             if (player.isEqiupKey)
             {
+                MainGameSoundManager.Instance.PlaySFX("SFX_Key");
                 SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
-            }     
+            }
+            else
+            {
+                MainGameSoundManager.Instance.PlaySFX("SFX_LockedDoor");
+            }
         }
 
 
