@@ -45,7 +45,6 @@ namespace TT
         {
             bgmSource.clip = bgmClip;
             bgmSource.loop = true;
-            bgmSource.volume = 0.1f;
             bgmSource.Play();
         }
 
@@ -97,15 +96,15 @@ namespace TT
                 {
                     case "walking":
                         playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(0.6f);
                         break;
                     case "slowWalking":
                         playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(1f);
                         break;
                     case "running":
                         playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(0.3f);
                         break;
                     default:
                         yield return null;
