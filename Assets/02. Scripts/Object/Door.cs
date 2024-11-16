@@ -29,7 +29,9 @@ public class Door : InteractableObject
     [SerializeField] private TextAlignmentOptions alignment = TextAlignmentOptions.Center;
 
     public DoorType DoorType = DoorType.Normal;
-    
+
+    private bool wasOpen;   // sound control
+
     public TextMeshProUGUI TXT
     {
         get => txt;
@@ -134,8 +136,15 @@ public class Door : InteractableObject
             ? Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth) 
             : Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
 
-        //if(open) MainGameSoundManager.Instance.PlaySFX("SFX_DoorOpen");
-        //else MainGameSoundManager.Instance.PlaySFX("SFX_DoorClose");
+        if (open != wasOpen)
+        {
+            if (open)
+                MainGameSoundManager.Instance.PlaySFX("SFX_DoorOpen");
+            else
+                MainGameSoundManager.Instance.PlaySFX("SFX_DoorClose");
+
+            wasOpen = open; // 상태 업데이트
+        }
     }
 
 

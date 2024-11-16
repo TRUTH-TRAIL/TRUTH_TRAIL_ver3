@@ -30,8 +30,18 @@ namespace TT
                 Player.Instance.isAcquiredBattery = true;
                 return;
             }
-            ItemButton.onClick.AddListener(ToggleIsActive);
-            ItemButton.onClick.AddListener(SetActiveEquipButton);
+            
+            ItemButton.onClick.AddListener(() =>
+            {
+                MainGameSoundManager.Instance.PlaySFX("Click_1");
+                ToggleIsActive();
+            });
+
+            ItemButton.onClick.AddListener(() =>
+            {
+                MainGameSoundManager.Instance.PlaySFX("Click_1");
+                SetActiveEquipButton();
+            });
             
             InitializeSpecialPaperHandler();
             InitializePlayerUIHandler();
@@ -39,7 +49,11 @@ namespace TT
 
             playerUIHandler.OnToggleUI += Off;
             
-            EquipButton.onClick.AddListener(ToggleEquipped);
+            EquipButton.onClick.AddListener(()=>
+            {
+                ToggleEquipped();
+                MainGameSoundManager.Instance.PlaySFX("Click_1");
+            });
             
             inventoryItemHandler.InventoryItemUIElements.Add(this);
         }
@@ -77,9 +91,14 @@ namespace TT
         {
             ItemButton.onClick.AddListener(() =>
             {
-                SeeButton.gameObject.SetActive(isActive);    
+                SeeButton.gameObject.SetActive(isActive);
+                MainGameSoundManager.Instance.PlaySFX("Click_1");
             });
-            SeeButton.onClick.AddListener(ToggleSee);
+            SeeButton.onClick.AddListener(()=>
+            {
+                ToggleSee();
+                MainGameSoundManager.Instance.PlaySFX("SFX_Paper");
+            });
         }
         
         private void ToggleSee()
