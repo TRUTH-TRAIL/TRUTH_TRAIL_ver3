@@ -39,7 +39,8 @@ namespace TT
                 if (uiElement != null)
                 {
                     uiElement.Toggle();
-                    
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Basic");
+
                     if (uiElement == InventoryUI)
                     {
                         //오로지 특수용지를 위한

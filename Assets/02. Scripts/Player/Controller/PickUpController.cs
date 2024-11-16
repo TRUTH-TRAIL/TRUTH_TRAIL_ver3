@@ -29,7 +29,7 @@ namespace TT
                         TryPickUpItem(pickupable);
                         break;
                 }
-                MainGameSoundManager.Instance.PlaySFX("Click_1");
+                MainGameSoundManager.Instance.PlaySFX("SFX_Clue");
             }
             else
             {

@@ -13,8 +13,8 @@ public class LoadLevel : MonoBehaviour {
 
 	public void ContinueGame() 
 	{	
-		levelName = PlayerPrefs.GetString("lastLevel");
-        SceneManager.LoadScene("Loading");
+		levelName = PlayerPrefs.GetString("lastLevel"); // lastLevel 저장 확인 필요
+		SceneManager.LoadScene("MainGame");
 		
 	}
 	

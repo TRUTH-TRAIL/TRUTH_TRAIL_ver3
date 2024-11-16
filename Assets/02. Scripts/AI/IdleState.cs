@@ -7,9 +7,12 @@ namespace TT
         public void Enter(AIController ai)
         {
             Debug.Log("Entering Idle State");
+            
             ai.StopNavMesh();
             ai.SetSpeed(0);
             ai.SetAnimation("Scream");
+
+            ai.PlayerSound.StopSound();
         }
 
         public void Execute(AIController ai)

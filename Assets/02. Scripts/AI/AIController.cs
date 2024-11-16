@@ -98,6 +98,7 @@ namespace TT
             Player = FindObjectOfType<Player>();
         }
 
+        // AI 상태 변경
         public void ChangeState(AIStateType newStateType)
         {
             if (currentState != null)

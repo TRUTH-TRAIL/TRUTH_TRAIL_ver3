@@ -45,7 +45,6 @@ namespace TT
         {
             bgmSource.clip = bgmClip;
             bgmSource.loop = true;
-            bgmSource.volume = 0.1f;
             bgmSource.Play();
         }
 
@@ -96,22 +95,36 @@ namespace TT
                 switch (playerState)
                 {
                     case "walking":
-                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(1f);
+                        if (Input.GetKey(KeyCode.W))
+                        {
+                            playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                            yield return new WaitForSeconds(0.6f);
+                        }
+                        else
+                            yield return null;
                         break;
                     case "slowWalking":
-                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(2f);
+                        if (Input.GetKey(KeyCode.W))
+                        {
+                            playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                            yield return new WaitForSeconds(1f);
+                        }
+                        else
+                            yield return null;
                         break;
                     case "running":
-                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(0.5f);
+                        if (Input.GetKey(KeyCode.W))
+                        {
+                            playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                            yield return new WaitForSeconds(0.3f);
+                        }
+                        else
+                            yield return null;
                         break;
                     default:
                         yield return null;
                         break;
                 }
-                Debug.Log(playerState);
             }
         }
 

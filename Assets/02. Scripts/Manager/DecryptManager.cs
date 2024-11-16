@@ -30,6 +30,7 @@ namespace TT
 
             Player.RemoveComponent();
             clueManager.Decrypt(trueClues);
+            MainGameSoundManager.Instance.PlaySFX("SFX_Purification");
         }
     }
 }
