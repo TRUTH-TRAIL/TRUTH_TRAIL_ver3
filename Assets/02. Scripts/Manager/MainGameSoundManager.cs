@@ -95,22 +95,30 @@ namespace TT
                 switch (playerState)
                 {
                     case "walking":
-                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(0.6f);
+                        if (Input.GetKey("w"))
+                        {
+                            playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                            yield return new WaitForSeconds(0.6f);
+                        }    
                         break;
                     case "slowWalking":
-                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(1f);
+                        if (Input.GetKey("w"))
+                        {
+                            playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                            yield return new WaitForSeconds(1f);
+                        }
                         break;
                     case "running":
-                        playerSfxSource.PlayOneShot(playerStepClipList[0]);
-                        yield return new WaitForSeconds(0.3f);
+                        if (Input.GetKey("w"))
+                        {
+                            playerSfxSource.PlayOneShot(playerStepClipList[0]);
+                            yield return new WaitForSeconds(0.3f);
+                        }
                         break;
                     default:
                         yield return null;
                         break;
                 }
-                Debug.Log(playerState);
             }
         }
 
