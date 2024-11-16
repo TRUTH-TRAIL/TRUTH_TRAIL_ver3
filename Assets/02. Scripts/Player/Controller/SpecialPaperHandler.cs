@@ -57,7 +57,7 @@ namespace TT
             
             if (clueManager.Clues.Count >= MaxClues)
             {
-                StartCoroutine(clueManager.DisplayLog("인벤토리 꽉참."));
+                StartCoroutine(clueManager.DisplayLog("더 이상 습득할 수 없습니다"));
                 return false;
             }
 

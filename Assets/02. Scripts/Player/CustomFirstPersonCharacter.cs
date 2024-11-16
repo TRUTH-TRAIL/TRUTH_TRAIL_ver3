@@ -24,21 +24,34 @@ namespace TT
             if (Input.GetKeyDown(runKey))
             {
                 Player.IsRunningState = true;
-                maxWalkSpeed *= speedMutiplier;
+                maxWalkSpeed *= speedMutiplier;          
             }
             else if (Input.GetKeyUp(runKey))
             {
                 Player.IsRunningState = false;
-                maxWalkSpeed = originSpeed;
+                maxWalkSpeed = originSpeed;     
             }
             
             Player.IsSlowWalkingState = IsCrouched() && !IsWalking() && !IsRunning();
             Player.IsWalkingState = IsWalking() && !IsCrouched() && !IsRunning();
+
+            FootStep();
         }
 
         private bool IsRunning()
         {
             return Player.IsRunningState;
+        }
+
+        // SoundManager
+        private void FootStep()
+        {
+            if (Player.IsWalkingState)
+                MainGameSoundManager.Instance.PlayerState("walking");
+            else if (Player.IsSlowWalkingState)
+                MainGameSoundManager.Instance.PlayerState("slowWalking");
+            else if(Player.IsRunningState)
+                MainGameSoundManager.Instance.PlayerState("running");
         }
     }
 }

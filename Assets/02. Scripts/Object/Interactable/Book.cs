@@ -40,6 +40,7 @@ namespace TT
             Vector3 slideVector = MovementUtils.GetSlideVector(transform, Direction);
             Vector3 targetPosition = originalPosition + slideVector * SlideDistance;
             StartCoroutine(SlideCoroutine(targetPosition));
+            MainGameSoundManager.Instance.PlaySFX("SFX_Book");
         }
 
 

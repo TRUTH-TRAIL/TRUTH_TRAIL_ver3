@@ -26,6 +26,7 @@ namespace TT
         private void Shake()
         {
             StartCoroutine(ShakeCoroutine());
+            MainGameSoundManager.Instance.PlaySFX("SFX_Frame");
         }
 
         private IEnumerator ShakeCoroutine()

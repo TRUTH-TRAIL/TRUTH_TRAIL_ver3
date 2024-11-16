@@ -38,11 +38,13 @@ namespace TT
             if (isOpen)
             {
                 StartCoroutine(SlideCoroutine(originalPosition));
+
             }
             else
             {
                 StartCoroutine(SlideCoroutine(targetPosition));
             }
+            MainGameSoundManager.Instance.PlaySFX("SFX_Drawer");
             isOpen = !isOpen;
         }
         

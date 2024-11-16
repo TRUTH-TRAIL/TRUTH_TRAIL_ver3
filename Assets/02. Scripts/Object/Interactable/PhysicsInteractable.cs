@@ -36,6 +36,8 @@ namespace TT
             // 힘과 회전력 적용
             rb.AddForce(force, ForceMode.Impulse);
             rb.AddTorque(torque, ForceMode.Impulse);
+
+            MainGameSoundManager.Instance.PlaySFX("Click_1");
         }
     }
 }
