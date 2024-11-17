@@ -9399,7 +9399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114256911276449844
 MonoBehaviour:
@@ -10329,7 +10329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114342477067898130
 MonoBehaviour:
@@ -10497,7 +10497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114357899527629640
 MonoBehaviour:
@@ -10646,7 +10646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114393289781070660
 MonoBehaviour:
@@ -12105,7 +12105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114616690813506956
 MonoBehaviour:
@@ -12301,7 +12301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 0}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
 --- !u!114 &114633374287755312
 MonoBehaviour:
@@ -13465,7 +13465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114794813732765072
 MonoBehaviour:
@@ -14800,7 +14800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: 41a79e15b0498f94d84535ee2b8bdbbb, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!114 &114991823366624538
 MonoBehaviour:
@@ -22830,7 +22830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 0}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!1 &7291865963878555181
 GameObject:
@@ -23259,7 +23259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSource: {fileID: 82126234985276904}
-  hoverSound: {fileID: 8300000, guid: b2a76cad44bb3468494203f09117b46a, type: 3}
+  hoverSound: {fileID: 8300000, guid: f0a7aa437c1fdd841b243d10cb73940a, type: 3}
   clickSound: {fileID: 8300000, guid: a3434c624bcd28244a844b19ce9b0f25, type: 3}
 --- !u!1 &8745850655342066900
 GameObject:
