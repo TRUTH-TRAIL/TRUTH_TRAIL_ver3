@@ -48,7 +48,7 @@ namespace TT
         private Transform[] paths;
         private NavMeshAgent agent;
         private Animator animator;
-        private IAIState currentState;
+        private IAIState currentState;      // 현재 AI 상태
         private Dictionary<AIStateType, IAIState> states;
         private int currentPathIndex = 0;
        
@@ -150,21 +150,25 @@ namespace TT
             }
         }
 
+        // destination set
         public void ChasePlayer()
         {
             agent.destination = GetPlayerPosition();
         }
 
+        // 플레이어 감지 상태 get
         public bool CanSeePlayer()
         {
             return DetectionSensor.GetNearestDetection()!= null;
         }
 
+        // 플레이어 run 상태 get
         public bool IsPlayerRunning()
         {
             return Player.IsRunningState; 
         }
 
+        // 플레이어 walk 상태 get
         public bool IsPlayerWalking()
         {
             return Player.IsWalkingState; 
@@ -175,6 +179,7 @@ namespace TT
             return PlayerTarget.position; 
         }
 
+        // 플레이어 추적 성공 거리 체크, return
         public bool NearestPlayer()
         {
             Vector3 playerPos = new Vector3(PlayerTarget.position.x, 0, PlayerTarget.position.z);

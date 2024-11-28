@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace TT
 {
+    // 추적모드
     public class ChaseState : IAIState
     {
         public bool IsInRedBeam;
@@ -9,6 +10,7 @@ namespace TT
 
         private Coroutine agonyCoroutine;
         
+        /// 추적모드 진입
         public void Enter(AIController ai)
         {
             Debug.Log("Entering Chase State");
@@ -21,9 +23,10 @@ namespace TT
             ai.PlayerSound.PlaySound("FindAI", true);
         }
 
-
+        /// 추적모드중
         public void Execute(AIController ai)
         {
+            // 플레이어 추적 성공
             if (ai.NearestPlayer())
             {
                 GameManager.Instance.GameOver();
@@ -78,7 +81,8 @@ namespace TT
 
             agonyCoroutine = null;
         }
-        
+
+        /// 추적모드 해제
         public void Exit(AIController ai)
         {
             if (agonyCoroutine is not null)
