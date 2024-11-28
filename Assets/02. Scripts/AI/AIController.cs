@@ -217,7 +217,7 @@ namespace TT
                 return true;
             else
             {
-                Debug.Log("°°ÀºÃþ ¾Æ´Ô");
+                //Debug.Log("°°ÀºÃþ ¾Æ´Ô");
                 return false;
             }
                 

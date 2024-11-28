@@ -18019,11 +18019,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 01b187acc7913744da46158324e74e1e, type: 3}
   - {fileID: 8300000, guid: 405515a4a87cc8243b743e202661218f, type: 3}
   - {fileID: 8300000, guid: 55a9cd41a6f9f1a47a76b9a3cc8af0e9, type: 3}
+  - {fileID: 8300000, guid: c4d878c2bd70b4d489bdf0ae0a985bf3, type: 3}
   aiClipList:
   - {fileID: 8300000, guid: e5615054913299b478b803ff0a4d1af6, type: 3}
   - {fileID: 8300000, guid: 8cf9a7c607033c443b4eb849235db87f, type: 3}
   - {fileID: 8300000, guid: 9c108a06d88021c46b17afc633917ae2, type: 3}
   - {fileID: 8300000, guid: 92a0d7503fb23164f883d67656974f97, type: 3}
+  - {fileID: 8300000, guid: 126efd0b87bc87a4698650d76d65971b, type: 3}
   playerStepClipList:
   - {fileID: 8300000, guid: 0e4fd9c1de739614eb81d18bee98ff73, type: 3}
   fadeVolumeTime: 5

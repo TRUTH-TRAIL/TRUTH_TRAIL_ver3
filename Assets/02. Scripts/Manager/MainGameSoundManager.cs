@@ -36,7 +36,7 @@ namespace TT
 
         private void Start()
         {
-            PlayBGM();
+            //PlayBGM();
             StartCoroutine(PlayerFootStepSound());
         }
 
