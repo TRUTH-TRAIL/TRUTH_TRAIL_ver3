@@ -53,6 +53,8 @@ namespace TT
             
             FindObjectOfType<Player>().IsDeadCurseState = true;
             Debug.Log("저주가 발동되면 AI에게 풀리지 않는 어그로가 발동하여 사망에 이르게 된다");
+
+            GameManager.Instance.CurseGameOver();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace TT
         public Camera MainCemera;
         
         public CanvasGroup gameOverCanvasGroup;
+        public CanvasGroup curseOverCanvasGroup;
         public float fadeDuration = 1.0f;
 
         public string CurrentSceneName;
@@ -49,6 +50,7 @@ namespace TT
             SceneSwitchManager.Instance.ChangeScene(MenuSceneName);
         }
         
+        /// AI »ç¸Á
         public void GameOver()
         {
             AI.SetActive(false);
@@ -61,6 +63,21 @@ namespace TT
             player.Dead();
 
             StartCoroutine(DeathCutScene());    // »ç¸ÁÄÆ¾À ¿¬Ãâ¿ë ÄÚ·çÆ¾(½Ã³×¸Ó½Å Ä«¸Þ¶ó ºÙ¿©Çá ÇÒµí)
+        }
+
+        /// ÀúÁÖ »ç¸Á
+        public void CurseGameOver()
+        {
+            AI.SetActive(false);
+            Light.SetActive(false);     // ¼ÕÀüµîÀÌ Åö ²¨Áö´Â°Å ¸»°í Ä¡Ä¡Á÷ ±ôºý±ôºýÇÏ¸ç ²¨Áö´Â ¿¬Ãâ Ãß°¡
+            CursorObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            playerSound.StopSound();
+            playerSound.PlaySound("GameOver", false);
+            player.Dead();
+
+            StartCoroutine(FadeInCanvas(curseOverCanvasGroup));
         }
 
         public void NextExorcismScene()
@@ -97,27 +114,27 @@ namespace TT
             MainCemera.GetComponent<CameraShake>().OnCameraShake(5f);
 
             yield return new WaitForSeconds(5f);
-            StartCoroutine(FadeInCanvas());
+            StartCoroutine(FadeInCanvas(gameOverCanvasGroup));
         }
         
-        private IEnumerator FadeInCanvas()
+        private IEnumerator FadeInCanvas(CanvasGroup c)
         {
             float elapsedTime = 0f;
             Light.SetActive(false);
 
-            gameOverCanvasGroup.alpha = 0f;
-            gameOverCanvasGroup.gameObject.SetActive(true);
+            c.alpha = 0f;
+            c.gameObject.SetActive(true);
 
             while (elapsedTime < fadeDuration)
             {
                 elapsedTime += Time.deltaTime;
-                gameOverCanvasGroup.alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
+                c.alpha = Mathf.Clamp01(elapsedTime / fadeDuration);
                 yield return null;
             }
 
-            gameOverCanvasGroup.interactable = true;
-            gameOverCanvasGroup.blocksRaycasts = true;
-            gameOverCanvasGroup.alpha = 1f;
+            c.interactable = true;
+            c.blocksRaycasts = true;
+            c.alpha = 1f;
         } 
     }
 }
