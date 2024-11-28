@@ -182,16 +182,45 @@ namespace TT
         // 플레이어 추적 성공 거리 체크, return
         public bool NearestPlayer()
         {
-            Vector3 playerPos = new Vector3(PlayerTarget.position.x, 0, PlayerTarget.position.z);
-            Vector3 objectPos = new Vector3(transform.position.x, 0, transform.position.z);
-    
-            if (Vector3.Distance(playerPos, objectPos) < TouchDistance)
+            if(FloorComparison(PlayerTarget.position.y, transform.position.y))
             {
-                return true;
-            }
+                Vector3 playerPos = new Vector3(PlayerTarget.position.x, 0, PlayerTarget.position.z);
+                Vector3 objectPos = new Vector3(transform.position.x, 0, transform.position.z);
 
-            return false;
+                if (Vector3.Distance(playerPos, objectPos) < TouchDistance)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            else
+                return false;
         }
 
+        // 1, 2층 비교
+        public bool FloorComparison(float playerY, float aiY)
+        {
+            int playerFloor, aiFloor;
+
+            if (playerY >= 0f)
+                playerFloor = 2;
+            else
+                playerFloor = 1;
+
+            if (aiY >= 2.5f)
+                aiFloor = 2;
+            else
+                aiFloor = 1;
+
+            if (playerFloor == aiFloor)
+                return true;
+            else
+            {
+                Debug.Log("같은층 아님");
+                return false;
+            }
+                
+        }
     }
 }

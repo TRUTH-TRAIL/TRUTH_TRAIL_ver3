@@ -22,6 +22,7 @@ namespace TT
 
             ai.PlayerSound.StopSound();
             ai.PlayerSound.PlaySound("FindAI", true);
+            MainGameSoundManager.Instance.AiFindSoundPlay();
         }
 
         /// 추적모드중
@@ -62,6 +63,8 @@ namespace TT
                 return;
             }
             
+            // 시야 안에 없어도 어느정도 따라와야 무서움. 때문에 CanSee 제어 말고 플레이어가
+            // 안전한 공간 안에 있으면 풀리는 것으로 수정하기
             if (!ai.CanSeePlayer() && !ai.Player.IsDeadCurseState)
             {
                 //ai.ChangeState(AIStateType.Wandering);  //⭐⭐⭐깜빡오류해결, 저주컷씬 따로 빼기
@@ -70,7 +73,9 @@ namespace TT
             {
                 ai.ChasePlayer();
             }
+            ai.ChasePlayer();
         }
+
         
         private System.Collections.IEnumerator ExitAgonyAfterDelay(AIController ai, float delay)
         {

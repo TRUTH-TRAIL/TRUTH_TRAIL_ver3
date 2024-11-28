@@ -35,7 +35,7 @@ namespace TT
             {
                 ai.PlayerSound.PlaySound("NearAI", true);
                 // 추적모드 전환 : 플레이어 발소리게이지
-                if (ai.Character.speed > 0f && ai.IsPlayerWalking())
+                if (ai.Character.speed > 0f && (ai.IsPlayerWalking() || ai.IsPlayerRunning()))
                 {
                     ai.DetectionTimeGuage += Time.deltaTime;
 

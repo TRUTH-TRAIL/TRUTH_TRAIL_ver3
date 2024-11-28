@@ -72,9 +72,9 @@ namespace TT
             //aiClipList
         }
 
-        public void AiFindSoundPlay(string clipName)
+        public void AiFindSoundPlay()
         {
-
+            aiSfxSource.PlayOneShot(aiClipList[2]);
         }
 
         public void AiSoundStop()
