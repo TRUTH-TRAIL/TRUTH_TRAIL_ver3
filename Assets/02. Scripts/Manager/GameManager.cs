@@ -88,7 +88,7 @@ namespace TT
             SaveExorcismProgress.SaveProgress();
 
             // 아이템 다 먹었는지 확인
-            if (player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count < 8)
+            if (player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count < 7 || !player.isAcquiredBattery)
             {
                 //Debug.Log(player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count);
                 MainGameSoundManager.Instance.PlaySFX("SFX_LockedDoor");
