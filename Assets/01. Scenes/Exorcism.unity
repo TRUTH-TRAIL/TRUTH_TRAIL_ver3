@@ -22637,7 +22637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4196709436741153463, guid: c08669eabae1bde4283fb26eda094b76, type: 3}
       propertyPath: runSpeed
-      value: 1.8
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4196709436741153463, guid: c08669eabae1bde4283fb26eda094b76, type: 3}
       propertyPath: TouchDistance
@@ -29805,30 +29805,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2312549754915559386, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: sceneName
-      value: Exorcism
-      objectReference: {fileID: 0}
-    - target: {fileID: 2312549754915559386, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: defaultSceneName
-      value: Exorcism
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575867140733097697, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575867140733097697, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575867140733097697, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3575867140733097697, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4404508418574519940, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
       propertyPath: m_Name
       value: GameOverCanvas
@@ -29913,20 +29889,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8111092476181878075, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111092476181878075, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111092476181878075, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111092476181878075, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
-      propertyPath: m_AnchoredPosition.y
+    - target: {fileID: 7780281090346948939, guid: 592b868851ba38e408d2928a43a4713e, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
