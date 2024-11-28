@@ -36,7 +36,7 @@ namespace TT
 
         private void Start()
         {
-            PlayBGM();
+            //PlayBGM();
             StartCoroutine(PlayerFootStepSound());
         }
 
@@ -66,20 +66,20 @@ namespace TT
         }
 
         /// AI
-        public void AiNearSoundPlay(string clipName)
+        public void AiSoundPlay(string clipName)
         {
-            //aiSfxSource
-            //aiClipList
+            AudioClip clipToPlay = aiClipList.Find(clip => clip.name == clipName);
+            aiSfxSource.PlayOneShot(clipToPlay);
         }
 
-        public void AiFindSoundPlay(string clipName)
+        public void AiFindSoundPlay()
         {
-
+            aiSfxSource.PlayOneShot(aiClipList[2]);
         }
 
         public void AiSoundStop()
         {
-
+            aiSfxSource.Stop();
         }
 
         /// Player ¹ß¼Ò¸® 

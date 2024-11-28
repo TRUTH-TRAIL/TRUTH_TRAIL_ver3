@@ -14,7 +14,7 @@ public class SceneLoad_Timelne : MonoBehaviour
         // 현재 활성화된 씬 가져오기
         Scene activeScene = SceneManager.GetActiveScene();
         playableDirector.stopped += OnTimelineStopped;
-        OnSceneLoaded(activeScene, LoadSceneMode.Single);  // 수동으로 호출
+        OnSceneLoaded(activeScene, LoadSceneMode.Single);  // 수동으로 호출   
     }
 
     void OnEnable()

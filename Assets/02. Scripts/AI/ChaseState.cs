@@ -1,7 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TT
 {
+    // 추적모드
     public class ChaseState : IAIState
     {
         public bool IsInRedBeam;
@@ -9,6 +10,7 @@ namespace TT
 
         private Coroutine agonyCoroutine;
         
+        /// 추적모드 진입
         public void Enter(AIController ai)
         {
             Debug.Log("Entering Chase State");
@@ -18,12 +20,15 @@ namespace TT
             ai.SetSpeed(ai.runSpeed);
             ai.SetAnimation(ai.runSpeed);
 
+            ai.PlayerSound.StopSound();
             ai.PlayerSound.PlaySound("FindAI", true);
+            MainGameSoundManager.Instance.AiSoundPlay("SFX_FindAI");
         }
 
-
+        /// 추적모드중
         public void Execute(AIController ai)
         {
+            // 플레이어 추적 성공
             if (ai.NearestPlayer())
             {
                 GameManager.Instance.GameOver();
@@ -58,15 +63,19 @@ namespace TT
                 return;
             }
             
+            // 시야 안에 없어도 어느정도 따라와야 무서움. 때문에 CanSee 제어 말고 플레이어가
+            // 안전한 공간 안에 있으면 풀리는 것으로 수정하기
             if (!ai.CanSeePlayer() && !ai.Player.IsDeadCurseState)
             {
-                ai.ChangeState(AIStateType.Wandering);
+                //ai.ChangeState(AIStateType.Wandering);  //⭐⭐⭐깜빡오류해결, 저주컷씬 따로 빼기
             }
             else
             {
                 ai.ChasePlayer();
             }
+            ai.ChasePlayer();
         }
+
         
         private System.Collections.IEnumerator ExitAgonyAfterDelay(AIController ai, float delay)
         {
@@ -78,7 +87,8 @@ namespace TT
 
             agonyCoroutine = null;
         }
-        
+
+        /// 추적모드 해제
         public void Exit(AIController ai)
         {
             if (agonyCoroutine is not null)
@@ -88,7 +98,6 @@ namespace TT
             }
             
             ai.PlayerSound.StopSound();
-            //Debug.Log("Exiting Chasing State");
         }
     }
 }

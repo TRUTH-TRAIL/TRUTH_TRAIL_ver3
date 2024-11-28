@@ -28,6 +28,11 @@ namespace TT
             Instance = this;
         }
 
+        private void Start()
+        {
+            MainGameSoundManager.Instance.PlaySFX("BGM_GoOutSide");
+        }
+
         /// 게임 성공
         private void CheckGameClear()
         {

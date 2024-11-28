@@ -82,12 +82,13 @@ namespace TT
         /// »ç¸Á ÄÆ¾À
         private IEnumerator DeathCutScene()
         {
+            MainGameSoundManager.Instance.AiSoundPlay("SFX_DeadCutSceneAI");
+
             Vector3 killAiPosi = AI.transform.position;
             killAiPosi.y = killAiPosi.y - 3f;
             KillAI.transform.position = killAiPosi;
             KillAI.transform.LookAt(player.transform);
             killAiPosi.y = killAiPosi.y + 2f;
-            killAiPosi.z = killAiPosi.z - 3f;
             MainCemera.transform.LookAt(killAiPosi);
             
             yield return new WaitForSeconds(3f);

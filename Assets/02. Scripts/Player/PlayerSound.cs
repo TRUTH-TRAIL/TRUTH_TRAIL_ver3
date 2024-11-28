@@ -21,7 +21,7 @@ namespace TT
                 audioSource.Play();
             }
         }
-        
+
         public void StopSound()
         {
             if (audioSource.isPlaying)

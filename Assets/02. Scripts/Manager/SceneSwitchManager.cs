@@ -7,7 +7,9 @@ namespace TT
     {
         public void ChangeScene(string sceneName)
         {
+            print(sceneName);
             SceneManager.LoadSceneAsync(sceneName);
+            
         }
     }
 }
