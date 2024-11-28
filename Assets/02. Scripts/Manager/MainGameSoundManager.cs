@@ -66,10 +66,10 @@ namespace TT
         }
 
         /// AI
-        public void AiNearSoundPlay(string clipName)
+        public void AiSoundPlay(string clipName)
         {
-            //aiSfxSource
-            //aiClipList
+            AudioClip clipToPlay = aiClipList.Find(clip => clip.name == clipName);
+            aiSfxSource.PlayOneShot(clipToPlay);
         }
 
         public void AiFindSoundPlay()
@@ -79,7 +79,7 @@ namespace TT
 
         public void AiSoundStop()
         {
-
+            aiSfxSource.Stop();
         }
 
         /// Player ¹ß¼Ò¸® 

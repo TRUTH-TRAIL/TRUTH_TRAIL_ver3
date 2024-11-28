@@ -22,7 +22,7 @@ namespace TT
 
             ai.PlayerSound.StopSound();
             ai.PlayerSound.PlaySound("FindAI", true);
-            MainGameSoundManager.Instance.AiFindSoundPlay();
+            MainGameSoundManager.Instance.AiSoundPlay("SFX_FindAI");
         }
 
         /// 추적모드중
