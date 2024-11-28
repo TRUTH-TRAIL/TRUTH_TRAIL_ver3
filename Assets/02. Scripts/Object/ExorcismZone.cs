@@ -106,6 +106,7 @@ namespace TT
                             fireTransform.gameObject.SetActive(true);
                             ExorcismManager.Instance.LightCandle();
                             hit.collider.enabled = false;
+                            // 라이터 사운드 여기
                         }
                         else
                         {

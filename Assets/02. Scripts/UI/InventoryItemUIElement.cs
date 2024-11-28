@@ -35,13 +35,9 @@ namespace TT
             {
                 MainGameSoundManager.Instance.PlaySFX("Click_1");
                 ToggleIsActive();
-            });
-
-            ItemButton.onClick.AddListener(() =>
-            {
-                MainGameSoundManager.Instance.PlaySFX("Click_1");
                 SetActiveEquipButton();
             });
+
             
             InitializeSpecialPaperHandler();
             InitializePlayerUIHandler();
@@ -69,6 +65,7 @@ namespace TT
 
         private void ToggleIsActive()
         {
+            Debug.Log("button");
             isActive = !isActive;
         }
         
