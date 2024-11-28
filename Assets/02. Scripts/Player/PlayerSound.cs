@@ -22,11 +22,6 @@ namespace TT
             }
         }
 
-        public void FindAISound()
-        {
-            PlaySound("FindAI", true);
-        }
-        
         public void StopSound()
         {
             if (audioSource.isPlaying)

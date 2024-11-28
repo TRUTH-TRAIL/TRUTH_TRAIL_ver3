@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace TT
 {
-    // ÃßÀû¸ğµå
+    // ì¶”ì ëª¨ë“œ
     public class ChaseState : IAIState
     {
         public bool IsInRedBeam;
@@ -10,7 +10,7 @@ namespace TT
 
         private Coroutine agonyCoroutine;
         
-        /// ÃßÀû¸ğµå ÁøÀÔ
+        /// ì¶”ì ëª¨ë“œ ì§„ì…
         public void Enter(AIController ai)
         {
             Debug.Log("Entering Chase State");
@@ -20,13 +20,14 @@ namespace TT
             ai.SetSpeed(ai.runSpeed);
             ai.SetAnimation(ai.runSpeed);
 
+            ai.PlayerSound.StopSound();
             ai.PlayerSound.PlaySound("FindAI", true);
         }
 
-        /// ÃßÀû¸ğµåÁß
+        /// ì¶”ì ëª¨ë“œì¤‘
         public void Execute(AIController ai)
         {
-            // ÇÃ·¹ÀÌ¾î ÃßÀû ¼º°ø
+            // í”Œë ˆì´ì–´ ì¶”ì  ì„±ê³µ
             if (ai.NearestPlayer())
             {
                 GameManager.Instance.GameOver();
@@ -63,7 +64,7 @@ namespace TT
             
             if (!ai.CanSeePlayer() && !ai.Player.IsDeadCurseState)
             {
-                ai.ChangeState(AIStateType.Wandering);
+                //ai.ChangeState(AIStateType.Wandering);  //â­â­â­ê¹œë¹¡ì˜¤ë¥˜í•´ê²°, ì €ì£¼ì»·ì”¬ ë”°ë¡œ ë¹¼ê¸°
             }
             else
             {
@@ -82,7 +83,7 @@ namespace TT
             agonyCoroutine = null;
         }
 
-        /// ÃßÀû¸ğµå ÇØÁ¦
+        /// ì¶”ì ëª¨ë“œ í•´ì œ
         public void Exit(AIController ai)
         {
             if (agonyCoroutine is not null)
@@ -92,7 +93,6 @@ namespace TT
             }
             
             ai.PlayerSound.StopSound();
-            //Debug.Log("Exiting Chasing State");
         }
     }
 }
