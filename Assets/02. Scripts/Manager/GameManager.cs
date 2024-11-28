@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace TT
 {
@@ -17,6 +18,7 @@ namespace TT
         public CanvasGroup gameOverCanvasGroup;
         public CanvasGroup curseOverCanvasGroup;
         public float fadeDuration = 1.0f;
+        public TextMeshProUGUI adviceLabel;
 
         public string CurrentSceneName;
         public string MenuSceneName = "MainMenu";
@@ -80,19 +82,53 @@ namespace TT
             StartCoroutine(FadeInCanvas(curseOverCanvasGroup));
         }
 
+        /// 퇴마씬 이동
         public void NextExorcismScene()
         {
             SaveExorcismProgress.SaveProgress();
-            // 열쇠 장착
-            if (player.isEqiupKey)
+
+            // 아이템 다 먹었는지 확인
+            if (player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count < 8)
             {
-                MainGameSoundManager.Instance.PlaySFX("SFX_Key");
-                SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
-            }
+                //Debug.Log(player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count);
+                MainGameSoundManager.Instance.PlaySFX("SFX_LockedDoor");
+                StartCoroutine(DisplayLog());
+            }   
             else
             {
-                MainGameSoundManager.Instance.PlaySFX("SFX_LockedDoor");
+                // 열쇠 장착
+                if (player.isEqiupKey)
+                {
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Key");
+                    SceneSwitchManager.Instance.ChangeScene(ExorcismSceneName);
+                }
+                else
+                {
+                    MainGameSoundManager.Instance.PlaySFX("SFX_LockedDoor");
+                }
             }
+
+            
+        }
+
+        public IEnumerator DisplayLog()
+        {
+            adviceLabel.text = "아직 습득하지 않은 아이템이 있습니다 \n 단서를 참고하여 찾아보세요";
+            adviceLabel.gameObject.SetActive(true);
+
+            Color originalColor = adviceLabel.color;
+            yield return new WaitForSeconds(3f);
+
+            for (float t = 0.5f; t > 0; t -= Time.deltaTime)
+            {
+                Color newColor = originalColor;
+                newColor.a = t / 0.5f;
+                adviceLabel.color = newColor;
+                yield return null;
+            }
+
+            adviceLabel.gameObject.SetActive(false);
+            adviceLabel.color = originalColor;
         }
 
 
