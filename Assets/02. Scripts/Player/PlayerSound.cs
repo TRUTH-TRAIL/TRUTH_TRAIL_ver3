@@ -21,6 +21,11 @@ namespace TT
                 audioSource.Play();
             }
         }
+
+        public void FindAISound()
+        {
+            PlaySound("FindAI", true);
+        }
         
         public void StopSound()
         {
