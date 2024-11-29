@@ -104,6 +104,11 @@ namespace TT
             yield return new WaitForSeconds(7f);
             StartCoroutine(SuccessLabelDActive());
             yield return new WaitForSeconds(3f);
+
+            // 기록 초기화
+            PlayerPrefs.SetString("LastScene", "MainGame");
+            PlayerPrefs.Save();
+
             GameObject.Find("SceneSwitchManager").GetComponent<SceneSwitchManager>().ChangeScene("MainMenu");
         }
 

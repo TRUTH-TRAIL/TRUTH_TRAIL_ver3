@@ -39,6 +39,10 @@ namespace TT
         {
             Light ??= GameObject.FindGameObjectWithTag("Lights");
             CursorObject ??= GameObject.FindGameObjectWithTag("InteractionCanvas");
+
+            // 라스트씬 저장
+            PlayerPrefs.SetString("LastScene", CurrentSceneName);
+            PlayerPrefs.Save();
         }
 
         public void ReGame()
