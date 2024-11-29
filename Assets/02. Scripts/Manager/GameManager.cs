@@ -146,7 +146,10 @@ namespace TT
             killAiPosi.y = killAiPosi.y - 3f;
             KillAI.transform.position = killAiPosi;
             KillAI.transform.LookAt(player.transform);
-            killAiPosi.y = killAiPosi.y + 2f;
+            killAiPosi.y = killAiPosi.y + 1.5f;
+
+            KillAI.transform.Translate(transform.forward * -1f, Space.Self);
+
             MainCemera.transform.LookAt(killAiPosi);
             
             yield return new WaitForSeconds(3f);
