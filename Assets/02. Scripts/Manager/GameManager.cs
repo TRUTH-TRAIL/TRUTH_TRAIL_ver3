@@ -60,6 +60,7 @@ namespace TT
             CursorObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            MainGameSoundManager.Instance.StopBGM();
             playerSound.StopSound();
             playerSound.PlaySound("GameOver", false);
             player.Dead();

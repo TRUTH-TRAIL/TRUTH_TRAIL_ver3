@@ -16,7 +16,7 @@ namespace TT
         [SerializeField] List<AudioClip> sfxClipList;
         [SerializeField] List<AudioClip> aiClipList;
         [SerializeField] List<AudioClip> playerStepClipList;
-        [SerializeField] float fadeVolumeTime = 5f;
+        [SerializeField] float fadeVolumeTime = 3f;
 
         public static MainGameSoundManager Instance { get; private set; }
 
@@ -45,12 +45,14 @@ namespace TT
         {
             bgmSource.clip = bgmClip;
             bgmSource.loop = true;
-            bgmSource.Play();
+            bgmSource.volume = 0;
+            StartCoroutine(FadeInVolume(bgmSource));
         }
 
         public void StopBGM()
         {
-            bgmSource.Stop();
+            bgmSource.volume = 1;
+            StartCoroutine(FadeOutVolume(bgmSource));
         }
 
         /// SFX
@@ -140,6 +142,8 @@ namespace TT
             float targetVolume = 1f;
             float currentTime = 0f;
 
+            audio.Play();
+
             while (currentTime < fadeVolumeTime)
             {
                 currentTime += Time.deltaTime;
@@ -147,7 +151,7 @@ namespace TT
                 yield return null;
             }
 
-            audio.volume = targetVolume;
+            audio.volume = targetVolume;   
         }
 
         /// º¼·ý ÆäÀÌµå¾Æ¿ô

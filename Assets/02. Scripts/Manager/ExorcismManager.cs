@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using TMPro;
 
 namespace TT
@@ -89,19 +88,22 @@ namespace TT
             ai_cut.SetActive(false);
             cursor.SetActive(false);
             StartCoroutine(FadeOut(0.01f));
+
             yield return new WaitForSeconds(1.5f);
             StartCoroutine(FadeIn(0.01f));
 
             Timeline_E.SetActive(true);
-            
-            MainGameSoundManager.Instance.PlaySFX("Click_1");   // TODO : 시네머신 사운드 클립 교체
+            yield return new WaitForSeconds(1f);
+            MainGameSoundManager.Instance.PlaySFX("BGM_Exorcism");
 
             yield return new WaitForSeconds(15f);
             StartCoroutine(FadeOut(0.005f));
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(3f);
             StartCoroutine(SuccessLabelActive());
-            yield return new WaitForSeconds(8f);
+            yield return new WaitForSeconds(7f);
+            StartCoroutine(SuccessLabelDActive());
+            yield return new WaitForSeconds(3f);
             GameObject.Find("SceneSwitchManager").GetComponent<SceneSwitchManager>().ChangeScene("MainMenu");
         }
 
@@ -119,7 +121,7 @@ namespace TT
             }
         }
 
-        /// 페이드인
+        /// 페이드아웃
         IEnumerator FadeOut(float time)
         {
             float fadeCount = 0;
@@ -138,6 +140,18 @@ namespace TT
             while (fadeCount < 1.0f)
             {
                 fadeCount += 0.05f;
+                yield return new WaitForSeconds(0.01f);
+
+                adviceLabel.color = new Color(205, 198, 198, fadeCount);
+            }
+        }
+
+        IEnumerator SuccessLabelDActive()
+        {
+            float fadeCount = 1f;
+            while (fadeCount > 0.001f)
+            {
+                fadeCount -= 0.05f;
                 yield return new WaitForSeconds(0.01f);
 
                 adviceLabel.color = new Color(205, 198, 198, fadeCount);
