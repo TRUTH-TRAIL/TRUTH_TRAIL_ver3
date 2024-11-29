@@ -39,6 +39,10 @@ namespace TT
         {
             Light ??= GameObject.FindGameObjectWithTag("Lights");
             CursorObject ??= GameObject.FindGameObjectWithTag("InteractionCanvas");
+
+            // 라스트씬 저장
+            PlayerPrefs.SetString("LastScene", CurrentSceneName);
+            PlayerPrefs.Save();
         }
 
         public void ReGame()
@@ -60,6 +64,7 @@ namespace TT
             CursorObject.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            MainGameSoundManager.Instance.StopBGM();
             playerSound.StopSound();
             playerSound.PlaySound("GameOver", false);
             player.Dead();
@@ -88,7 +93,7 @@ namespace TT
             SaveExorcismProgress.SaveProgress();
 
             // 아이템 다 먹었는지 확인
-            if (player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count < 8)
+            if (player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count < 7 || !player.isAcquiredBattery)
             {
                 //Debug.Log(player.GetComponent<InventoryItemHandler>().InventoryItemUIElements.Count);
                 MainGameSoundManager.Instance.PlaySFX("SFX_LockedDoor");

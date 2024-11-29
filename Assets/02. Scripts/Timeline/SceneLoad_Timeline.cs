@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using TT;
 
 public class SceneLoad_Timelne : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class SceneLoad_Timelne : MonoBehaviour
     [SerializeField] private GameObject Timeline_Obj;
     [SerializeField] private GameObject Play_Obj;
     [SerializeField] private GameObject AI_Obj;
+    [SerializeField] private GameObject cursor;
     [SerializeField] private PlayableDirector playableDirector;  // 타임라인에 연결된 PlayableDirector
+    
     void Start()
     {
+        cursor.SetActive(false);
         // 현재 활성화된 씬 가져오기
         Scene activeScene = SceneManager.GetActiveScene();
         playableDirector.stopped += OnTimelineStopped;
@@ -53,11 +57,15 @@ public class SceneLoad_Timelne : MonoBehaviour
     void OnTimelineStopped(PlayableDirector director)
     {
         Debug.Log("Timeline이 끝났습니다!");
+        cursor.SetActive(true);
         Timeline_Obj.SetActive(false);
         Play_Obj.SetActive(true);
         AI_Obj.SetActive(true);
 
         Play_Obj.transform.rotation = Quaternion.Euler(0, 0, 0);
         Player_Obj.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        MainGameSoundManager.Instance.PlayBGM();
+        MainGameSoundManager.Instance.AiSoundPlay("SFX_FindAI");
     }
 }

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System;
+using System.Threading.Tasks;
 
 namespace TT
 {
@@ -9,7 +11,9 @@ namespace TT
         private bool isInAgony;
 
         private Coroutine agonyCoroutine;
-        
+
+        private bool seeCheakCount = false; // 추적->배회 제어
+
         /// 추적모드 진입
         public void Enter(AIController ai)
         {
@@ -23,11 +27,15 @@ namespace TT
             ai.PlayerSound.StopSound();
             ai.PlayerSound.PlaySound("FindAI", true);
             MainGameSoundManager.Instance.AiSoundPlay("SFX_FindAI");
+
+            Countdown();
         }
 
         /// 추적모드중
         public void Execute(AIController ai)
         {
+            ai.DetectionTimeGuage = 0f; // 추적상태중에 발소리 게이지 중첩 적용 안되도록(사운드 시끄러움)
+
             // 플레이어 추적 성공
             if (ai.NearestPlayer())
             {
@@ -62,21 +70,30 @@ namespace TT
                 ai.ChasePlayer();
                 return;
             }
+
+            ai.ChasePlayer();
             
-            // 시야 안에 없어도 어느정도 따라와야 무서움. 때문에 CanSee 제어 말고 플레이어가
-            // 안전한 공간 안에 있으면 풀리는 것으로 수정하기
-            if (!ai.CanSeePlayer() && !ai.Player.IsDeadCurseState)
+            // 추적모드 진입 10초 후부터 플레이어가 시야 안에 없다면 해제
+            if (!ai.CanSeePlayer() && seeCheakCount)
             {
-                //ai.ChangeState(AIStateType.Wandering);  //⭐⭐⭐깜빡오류해결, 저주컷씬 따로 빼기
+                Debug.Log("10초 지나고 시야 안에 없음");
+                ai.ChangeState(AIStateType.Wandering);
             }
             else
             {
                 ai.ChasePlayer();
             }
-            ai.ChasePlayer();
+            
         }
 
-        
+        public async void Countdown()
+        {
+            Debug.Log("카운트다운시작");
+            seeCheakCount = false;
+            await Task.Delay(10000);
+            seeCheakCount = true;
+        }
+
         private System.Collections.IEnumerator ExitAgonyAfterDelay(AIController ai, float delay)
         {
             yield return new WaitForSeconds(delay);

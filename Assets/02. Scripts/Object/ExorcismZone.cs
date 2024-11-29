@@ -72,6 +72,7 @@ namespace TT
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     ResetPlayerEquipment();
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Button");
                     break;
 
                 case "SpecialCandle2":
@@ -79,6 +80,7 @@ namespace TT
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     ResetPlayerEquipment();
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Button");
                     break;
 
                 case "SpecialCandle3":
@@ -86,6 +88,7 @@ namespace TT
                     ExorcismManager.Instance.PlaceCandle();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     ResetPlayerEquipment();
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Button");
                     break;
 
                 case "Cross":
@@ -93,6 +96,7 @@ namespace TT
                     ExorcismManager.Instance.PlaceCross();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     ResetPlayerEquipment();
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Button");
                     break;
 
                 case "Lighter":
@@ -106,6 +110,8 @@ namespace TT
                             fireTransform.gameObject.SetActive(true);
                             ExorcismManager.Instance.LightCandle();
                             hit.collider.enabled = false;
+                            // 라이터 사운드 여기
+                            MainGameSoundManager.Instance.PlaySFX("SFX_Lighter");
                         }
                         else
                         {
@@ -119,6 +125,7 @@ namespace TT
                     ExorcismManager.Instance.PlaceExorcismBook();
                     inventoryUIHandler.RemoveInventoryItem(itemName);
                     ResetPlayerEquipment();
+                    MainGameSoundManager.Instance.PlaySFX("SFX_Button");
                     break;
             }
 
